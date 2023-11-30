@@ -20,8 +20,8 @@ int NFA::getStartState() const {
     return startState;
 }
 
-int NFA::getPriority(int state) {
-    return priority[state];
+int NFA::getPriority(const string& tokenClass) {
+    return priority[tokenClass];
 }
 
 string NFA::getTokenClass(int acceptingState) {

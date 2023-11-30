@@ -16,13 +16,13 @@ public:
     vector<int> move(int state, char input);
     bool isAcceptingState(int state);
     int getStartState() const;
-    int getPriority(int state);
+    int getPriority(const string& tokenClass);
     string getTokenClass(int acceptingState);
 private:
     int startState;
-    map<int, int> priority;
-    map<int, map<char, vector<int>>> nfa;
-    map<int, string> acceptingStates;
+    map<string, int> priority;  // tokenClass -> priority
+    map<int, map<char, vector<int>>> nfa;  // state --input--> vector of states
+    map<int, string> acceptingStates;  // state -> tokenClass
 };
 
 
