@@ -56,6 +56,13 @@ build CMakeFiles/Compiler.dir/NFA.cpp.obj: CXX_COMPILER__Compiler_Debug D$:/Comp
   OBJECT_DIR = CMakeFiles\Compiler.dir
   OBJECT_FILE_DIR = CMakeFiles\Compiler.dir
 
+build CMakeFiles/Compiler.dir/State.cpp.obj: CXX_COMPILER__Compiler_Debug D$:/Computer$ and$ Systems$ Engineering/7th$ Semster/Compilers/Project/Compiler/lexical_analyzer/State.cpp || cmake_object_order_depends_target_Compiler
+  DEP_FILE = CMakeFiles\Compiler.dir\State.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -I"D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/lexical_analyzer/."
+  OBJECT_DIR = CMakeFiles\Compiler.dir
+  OBJECT_FILE_DIR = CMakeFiles\Compiler.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Compiler
@@ -64,7 +71,7 @@ build CMakeFiles/Compiler.dir/NFA.cpp.obj: CXX_COMPILER__Compiler_Debug D$:/Comp
 #############################################
 # Link the executable Compiler.exe
 
-build Compiler.exe: CXX_EXECUTABLE_LINKER__Compiler_Debug CMakeFiles/Compiler.dir/NFA.cpp.obj
+build Compiler.exe: CXX_EXECUTABLE_LINKER__Compiler_Debug CMakeFiles/Compiler.dir/NFA.cpp.obj CMakeFiles/Compiler.dir/State.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Compiler.dir

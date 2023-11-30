@@ -11,7 +11,7 @@
       <config projectName="Compiler" targetName="Compiler" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
     </configurations>
@@ -82,7 +82,7 @@
       <workItem from="1701309983412" duration="2776000" />
       <workItem from="1701313230949" duration="213000" />
       <workItem from="1701345028635" duration="1977000" />
-      <workItem from="1701350837918" duration="338000" />
+      <workItem from="1701350837918" duration="5527000" />
     </task>
     <servers />
   </component>

@@ -7,4 +7,6 @@ include_directories(.)
 
 add_executable(Compiler
         NFA.cpp
-        NFA.h)
+        NFA.h
+        State.cpp
+        State.h)
