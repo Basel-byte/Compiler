@@ -9,13 +9,13 @@ NFA::NFA() = default;
 NFA::~NFA() = default;
 
 vector<int> NFA::move(const int state, const char input) {
-    return vector<int>();
+    return nfa[state][input];
 }
 
 bool NFA::isAcceptingState(int state) {
-    return false;
+    return acceptingStates.find(state) != acceptingStates.end();
 }
 
 int NFA::getStartState() const {
-    return start_state;
+    return startState;
 }

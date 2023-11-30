@@ -17,10 +17,10 @@ public:
     bool isAcceptingState(int state);
     int getStartState() const;
 private:
-    int start_state;
+    int startState;
     map<int, int> priority;
     map<int, map<char, vector<int>>> nfa;
-    map<int, string> accepting_states;
+    map<int, string> acceptingStates;
 };
 
 
