@@ -2,8 +2,11 @@
 using namespace std;
 
 class TokenFileWriter{
+    private:
+        ofstream tokenFile;
+
     public:
         TokenFileWriter();
         ~TokenFileWriter();
-        void tokenEnumWriter(set<string> defNames, vector<string> ruleNames);
+        void tokenEnumWriter(vector<string> defNames, vector<string> ruleNames);
 };

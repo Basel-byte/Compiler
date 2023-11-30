@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 #include "RuleFormatter.h"
+#include "TokenFileWriter.h"
+#include "LexWriter.h"
 using namespace std;
 
 int main(int argc, char** argv){
@@ -8,8 +10,7 @@ int main(int argc, char** argv){
     ruleFormatter.formatLowPriority("rules.txt");
 
     vector<string> formattedDefinitions = ruleFormatter.getFormattedDefinitions();
-    set<string> definitionNameSet = ruleFormatter.getDefinitionNames();
-    vector<string> definitionNames(definitionNameSet.begin(), definitionNameSet.end());
+    vector<string> definitionNames = ruleFormatter.getDefinitionNames();
     
     vector<string> formattedRules = ruleFormatter.getFormattedRules();
     vector<string> ruleNames = ruleFormatter.getRuleNames();
@@ -22,5 +23,14 @@ int main(int argc, char** argv){
     cout << "\nRegular Expressions:\n---------------------\n";
     for(int i = 0; i < ruleNames.size(); i++)
         cout << ruleNames.at(i) << space.substr(0, space.length() - ruleNames.at(i).length()) << formattedRules.at(i) << endl;
+    
+    TokenFileWriter tokenFileWriter;
+    tokenFileWriter.tokenEnumWriter(definitionNames, ruleNames);
+
+    LexWriter lexWriter;
+    lexWriter.writeDefinitionsSection();
+    lexWriter.writeRegularDefinitions(definitionNames, formattedDefinitions);
+    lexWriter.writeRegularExpressions(ruleNames, formattedRules);
+    
     return 0;
 }

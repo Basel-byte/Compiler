@@ -5,7 +5,8 @@ class RuleFormatter{
     private:
         vector<string> formattedRules;
         vector<string> ruleNames;
-        set<string> defNames;
+        set<string> defNamesSet;
+        vector<string> defNames;
         vector<string> formattedDefs;
         
         void extractKeywords(string rule);
@@ -24,8 +25,10 @@ class RuleFormatter{
         ~RuleFormatter();
         vector<string> getFormattedRules();
         vector<string> getRuleNames();
-        set<string> getDefinitionNames();
+        
+        vector<string> getDefinitionNames();
         vector<string> getFormattedDefinitions();
+        
         void formatKeywordAndPunc(string filename);
         void formatLowPriority(string filename);
 };

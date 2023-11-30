@@ -6,7 +6,7 @@ RuleFormatter ::~RuleFormatter(){cout << "RuleFormatter Finished...\n";}
 vector<string> RuleFormatter :: getFormattedRules(){return formattedRules;}
 vector<string> RuleFormatter :: getRuleNames(){return ruleNames;}
 
-set<string> RuleFormatter :: getDefinitionNames(){return defNames;}
+vector<string> RuleFormatter :: getDefinitionNames(){return defNames;}
 vector<string> RuleFormatter :: getFormattedDefinitions(){return formattedDefs;}
 
 void RuleFormatter :: formatKeywordAndPunc(string filename){
@@ -94,7 +94,7 @@ string RuleFormatter :: processPattern(string pattern){
 string RuleFormatter :: parseToken(string pattern){
     if(regex_match(pattern, regex("(\\(|\\)|\\|)"))) return pattern;
     if(pattern == "0-9" || pattern == "a-z" ||pattern == "A-Z") return "[" + pattern + "]";
-    if(defNames.find(pattern) != defNames.end()) return "{" + pattern + "}";
+    if(defNamesSet.find(pattern) != defNamesSet.end()) return "{" + pattern + "}";
     else if(pattern.at(pattern.length() > 1 && pattern.length() - 2) != '\\' && 
             (pattern.at(pattern.length() - 1) == '*' || pattern.at(pattern.length() - 1) == '+')){
         char op = pattern.at(pattern.length() - 1);
@@ -137,7 +137,8 @@ void RuleFormatter :: makeREorRD(string pattern, string name, bool isRD){
     pattern = lambdaToOptional(pattern);
     if(isRD){
         formattedDefs.push_back(pattern);
-        defNames.insert(name);
+        defNames.push_back(name);
+        defNamesSet.insert(name);
     }
     else{
         formattedRules.push_back(pattern);

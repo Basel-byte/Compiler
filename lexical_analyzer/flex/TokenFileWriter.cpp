@@ -1,13 +1,18 @@
 #include "TokenFileWriter.h"
 using namespace std;
 
-TokenFileWriter :: TokenFileWriter(){cout << "\nTokenFileWriter Instantiated ...\n";}
-TokenFileWriter :: ~TokenFileWriter(){cout << "TokenFileWriter Finished ...\n";}
-
-void TokenFileWriter :: tokenEnumWriter(set<string> defNames, vector<string> ruleNames){
-    cout << "Writing tokens.h ... \n\n";
-    ofstream tokenFile;
+TokenFileWriter :: TokenFileWriter(){
+    cout << "\nTokenFileWriter Instantiated ...\n";
     tokenFile.open("tokens.h");
+}
+
+TokenFileWriter :: ~TokenFileWriter(){
+    cout << "TokenFileWriter Finished ...\n";
+    tokenFile.close();
+}
+
+void TokenFileWriter :: tokenEnumWriter(vector<string> defNames, vector<string> ruleNames){
+    cout << "Writing tokens.h ... \n\n";    
     tokenFile << "namespace tokens {\n";
     tokenFile << "  enum tokenName{\n";
     tokenFile << "      EOF_TOK,\n";
@@ -15,5 +20,4 @@ void TokenFileWriter :: tokenEnumWriter(set<string> defNames, vector<string> rul
     for (string ruleName : ruleNames) tokenFile << "      " + ruleName << ",\n";
     tokenFile << "  };\n";
     tokenFile << "};\n";
-    tokenFile.close();
 }

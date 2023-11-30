@@ -1,9 +1,9 @@
 namespace tokens {
   enum tokenName{
       EOF_TOK,
+      letter,
       digit,
       digits,
-      letter,
       BOOLEAN,
       INT,
       FLOAT,
