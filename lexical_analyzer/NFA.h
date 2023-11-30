@@ -16,6 +16,8 @@ public:
     vector<int> move(int state, char input);
     bool isAcceptingState(int state);
     int getStartState() const;
+    int getPriority(int state);
+    string getTokenClass(int acceptingState);
 private:
     int startState;
     map<int, int> priority;

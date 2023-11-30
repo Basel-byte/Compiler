@@ -19,3 +19,11 @@ bool NFA::isAcceptingState(int state) {
 int NFA::getStartState() const {
     return startState;
 }
+
+int NFA::getPriority(int state) {
+    return priority[state];
+}
+
+string NFA::getTokenClass(int acceptingState) {
+    return acceptingStates[acceptingState];
+}
