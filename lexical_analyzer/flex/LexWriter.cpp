@@ -2,16 +2,16 @@
 using namespace std;
 
 LexWriter :: LexWriter(){
-    cout << "LexWiter Instantiated ...\n";
+    cout << "   LexWiter Instantiated ...\n";
     lexFile.open("flex.l");
 }
 LexWriter :: ~LexWriter(){
     lexFile.close();
-    cout << "LexWiter Finished ... \n";
+    cout << "   LexWiter Finished ... \n";
 }
 
 void LexWriter :: writeDefinitionsSection(){
-    cout << "Writing Definitions and Including Needed Libraries ...\n";
+    cout << "       Writing Definitions and Including Needed Libraries ...\n";
     lexFile << "%{\n\n";
     
     lexFile << "#include <iostream>\n";
@@ -26,7 +26,7 @@ void LexWriter :: writeDefinitionsSection(){
 }
 
 void LexWriter :: writeRegularDefinitions(vector<string> defNames, vector<string> defFormats){
-    cout << "Writing Regular Definitions ...\n";
+    cout << "       Writing Regular Definitions ...\n";
     lexFile << "%option noyywrap c++\n";
     string space = "                                                 ";
     for (int i = 0; i < defNames.size(); i++){
@@ -37,7 +37,7 @@ void LexWriter :: writeRegularDefinitions(vector<string> defNames, vector<string
 }
 
 void LexWriter :: writeRegularExpressions(vector<string> ruleNames, vector<string> ruleFormats){
-    cout << "Writing Regular Expressions and their Associated Action ...\n";
+    cout << "       Writing Regular Expressions and their Associated Action ...\n";
     
     string inputString = "sPtr = new string(yytext, yyleng);";
     lexFile << "\n%%\n\n";

@@ -7,7 +7,7 @@ FLEX: main.o flex.o
 	g++ -o $@ $^
 
 #Running the automated code to import rules to flex
-FLEX_Generator: RuleFormatter.o TokenFileWriter.o LexWriter.o MainFileWriter.o FlexGenerator.o
+FLEX_File_Gen: RuleFormatter.o TokenFileWriter.o LexWriter.o MainFileWriter.o FlexGenerator.o
 	g++ -o $@ $^
 
 #Generating Object File from CPP file.

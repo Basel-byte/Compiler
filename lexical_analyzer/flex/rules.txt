@@ -1,12 +1,26 @@
-letter = a-z | A-Z
+letter = a-z | A-Z | _
 digit = 0 - 9
+AccessMod: public | private | protected
+access_dot: .
+DATA_TYPE: Integer | Double | String | Byte | Float | class | Object
+LOGIC_VALUE: true | false
+nil: null 
+import: import
+package: package
 id: letter (letter|digit) *
 digits = digit+
-{boolean int float}
+{boolean int float double void long short byte class interface abstract}
+{System out in print println printf static new return do}
 num: digit+ | digit+ . digits ( \L | E digits)
 relop: \=\= | !\= | > | >\= | < | <\=
 assign: \=
 { if else while }
-[; , \( \) { } [ ]]
-addop: \+ | \-
-mulop: \* | /
+curly_braces: {|}
+indexing_bracket: [|]
+squotes:  "| "
+cquotes: '|'
+[; , \( \) :]
+bitwise: & | \| | ~ | ^
+logic: ! | ?
+addop: \+ | \- | \+\+ | --
+mulop: \* | / | %
