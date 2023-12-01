@@ -11,12 +11,11 @@ TokenFileWriter :: ~TokenFileWriter(){
     tokenFile.close();
 }
 
-void TokenFileWriter :: tokenEnumWriter(vector<string> defNames, vector<string> ruleNames){
+void TokenFileWriter :: writeTokens(vector<string> ruleNames){
     cout << "Writing tokens.h ... \n\n";    
     tokenFile << "namespace tokens {\n";
     tokenFile << "  enum tokenName{\n";
     tokenFile << "      EOF_TOK,\n";
-    for (string defName : defNames) tokenFile << "      " + defName << ",\n";
     for (string ruleName : ruleNames) tokenFile << "      " + ruleName << ",\n";
     tokenFile << "  };\n";
     tokenFile << "};\n";

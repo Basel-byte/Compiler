@@ -51,10 +51,11 @@ void RuleFormatter :: makeKeywordRule(string keyword){
 
 void RuleFormatter :: makePunctuationRule(string rule) {
     rule = regex_replace(rule, regex("(\\s+|\\t+)"), " ");
-    rule = "\"" + rule.substr(1, rule.length() - 2) + "\"";
-    rule = regex_replace(rule, regex(" "), "\" | \"");
-    rule = regex_replace(rule, regex(R"("\\(-|=|\+|\*|\(|\)|L|\|))"), "\"$1");
-
+    rule = rule.substr(1, rule.length() - 2);
+    rule = regex_replace(rule, regex(" "), "|");
+    rule = regex_replace(rule, regex(R"(([^\\])([\[\]{}]))"), "|\\$2");
+    // rule = regex_replace(rule, regex(R"(\\([()]))"), "$1");
+    
     formattedRules.push_back(rule);
     ruleNames.push_back("PUNCTUATION");
 }

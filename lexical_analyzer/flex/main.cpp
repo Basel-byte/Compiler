@@ -1,36 +1,82 @@
 #include <bits/stdc++.h>
-#include "RuleFormatter.h"
-#include "TokenFileWriter.h"
-#include "LexWriter.h"
+#include <FlexLexer.h>
+#include "tokens.h"
 using namespace std;
+string* sPtr = nullptr;
+extern ofstream ofile;
 
 int main(int argc, char** argv){
-    RuleFormatter ruleFormatter;
-    ruleFormatter.formatKeywordAndPunc("rules.txt");
-    ruleFormatter.formatLowPriority("rules.txt");
-
-    vector<string> formattedDefinitions = ruleFormatter.getFormattedDefinitions();
-    vector<string> definitionNames = ruleFormatter.getDefinitionNames();
-    
-    vector<string> formattedRules = ruleFormatter.getFormattedRules();
-    vector<string> ruleNames = ruleFormatter.getRuleNames();
-    
-    string space = "                  ";
-    cout << "\nRegular Definitions:\n---------------------\n";
-    for(int i = 0; i < definitionNames.size(); i++)
-        cout << definitionNames.at(i) << space.substr(0, space.length() - definitionNames.at(i).length()) << formattedDefinitions.at(i) << endl;
-    
-    cout << "\nRegular Expressions:\n---------------------\n";
-    for(int i = 0; i < ruleNames.size(); i++)
-        cout << ruleNames.at(i) << space.substr(0, space.length() - ruleNames.at(i).length()) << formattedRules.at(i) << endl;
-    
-    TokenFileWriter tokenFileWriter;
-    tokenFileWriter.tokenEnumWriter(definitionNames, ruleNames);
-
-    LexWriter lexWriter;
-    lexWriter.writeDefinitionsSection();
-    lexWriter.writeRegularDefinitions(definitionNames, formattedDefinitions);
-    lexWriter.writeRegularExpressions(ruleNames, formattedRules);
-    
+   ifstream ifile("program.java");
+   yyFlexLexer lexer(&ifile, &ofile);
+   while(tokens::tokenName tok = (tokens::tokenName) ( lexer.yylex() )) {
+       switch (tok) {
+           case tokens::BOOLEAN:
+               ofile <<"BOOLEAN("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::INT:
+               ofile <<"INT("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::FLOAT:
+               ofile <<"FLOAT("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::IF:
+               ofile <<"IF("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::ELSE:
+               ofile <<"ELSE("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::WHILE:
+               ofile <<"WHILE("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::PUNCTUATION:
+               ofile <<"PUNCTUATION("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::ID:
+               ofile <<"ID("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::NUM:
+               ofile <<"NUM("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::RELOP:
+               ofile <<"RELOP("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::ASSIGN:
+               ofile <<"ASSIGN("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::ADDOP:
+               ofile <<"ADDOP("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+           case tokens::MULOP:
+               ofile <<"MULOP("<< *sPtr << ")\n";
+               delete sPtr;
+               sPtr = nullptr;
+               break;
+       }
+   }
     return 0;
 }
+

@@ -8,5 +8,5 @@ class TokenFileWriter{
     public:
         TokenFileWriter();
         ~TokenFileWriter();
-        void tokenEnumWriter(vector<string> defNames, vector<string> ruleNames);
+        void writeTokens(vector<string> ruleNames);
 };

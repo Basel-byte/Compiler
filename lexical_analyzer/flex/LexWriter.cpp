@@ -15,10 +15,12 @@ void LexWriter :: writeDefinitionsSection(){
     lexFile << "%{\n\n";
     
     lexFile << "#include <iostream>\n";
+    lexFile << "#include <fstream>\n";  
     lexFile << "#include \"tokens.h\"\n";
     lexFile << "using namespace std;\n\n";
     lexFile << "#define tokenize(T) return tokens::T;\n";
-    lexFile << "extern string* sPtr;\n\n";
+    lexFile << "extern string* sPtr;\n";
+    lexFile << "extern ofstream ofile(\"output.txt\");\n\n";    
 
     lexFile << "%}\n\n";
 }
@@ -55,10 +57,10 @@ void LexWriter :: writeRegularExpressions(vector<string> ruleNames, vector<strin
 
     length =  max((unsigned long)1, space.length() - 1);
     lexFile << "." << space.substr(0, length) << "{";
-    lexFile << inputString << "cout << \"Non-Matching Input. Applying Panic Mode Recovery and Deleting(\" << *sPtr << \")\\n\";}\n";
+    lexFile << inputString << "ofile << \"Non-Matching Input. Applying Panic Mode Recovery and Deleting(\" << *sPtr << \")\\n\";}\n";
     
     length =  max((unsigned long)1, space.length() - 7);
-    lexFile << "<<EOF>>" << space.substr(0, length) << "{cout<< \"EOF_TOK\\n\"; tokenize(EOF_TOK);}\n";
+    lexFile << "<<EOF>>" << space.substr(0, length) << "{ofile << \"EOF_TOK\\n\"; tokenize(EOF_TOK);}\n";
     
     lexFile << "\n%%\n";
 }
