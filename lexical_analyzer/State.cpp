@@ -4,12 +4,14 @@
 
 #include "State.h"
 
+#include <utility>
+
 State::State() {
     isAccepting = false;
     tokenClass = nullptr;
 }
 
-State::State(int id) : id(id) {}
+State::State(string id) : id(std::move(id)) {}
 
 State::~State() = default;
 

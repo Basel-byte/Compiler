@@ -12,5 +12,5 @@ add_executable(Compiler
         State.h
         PriorityTable.cpp
         PriorityTable.h
-        Utility.cpp
-        Utility.h)
+        ThomsonConstructor.cpp
+        ThomsonConstructor.h)

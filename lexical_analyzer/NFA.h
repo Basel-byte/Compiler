@@ -19,6 +19,8 @@ public:
 
     NFA(const NFA &other);
 
+    void setAcceptingState(const string& tokenClass);
+
 public:
     State startState;
     State endState;

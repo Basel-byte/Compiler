@@ -70,8 +70,8 @@ build CMakeFiles/Compiler.dir/PriorityTable.cpp.obj: CXX_COMPILER__Compiler_Debu
   OBJECT_DIR = CMakeFiles\Compiler.dir
   OBJECT_FILE_DIR = CMakeFiles\Compiler.dir
 
-build CMakeFiles/Compiler.dir/Utility.cpp.obj: CXX_COMPILER__Compiler_Debug D$:/Computer$ and$ Systems$ Engineering/7th$ Semster/Compilers/Project/Compiler/lexical_analyzer/Utility.cpp || cmake_object_order_depends_target_Compiler
-  DEP_FILE = CMakeFiles\Compiler.dir\Utility.cpp.obj.d
+build CMakeFiles/Compiler.dir/ThomsonConstructor.cpp.obj: CXX_COMPILER__Compiler_Debug D$:/Computer$ and$ Systems$ Engineering/7th$ Semster/Compilers/Project/Compiler/lexical_analyzer/ThomsonConstructor.cpp || cmake_object_order_depends_target_Compiler
+  DEP_FILE = CMakeFiles\Compiler.dir\ThomsonConstructor.cpp.obj.d
   FLAGS = -g
   INCLUDES = -I"D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/lexical_analyzer/."
   OBJECT_DIR = CMakeFiles\Compiler.dir
@@ -85,7 +85,7 @@ build CMakeFiles/Compiler.dir/Utility.cpp.obj: CXX_COMPILER__Compiler_Debug D$:/
 #############################################
 # Link the executable Compiler.exe
 
-build Compiler.exe: CXX_EXECUTABLE_LINKER__Compiler_Debug CMakeFiles/Compiler.dir/NFA.cpp.obj CMakeFiles/Compiler.dir/State.cpp.obj CMakeFiles/Compiler.dir/PriorityTable.cpp.obj CMakeFiles/Compiler.dir/Utility.cpp.obj
+build Compiler.exe: CXX_EXECUTABLE_LINKER__Compiler_Debug CMakeFiles/Compiler.dir/NFA.cpp.obj CMakeFiles/Compiler.dir/State.cpp.obj CMakeFiles/Compiler.dir/PriorityTable.cpp.obj CMakeFiles/Compiler.dir/ThomsonConstructor.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Compiler.dir

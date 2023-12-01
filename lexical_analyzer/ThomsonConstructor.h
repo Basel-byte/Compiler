@@ -2,13 +2,13 @@
 // Created by Dell on 01/12/2023.
 //
 
-#ifndef COMPILER_UTILITY_H
-#define COMPILER_UTILITY_H
+#ifndef COMPILER_THOMSONCONSTRUCTOR_H
+#define COMPILER_THOMSONCONSTRUCTOR_H
 
 
 #include "NFA.h"
 
-class Utility {
+class ThomsonConstructor {
 public:
     static NFA creatBasic(char input);
     static NFA range(char src, char dest);
@@ -18,7 +18,8 @@ public:
     static NFA positiveClosure(const NFA& nfa);
 public:
     static int id;
+    static char epsilon;
 };
 
 
-#endif //COMPILER_UTILITY_H
+#endif //COMPILER_THOMSONCONSTRUCTOR_H
