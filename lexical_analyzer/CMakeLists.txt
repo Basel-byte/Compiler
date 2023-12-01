@@ -9,4 +9,6 @@ add_executable(Compiler
         NFA.cpp
         NFA.h
         State.cpp
-        State.h)
+        State.h
+        PriorityTable.cpp
+        PriorityTable.h)

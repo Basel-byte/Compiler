@@ -17,10 +17,11 @@ public:
 
     NFA(const State &startState, const State &endState);
 
+    NFA(int id, const State &startState, const State &endState);
 
 public:
+    int id;
     State startState;
-
     State endState;
 };
 

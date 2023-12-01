@@ -10,12 +10,9 @@ using namespace std;
 
 class PriorityTable {
 public:
-    static int counter = 0;
+    static int counter;
     static map<string, int> table;
-    void addTokenClass(string tokenClass) {
-        table[tokenClass] = counter++;
-    }
+    static void addTokenClass(string tokenClass);
 };
-
 
 #endif //COMPILER_PRIORITYTABLE_H

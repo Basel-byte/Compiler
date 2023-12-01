@@ -3,3 +3,9 @@
 //
 
 #include "PriorityTable.h"
+
+int PriorityTable::counter = 0;
+
+void PriorityTable::addTokenClass(string tokenClass) {
+    PriorityTable::table[tokenClass] = PriorityTable::counter++;
+}
