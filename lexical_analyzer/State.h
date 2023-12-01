@@ -14,6 +14,8 @@ class State {
 public:
     State();
 
+    State(int id);
+
     State(bool isAccepting);
 
     State(bool isAccepting, const string &tokenClass);
@@ -33,10 +35,9 @@ public:
     void setTokenClass(const string &tokenClass);
 
 private:
+    int id;
     map<char, vector<State>> transitions;
-
     bool isAccepting;
-
     string tokenClass;
 };
 

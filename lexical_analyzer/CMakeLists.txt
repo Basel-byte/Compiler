@@ -11,4 +11,6 @@ add_executable(Compiler
         State.cpp
         State.h
         PriorityTable.cpp
-        PriorityTable.h)
+        PriorityTable.h
+        Utility.cpp
+        Utility.h)

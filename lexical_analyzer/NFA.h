@@ -17,10 +17,9 @@ public:
 
     NFA(const State &startState, const State &endState);
 
-    NFA(int id, const State &startState, const State &endState);
+    NFA(const NFA &other);
 
 public:
-    int id;
     State startState;
     State endState;
 };

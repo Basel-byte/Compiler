@@ -12,7 +12,7 @@ class PriorityTable {
 public:
     static int counter;
     static map<string, int> table;
-    static void addTokenClass(string tokenClass);
+    static void addTokenClass(const string& tokenClass);
 };
 
 #endif //COMPILER_PRIORITYTABLE_H

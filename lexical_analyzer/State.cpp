@@ -9,6 +9,8 @@ State::State() {
     tokenClass = nullptr;
 }
 
+State::State(int id) : id(id) {}
+
 State::~State() = default;
 
 State::State(bool isAccepting) : isAccepting(isAccepting) {}
