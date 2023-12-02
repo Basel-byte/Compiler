@@ -42,3 +42,11 @@ void State::setTokenClass(const string &tokenClass) {
 void State::addTransition(char input, const State& state) {
     transitions[input].push_back(state);
 }
+
+map<char, vector<State>> State::getTransitions() {
+    return transitions;
+}
+
+string State::getID() {
+    return id;
+}
