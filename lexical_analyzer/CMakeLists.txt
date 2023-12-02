@@ -13,4 +13,8 @@ add_executable(Compiler
         PriorityTable.cpp
         PriorityTable.h
         ThomsonConstructor.cpp
-        ThomsonConstructor.h)
+        ThomsonConstructor.h
+        RegexParser.cpp
+        RegexParser.h
+        Utility.cpp
+        Utility.h)

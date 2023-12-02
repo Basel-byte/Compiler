@@ -10,12 +10,14 @@
 
 class ThomsonConstructor {
 public:
-    static NFA creatBasic(char input);
-    static NFA range(char src, char dest);
-    static NFA union_(NFA nfa1, NFA nfa2);
-    static NFA concat(NFA nfa1, const NFA& nfa2);
-    static NFA kleenClosure(NFA nfa);
-    static NFA positiveClosure(const NFA& nfa);
+    static NFA * createEpsilon();
+    static NFA * creatBasic(char input);
+    static NFA * range(char src, char dest);
+    static NFA * union_(NFA nfa1, NFA nfa2);
+    static NFA * concat(NFA nfa1, const NFA& nfa2);
+    static NFA * kleenClosure(NFA nfa);
+    static NFA * positiveClosure(const NFA& nfa);
+    static NFA * getCombinedNFA(vector<pair<string, NFA*>> nfas);
 public:
     static int id;
     static char epsilon;

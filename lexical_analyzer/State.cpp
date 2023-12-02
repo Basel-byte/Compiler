@@ -42,3 +42,7 @@ void State::setTokenClass(const string &tokenClass) {
 void State::addTransition(char input, const State& state) {
     transitions[input].push_back(state);
 }
+
+void State::addTransitions(char input, vector<State> states) {
+    transitions[input] = std::move(states);
+}

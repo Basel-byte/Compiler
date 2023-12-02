@@ -15,6 +15,8 @@ public:
 
     virtual ~NFA();
 
+    NFA(const State &startState);
+
     NFA(const State &startState, const State &endState);
 
     NFA(const NFA &other);
