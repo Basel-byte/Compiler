@@ -69,7 +69,7 @@ void DFA::setAcceptingState(State* dfaState, const vector<State*>& nfaStates) {
 
     for(const auto & nfaState : nfaStates){
         if(nfaState->isAcceptingState()){
-            if(PriorityTable::table[nfaState->getTokenClass()] > maxPriority){
+            if(PriorityTable::table[nfaState->getTokenClass()] < maxPriority){
                 maxPriority = PriorityTable::table[nfaState->getTokenClass()];
                 acceptPattern = nfaState->getTokenClass();
             }
