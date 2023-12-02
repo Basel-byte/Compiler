@@ -10,6 +10,8 @@ add_executable(Compiler
         NFA.h
         State.cpp
         State.h
+        DFA.cpp
+        DFA.h
         PriorityTable.cpp
         PriorityTable.h
         ThomsonConstructor.cpp
