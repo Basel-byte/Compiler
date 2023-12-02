@@ -46,3 +46,11 @@ void State::addTransition(char input, const State& state) {
 void State::addTransitions(char input, vector<State> states) {
     transitions[input] = std::move(states);
 }
+
+map<char, vector<State>> State::getTransitions() {
+    return transitions;
+}
+
+string State::getID() {
+    return id;
+}

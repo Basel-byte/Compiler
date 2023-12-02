@@ -24,6 +24,10 @@ public:
 
     vector<State> move(char input);
 
+    string getID();
+
+    map<char, vector<State>> getTransitions();
+
     void addTransition(char input, const State& state);
 
     void addTransitions(char input, vector<State> states);
