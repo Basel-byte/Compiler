@@ -30,6 +30,8 @@ public:
 
     void addTransition(char input, const State& state);
 
+    void addTransitions(const vector<char>& inputs, const State& state);
+
     void addTransitions(char input, vector<State> states);
 
     bool isAcceptingState() const;

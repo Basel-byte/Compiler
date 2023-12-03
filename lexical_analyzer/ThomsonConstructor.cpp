@@ -72,3 +72,11 @@ NFA *ThomsonConstructor::getCombinedNFA(vector<pair<string, NFA *>> nfas) {
     NFA* combinedNFA = new NFA(startState);
     return combinedNFA;
 }
+
+NFA *ThomsonConstructor::createNFA(vector<char> &inputs) {
+    State startState(to_string(id++));
+    State endState(to_string(id++));
+    startState.addTransitions(inputs, endState);
+    NFA* nfa = new NFA(startState, endState);
+    return nfa;
+}

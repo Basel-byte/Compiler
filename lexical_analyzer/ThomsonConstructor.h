@@ -7,6 +7,7 @@
 
 
 #include "NFA.h"
+#include "vector"
 
 class ThomsonConstructor {
 public:
@@ -18,6 +19,8 @@ public:
     static NFA * kleenClosure(NFA nfa);
     static NFA * positiveClosure(const NFA& nfa);
     static NFA * getCombinedNFA(vector<pair<string, NFA*>> nfas);
+private:
+    static NFA * createNFA(vector<char> &inputs);
 public:
     static int id;
     static char epsilon;

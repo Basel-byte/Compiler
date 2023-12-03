@@ -18,22 +18,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ec0c81f-860d-41ca-8efa-3ba9173c23b5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/DFAState.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFAState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegexParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/RegexParser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegexParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/RegexParser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DFA.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DFA.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DFA.h" beforeDir="false" afterPath="$PROJECT_DIR$/DFA.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/State.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/State.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/State.h" beforeDir="false" afterPath="$PROJECT_DIR$/State.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ThomsonConstructor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ThomsonConstructor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ThomsonConstructor.h" beforeDir="false" afterPath="$PROJECT_DIR$/ThomsonConstructor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Utility.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/Utility.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-ae97ebf142ce19c231ab.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-12-03T00-06-40-0015.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-Compiler-Debug-331ab4e74f668a4ce40e.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/RegexParser.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/RegexParser.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/Utility.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/Utility.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Compiler.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Compiler.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +101,7 @@
       <workItem from="1701313230949" duration="213000" />
       <workItem from="1701345028635" duration="1977000" />
       <workItem from="1701350837918" duration="41465000" />
-      <workItem from="1701560683608" duration="20295000" />
+      <workItem from="1701560683608" duration="20455000" />
     </task>
     <servers />
   </component>

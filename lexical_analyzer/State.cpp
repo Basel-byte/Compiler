@@ -43,6 +43,11 @@ void State::addTransition(char input, const State& state) {
     transitions[input].push_back(state);
 }
 
+void State::addTransitions(const vector<char>& inputs, const State& state) {
+    for (char input : inputs)
+        addTransition(input, state);
+}
+
 void State::addTransitions(char input, vector<State> states) {
     transitions[input] = std::move(states);
 }
