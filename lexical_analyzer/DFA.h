@@ -8,13 +8,14 @@
 
 #include "State.h"
 #include "PriorityTable.h"
+#include "DFAState.h"
 
 class DFA {
 public:
     static vector<State*> getEpsilonClosure(State* state);
     static string getStateNewName(vector<State*> states);
-    static void setAcceptingState(State* dfaState, const vector<State*>& nfaStates);
-    static vector<State*> convertNFAToDFA(State startNFAState);
+    static void setAcceptingState(DFAState* dfaState, const vector<State*>& nfaStates);
+    static vector<DFAState*> convertNFAToDFA(State startNFAState);
 
 private:
     PriorityTable pTable;

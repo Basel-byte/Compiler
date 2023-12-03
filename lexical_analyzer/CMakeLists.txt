@@ -19,4 +19,6 @@ add_executable(Compiler
         RegexParser.cpp
         RegexParser.h
         Utility.cpp
-        Utility.h)
+        Utility.h
+        DFAState.cpp
+        DFAState.h)
