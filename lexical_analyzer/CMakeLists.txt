@@ -8,6 +8,8 @@ include_directories(.)
 add_executable(Compiler
         NFA.cpp
         NFA.h
+        DFA.cpp
+        DFA.h
         State.cpp
         State.h
         PriorityTable.cpp
@@ -17,4 +19,5 @@ add_executable(Compiler
         RegexParser.cpp
         RegexParser.h
         Utility.cpp
-        Utility.h)
+        Utility.h
+        main.cpp)

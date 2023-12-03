@@ -9,13 +9,14 @@
 #include "Utility.h"
 #include <string>
 #include <fstream>
+#include <iostream>
 
 RegexParser::RegexParser() {
     keywordsRegex = regex(R"(\{.*\})");
     punctRegex = regex(R"(\[.*\])");
-    rangeLetter = regex(R"([A-Za-z])-(?!\1)([A-Za-z])");
-    rangeDigit = regex(R"([0-9])-(?!\1)([0-9]))");
-    operators = set<char>{'-', '+', '*', '(', ')', '|', '\1'};
+    rangeLetter = regex("([A-Za-z])-(?!\1)([A-Za-z])");
+    rangeDigit = regex("([0-9])-(?!\1)([0-9])");
+    operators = set<char>{'+', '*', '(', ')', '|', '\1'};
     regexMap["\\L"] = ThomsonConstructor::createEpsilon();
 }
 
@@ -43,8 +44,8 @@ void RegexParser::parseLine(string line) {
     }
     else {
         line.erase(remove_if(line.begin(), line.end(), ::isspace),  line.end());
-        int colonPos = line.find(':');
-        int equalPos = line.find('=');
+        size_t colonPos = line.find(':');
+        size_t equalPos = line.find('=');
         int minPos = min(colonPos, equalPos);
         string lhs = line.substr(0, minPos);
         string rhs = line.substr(minPos + 1, line.length() - minPos - 1);
@@ -58,28 +59,17 @@ void RegexParser::parseLine(string line) {
 void RegexParser::parseRE(const string& lhs, string rhs) {
     map<int, smatch> posToMatch;
     smatch rangeMatch;
-    if (regex_search(rhs, rangeMatch, rangeDigit)) {
-        posToMatch[rangeMatch.position()] = rangeMatch;
-        string range = rangeMatch.str();
-        regexMap[range] = ThomsonConstructor::range(range[0], range[2]);
-    }
-    if (regex_search(rhs, rangeMatch, rangeLetter)) {
-        posToMatch[rangeMatch.position()] = rangeMatch;
-        string range = rangeMatch.str();
-        regexMap[range] = ThomsonConstructor::range(range[0], range[2]);
-    }
-    for (auto & it : regexMap) {
-        smatch match;
-        if (regex_search(rhs, match, regex(it.first))) {
-            if (posToMatch.find(match.position()) == posToMatch.end() || posToMatch[match.position()].length() < match.length())
-                posToMatch[match.position()] = match;
-        }
-    }
+    findNonOverlappingMatches(rhs, rangeLetter, posToMatch);
+    findNonOverlappingMatches(rhs, rangeDigit, posToMatch);
+
+    for (auto & it : regexMap)
+        findAllOccurrences(rhs, regex(it.first), posToMatch);
+
     vector<pair<char, NFA*>> tokens = tokenize(move(rhs), posToMatch);
     regexMap[lhs] = Utility::getCorrespondingNFA(tokens);
 }
 
-vector<pair<char, NFA*>> RegexParser::tokenize(string rhs, map<int, smatch> posToMatch) {
+vector<pair<char, NFA*>> RegexParser::tokenize(string rhs, map<int, smatch>& posToMatch) {
     vector<pair<char, NFA*>> tokens;
     for (int i = 0; i < rhs.length(); i++) {
         if (isOperator(rhs[i])) {
@@ -92,7 +82,8 @@ vector<pair<char, NFA*>> RegexParser::tokenize(string rhs, map<int, smatch> posT
         }
         else if (posToMatch.find(i) != posToMatch.end()) {
             smatch match = posToMatch[i];
-            tokens.emplace_back(rhs[i], regexMap[match.str()]);
+            string str = match.str();
+            tokens.emplace_back(rhs[i], regexMap[str]);
             i += match.length() - 1;
         }
         else
@@ -128,3 +119,26 @@ NFA* RegexParser::getCombinedNFA() {
     return ThomsonConstructor::getCombinedNFA(nfas);
 }
 
+void RegexParser::findNonOverlappingMatches(const string& input, const regex& reg, map<int, smatch>& posToMatch) {
+    auto words_begin = sregex_iterator(input.begin(), input.end(), reg);
+    auto words_end = sregex_iterator();
+
+    for (sregex_iterator i = words_begin; i != words_end; ++i) {
+        const smatch& match = *i;
+        posToMatch[match.position()] = match;
+        string range = match.str();
+        if (regexMap.find(range) == regexMap.end())
+            regexMap[range] = ThomsonConstructor::range(range[0], range[2]);
+    }
+}
+
+void RegexParser::findAllOccurrences(const string& input, const regex& reg, map<int, smatch>& posToMatch) {
+    auto words_begin = sregex_iterator(input.begin(), input.end(), reg);
+    auto words_end = sregex_iterator();
+
+    for (sregex_iterator i = words_begin; i != words_end; ++i) {
+        const smatch& match = *i;
+        if (posToMatch.find(match.position()) == posToMatch.end() || posToMatch[match.position()].length() < match.length())
+            posToMatch[match.position()] = match;
+    }
+}

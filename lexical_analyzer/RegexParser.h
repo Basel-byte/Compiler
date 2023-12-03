@@ -18,11 +18,14 @@ public:
     RegexParser();
     NFA * parseREs(const string& filepath);
 private:
-    vector<pair<char, NFA *>> tokenize(string rhs, map<int, smatch> posToMatch);
+    vector<pair<char, NFA *>> tokenize(string rhs, map<int, smatch> &posToMatch);
     void parseLine(string line);
     void parseRE(const string& lhs, string rhs);
     void parsePunctuationSymbols(string symbols);
     bool isOperator(char c);
+    NFA *getCombinedNFA();
+    void findNonOverlappingMatches(const string &input, const regex &reg, map<int, smatch> &posToMatch);
+    static void findAllOccurrences(const string& input, const regex& reg, map<int, smatch> &posToMatch);
 private:
     regex keywordsRegex;
     regex punctRegex;
@@ -30,7 +33,6 @@ private:
     regex rangeDigit;
     map<string, NFA*> regexMap;
     set<char> operators; // - | + * ( )
-    NFA *getCombinedNFA();
 };
 
 
