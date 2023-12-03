@@ -1,155 +1,51 @@
 //
-// Created by mai on 12/1/23.
+// Created by mai on 12/3/23.
 //
 
-#include <algorithm>
-using namespace std;
 #include "DFA.h"
-#include "DFAState.h"
-#include <climits>
+#include <utility>
 
-bool compareID(State *a, State *b) {
-    return a->getID() < b->getID();
+DFA::DFA(string id) : id(std::move(id)) {}
+
+DFA::DFA() {
+    isAccepting = false;
+    tokenClass = nullptr;
 }
 
-vector<State*> DFA::getEpsilonClosure(State* state){
-    map<State*, int> visited;
-    vector<State*> epsilons;
+DFA::~DFA() = default;
 
-    vector<State*> toProcess;
-    toProcess.push_back(state);
-    visited[state]++;
+DFA::DFA(bool isAccepting) : isAccepting(isAccepting) {}
 
-    epsilons.push_back(state);
+DFA::DFA(bool isAccepting, string tokenClass) : isAccepting(isAccepting), tokenClass(std::move(tokenClass)) {}
 
-    while (!toProcess.empty()) {
-        State* current = toProcess.back();
-        toProcess.pop_back();
-
-        vector<State> epsilonTransitions = current->getTransitions()['\0'];
-
-        for (State &s : epsilonTransitions) {
-            if (visited[&s] == 0) {
-                visited[&s]++;
-                toProcess.push_back(&s);
-                epsilons.push_back(&s);
-            }
-        }
-    }
-
-    // Sort for naming
-    sort(epsilons.begin(), epsilons.end(), compareID);
-
-    return epsilons;
+DFA DFA::move(char input) {
+    return transitions[input];
 }
 
-string DFA::getStateNewName(vector<State*> states) {
-    string newName;
-    map<string, int> dup;
-
-    // remove duplicate states if occurred
-    for (int i = 0; i < states.size(); i++) {
-        dup[states[i]->getID()]++;
-        if(dup[states[i]->getID()] > 1){
-            states.erase(states.begin() + i);
-        }
-    }
-    for(int i=0; i<states.size(); i++){
-        newName += states[i]->getID();
-        newName += i!=states.size() ? "," : "";
-    }
-
-    return newName;
+bool DFA::isAcceptingState() const {
+    return isAccepting;
 }
 
-void DFA::setAcceptingState(DFAState* dfaState, const vector<State*>& nfaStates) {
-    int maxPriority = INT_MAX;
-    string acceptPattern;
-
-    for(const auto & nfaState : nfaStates){
-        if(nfaState->isAcceptingState()){
-            if(PriorityTable::table[nfaState->getTokenClass()] < maxPriority){
-                maxPriority = PriorityTable::table[nfaState->getTokenClass()];
-                acceptPattern = nfaState->getTokenClass();
-            }
-        }
-
-    }
-
-    if(!acceptPattern.empty()){
-        dfaState->setIsAccepting(true);
-        dfaState->setTokenClass(acceptPattern);
-    }
+void DFA::setIsAccepting(bool isAccept) {
+    DFA::isAccepting = isAccept;
 }
 
-vector<DFAState*> DFA::convertNFAToDFA(State startNFAState) {
-
-    State* startState = &startNFAState;
-
-    // get the epsilon closure of the start state
-    vector<State*> epsilons = DFA::getEpsilonClosure(startState);
-
-    // make a new state containing the closure state
-    DFAState input = new DFAState(DFA::getStateNewName(epsilons));
-    DFAState* inputState = &input; // pointer to the closure state
-
-    map<string, DFAState*> visitedStates; // visited states
-    map<string, pair<DFAState*, vector<State*>>> toProcess; // states to be visited
-    toProcess.insert({inputState->getID(), pair<DFAState*, vector<State*>>(inputState, epsilons)});
-
-    // final DFA state vector
-    vector<DFAState*> dfaStates;
-
-    while (!toProcess.empty()) {
-        pair<DFAState*, vector<State*>> temp = toProcess.begin()->second;
-        DFAState* dfaState = temp.first;
-        vector<State*> nfaStateEpsilons = temp.second;
-        toProcess.erase(toProcess.begin());
-        dfaStates.push_back(dfaState);
-        visitedStates.insert(pair<string, DFAState*>(dfaState->getID(), dfaState));
-
-        // check if it will be an accept state, if accept state --> set its class token
-        DFA::setAcceptingState(dfaState, nfaStateEpsilons);
-
-        map<char, vector<State*>> currStateTransitions;
-
-        // loop over every epsilon state combined this dfa state to get its reachable states
-        for (auto& nfaState : nfaStateEpsilons) {
-
-            map<char, vector<State>> nfaTransitions = nfaState->getTransitions();
-
-            // loop over each input
-            for (const auto& inputTransition : nfaTransitions) {
-                char in = inputTransition.first;
-                vector<State> transitions = inputTransition.second;
-                // loop over each transaction of that specific input
-                for (auto & transition : transitions) {
-                    const State* constTrans = &transition;
-                    vector<State*> eps = DFA::getEpsilonClosure(const_cast<State*>(constTrans));
-                    if (currStateTransitions[in].empty()) {
-                        currStateTransitions[in] = eps;
-                    }else {
-                        currStateTransitions[in].insert(currStateTransitions[in].end(), eps.begin(), eps.end());
-                    }
-                }
-            }
-        }
-
-        // make new states of the epsilons
-        for (const auto& itr: currStateTransitions) {
-            if (visitedStates.count(DFA::getStateNewName(itr.second)) != 0 ) { // visited before
-                dfaState->addTransition(itr.first, visitedStates.at(DFA::getStateNewName(itr.second)));
-            } else if (toProcess.count(DFA::getStateNewName(itr.second)) != 0) {
-                dfaState->addTransition(itr.first, toProcess.at(DFA::getStateNewName(itr.second)).first);
-            } else {
-                auto* newTran = new DFAState(DFA::getStateNewName(itr.second));
-                toProcess.insert({newTran->getID(), pair<DFAState*, vector<State*>>(newTran, itr.second)});
-                dfaState->addTransition(itr.first, newTran);
-            }
-        }
-    }
-
-    return dfaStates;
+const string &DFA::getTokenClass() const {
+    return tokenClass;
 }
 
+void DFA::setTokenClass(const string &ClassToken) {
+    DFA::tokenClass = ClassToken;
+}
 
+void DFA::addTransition(char input, const DFA& state) {
+    transitions[input] = state;
+}
+
+map<char, DFA> DFA::getTransitions() {
+    return transitions;
+}
+
+string DFA::getID() {
+    return id;
+}

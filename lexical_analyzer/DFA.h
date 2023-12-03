@@ -1,25 +1,48 @@
 //
-// Created by mai on 12/1/23.
+// Created by mai on 12/3/23.
 //
 
 #ifndef COMPILER_DFA_H
 #define COMPILER_DFA_H
-
-
-#include "State.h"
-#include "PriorityTable.h"
-#include "DFAState.h"
+#include "map"
+#include "vector"
+using namespace std;
 
 class DFA {
 public:
-    static vector<State*> getEpsilonClosure(State* state);
-    static string getStateNewName(vector<State*> states);
-    static void setAcceptingState(DFAState* dfaState, const vector<State*>& nfaStates);
-    static vector<DFAState*> convertNFAToDFA(State startNFAState);
+    DFA();
+
+    DFA(string id);
+
+    virtual ~DFA();
+
+    DFA(bool isAccepting);
+
+    DFA(bool isAccepting, string tokenClass);
+
+    DFA move(char input);
+
+    string getID();
+
+    map<char, DFA> getTransitions();
+
+    void addTransition(char input, const DFA& state);
+
+    bool isAcceptingState() const;
+
+    void setIsAccepting(bool isAccept);
+
+    const string &getTokenClass() const;
+
+    void setTokenClass(const string &ClassToken);
 
 private:
-    PriorityTable pTable;
+    string id;
+    map<char, DFA> transitions;
+    bool isAccepting{};
+    string tokenClass;
 };
+
 
 
 #endif //COMPILER_DFA_H
