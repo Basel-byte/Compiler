@@ -2,11 +2,10 @@
 // Created by mai on 12/1/23.
 //
 
-
-#include <iostream>
 #include <algorithm>
 using namespace std;
 #include "DFA.h"
+#include "DFAState.h"
 #include <climits>
 
 bool compareID(State *a, State *b) {
@@ -63,13 +62,13 @@ string DFA::getStateNewName(vector<State*> states) {
     return newName;
 }
 
-void DFA::setAcceptingState(State* dfaState, const vector<State*>& nfaStates) {
+void DFA::setAcceptingState(DFAState* dfaState, const vector<State*>& nfaStates) {
     int maxPriority = INT_MAX;
     string acceptPattern;
 
     for(const auto & nfaState : nfaStates){
         if(nfaState->isAcceptingState()){
-            if(PriorityTable::table[nfaState->getTokenClass()] > maxPriority){
+            if(PriorityTable::table[nfaState->getTokenClass()] < maxPriority){
                 maxPriority = PriorityTable::table[nfaState->getTokenClass()];
                 acceptPattern = nfaState->getTokenClass();
             }
@@ -83,7 +82,7 @@ void DFA::setAcceptingState(State* dfaState, const vector<State*>& nfaStates) {
     }
 }
 
-vector<State*> DFA::convertNFAToDFA(State startNFAState) {
+vector<DFAState*> DFA::convertNFAToDFA(State startNFAState) {
 
     State* startState = &startNFAState;
 
@@ -91,23 +90,23 @@ vector<State*> DFA::convertNFAToDFA(State startNFAState) {
     vector<State*> epsilons = DFA::getEpsilonClosure(startState);
 
     // make a new state containing the closure state
-    State input = new State(DFA::getStateNewName(epsilons));
-    State* inputState = &input; // pointer to the closure state
+    DFAState input = new DFAState(DFA::getStateNewName(epsilons));
+    DFAState* inputState = &input; // pointer to the closure state
 
-    map<string, State*> visitedStates; // visited states
-    map<string, pair<State*, vector<State*>>> toProcess; // states to be visited
-    toProcess.insert({inputState->getID(), pair<State*, vector<State*>>(inputState, epsilons)});
+    map<string, DFAState*> visitedStates; // visited states
+    map<string, pair<DFAState*, vector<State*>>> toProcess; // states to be visited
+    toProcess.insert({inputState->getID(), pair<DFAState*, vector<State*>>(inputState, epsilons)});
 
     // final DFA state vector
-    vector<State*> dfaStates;
+    vector<DFAState*> dfaStates;
 
     while (!toProcess.empty()) {
-        pair<State*, vector<State*>> temp = toProcess.begin()->second;
-        State* dfaState = temp.first;
+        pair<DFAState*, vector<State*>> temp = toProcess.begin()->second;
+        DFAState* dfaState = temp.first;
         vector<State*> nfaStateEpsilons = temp.second;
         toProcess.erase(toProcess.begin());
         dfaStates.push_back(dfaState);
-        visitedStates.insert(pair<string, State*>(dfaState->getID(), dfaState));
+        visitedStates.insert(pair<string, DFAState*>(dfaState->getID(), dfaState));
 
         // check if it will be an accept state, if accept state --> set its class token
         DFA::setAcceptingState(dfaState, nfaStateEpsilons);
@@ -143,8 +142,8 @@ vector<State*> DFA::convertNFAToDFA(State startNFAState) {
             } else if (toProcess.count(DFA::getStateNewName(itr.second)) != 0) {
                 dfaState->addTransition(itr.first, toProcess.at(DFA::getStateNewName(itr.second)).first);
             } else {
-                auto* newTran = new State(DFA::getStateNewName(itr.second));
-                toProcess.insert({newTran->getID(), pair<State*, vector<State*>>(newTran, itr.second)});
+                auto* newTran = new DFAState(DFA::getStateNewName(itr.second));
+                toProcess.insert({newTran->getID(), pair<DFAState*, vector<State*>>(newTran, itr.second)});
                 dfaState->addTransition(itr.first, newTran);
             }
         }

@@ -12,6 +12,8 @@ add_executable(Compiler
         DFA.h
         State.cpp
         State.h
+        DFA.cpp
+        DFA.h
         PriorityTable.cpp
         PriorityTable.h
         ThomsonConstructor.cpp
@@ -20,4 +22,6 @@ add_executable(Compiler
         RegexParser.h
         Utility.cpp
         Utility.h
+        DFAState.cpp
+        DFAState.h
         main.cpp)
