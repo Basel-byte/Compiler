@@ -29,9 +29,8 @@ NFA* Utility::getCorrespondingNFA(vector<pair<char, NFA*>> infix) {
                 st.push(nfa);
             }
         }
-        return st.size() == 1 ? st.top() : nullptr;
     }
-    return nullptr;
+    return st.size() == 1 ? st.top() : nullptr;;
 }
 
 vector<pair<char, NFA *>> Utility::infixToPostfix(const vector<pair<char, NFA*>>& infix) {
@@ -70,11 +69,11 @@ vector<pair<char, NFA *>> Utility::infixToPostfix(const vector<pair<char, NFA*>>
 NFA* Utility::doOperation(char c, NFA* nfa1, NFA* nfa2) {
     switch(c) {
         case '|':
-            return ThomsonConstructor::union_(reinterpret_cast<const NFA &>(nfa1), reinterpret_cast<const NFA &>(nfa2));
+            return ThomsonConstructor::union_(*nfa1, *nfa2);
         case '\1':
-            return ThomsonConstructor::concat(reinterpret_cast<const NFA &>(nfa1), *nfa2);
+            return ThomsonConstructor::concat(*nfa1, *nfa2);
         case '*':
-            return ThomsonConstructor::kleenClosure(reinterpret_cast<const NFA &>(nfa1));
+            return ThomsonConstructor::kleenClosure(*nfa1);
         case '+':
             return ThomsonConstructor::positiveClosure(*nfa1);
         default:

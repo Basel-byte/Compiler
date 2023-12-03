@@ -57,7 +57,7 @@ void RegexParser::parseLine(string line) {
 }
 
 void RegexParser::parseRE(const string& lhs, string rhs) {
-    map<int, smatch> posToMatch;
+    map<int, string> posToMatch;
     smatch rangeMatch;
     findNonOverlappingMatches(rhs, rangeLetter, posToMatch);
     findNonOverlappingMatches(rhs, rangeDigit, posToMatch);
@@ -69,7 +69,7 @@ void RegexParser::parseRE(const string& lhs, string rhs) {
     regexMap[lhs] = Utility::getCorrespondingNFA(tokens);
 }
 
-vector<pair<char, NFA*>> RegexParser::tokenize(string rhs, map<int, smatch>& posToMatch) {
+vector<pair<char, NFA*>> RegexParser::tokenize(string rhs, map<int, string>& posToMatch) {
     vector<pair<char, NFA*>> tokens;
     for (int i = 0; i < rhs.length(); i++) {
         if (isOperator(rhs[i])) {
@@ -81,16 +81,16 @@ vector<pair<char, NFA*>> RegexParser::tokenize(string rhs, map<int, smatch>& pos
                 tokens.emplace_back(rhs[i], nullptr);
         }
         else if (posToMatch.find(i) != posToMatch.end()) {
-            smatch match = posToMatch[i];
-            string str = match.str();
+            string str = posToMatch[i];
             tokens.emplace_back(rhs[i], regexMap[str]);
-            i += match.length() - 1;
+            i += (int)str.length() - 1;
         }
         else
             tokens.emplace_back(rhs[i], ThomsonConstructor::creatBasic(rhs[i]));
     }
     for (int i = 1; i < tokens.size(); i++) {
-        if (tokens[i].second != nullptr && tokens[i - 1].second != nullptr)
+        if ((tokens[i].second != nullptr && (tokens[i - 1].second != nullptr || tokens[i - 1].first == ')'))
+        || (tokens[i].first == '(' && tokens[i - 1].second != nullptr))
             tokens.insert(tokens.begin() + i, pair<char, NFA*>('\1', nullptr));
     }
     return tokens;
@@ -119,26 +119,26 @@ NFA* RegexParser::getCombinedNFA() {
     return ThomsonConstructor::getCombinedNFA(nfas);
 }
 
-void RegexParser::findNonOverlappingMatches(const string& input, const regex& reg, map<int, smatch>& posToMatch) {
+void RegexParser::findNonOverlappingMatches(const string& input, const regex& reg, map<int, string>& posToMatch) {
     auto words_begin = sregex_iterator(input.begin(), input.end(), reg);
     auto words_end = sregex_iterator();
 
     for (sregex_iterator i = words_begin; i != words_end; ++i) {
         const smatch& match = *i;
-        posToMatch[match.position()] = match;
         string range = match.str();
+        posToMatch[match.position()] = range;
         if (regexMap.find(range) == regexMap.end())
             regexMap[range] = ThomsonConstructor::range(range[0], range[2]);
     }
 }
 
-void RegexParser::findAllOccurrences(const string& input, const regex& reg, map<int, smatch>& posToMatch) {
+void RegexParser::findAllOccurrences(const string& input, const regex& reg, map<int, string>& posToMatch) {
     auto words_begin = sregex_iterator(input.begin(), input.end(), reg);
     auto words_end = sregex_iterator();
 
     for (sregex_iterator i = words_begin; i != words_end; ++i) {
         const smatch& match = *i;
         if (posToMatch.find(match.position()) == posToMatch.end() || posToMatch[match.position()].length() < match.length())
-            posToMatch[match.position()] = match;
+            posToMatch[match.position()] = (string)match.str();
     }
 }
