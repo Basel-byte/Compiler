@@ -15,5 +15,6 @@
 int main() {
     RegexParser regexParser;
     NFA* nfa = regexParser.parseREs("D:/Computer and Systems Engineering/7th Semster\\Compilers/Project/Compiler/lexical_analyzer/rules");
-    return 0;
+//    DFA* dfa = new DFA("1");
+//    dfa->addTransition('e', *dfa);
 }

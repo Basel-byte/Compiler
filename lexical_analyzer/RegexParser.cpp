@@ -40,8 +40,10 @@ void RegexParser::parseLine(string line) {
     else if (regex_match(line, keywordsRegex)) {
         stringstream ss(line.substr(1, line.length() - 2));
         string word;
-        while (getline(ss, word, ' '))
+        while (getline(ss, word, ' ')) {
             parseRE(word, word);
+            PriorityTable::addTokenClass(word);
+        }
     }
     else {
         line.erase(remove_if(line.begin(), line.end(), ::isspace),  line.end());
@@ -62,10 +64,13 @@ void RegexParser::parseRE(const string& lhs, string rhs) {
     smatch rangeMatch;
     findNonOverlappingMatches(rhs, rangeLetter, posToMatch);
     findNonOverlappingMatches(rhs, rangeDigit, posToMatch);
-//    findNonOverlappingMatches(rhs, epsilonRegex, posToMatch);
 
-    for (auto & it : regexMap)
-        findAllOccurrences(rhs, regex(escapeRegex(it.first)), posToMatch);
+    for (auto & it : regexMap) {
+        string str = it.first;
+        if (str.length() == 1)
+            continue;
+        findAllOccurrences(rhs, regex(escapeRegex(str)), posToMatch);
+    }
 
     vector<pair<char, NFA*>> tokens = tokenize(move(rhs), posToMatch);
     regexMap[lhs] = Utility::getCorrespondingNFA(tokens);

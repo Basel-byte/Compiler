@@ -3,8 +3,6 @@
 //
 
 #include "DFA.h"
-#include <utility>
-
 
 DFA::DFA() {
     isAccepting = false;
@@ -13,11 +11,17 @@ DFA::DFA() {
 
 DFA::~DFA() = default;
 
-DFA::DFA(bool isAccepting) : isAccepting(isAccepting) {}
 
-DFA::DFA(bool isAccepting, string tokenClass) : isAccepting(isAccepting), tokenClass(std::move(tokenClass)) {}
+DFA::DFA(const string &id) {
+    this->id = id;
+    isAccepting = false;
+    tokenClass = "";
+}
 
-DFA DFA::move(char input) {
+DFA::DFA(const string &id, bool isAccepting, const string &tokenClass) : id(id), isAccepting(isAccepting),
+                                                                         tokenClass(tokenClass) {}
+
+DFA* DFA::move(char input) {
     return transitions[input];
 }
 
@@ -37,12 +41,11 @@ void DFA::setTokenClass(const string &ClassToken) {
     DFA::tokenClass = ClassToken;
 }
 
-void DFA::addTransition(char input, const DFA& state) {
-    transitions[input] = state;
+void DFA::addTransition(char input, DFA& state) {
+    transitions[input] = &state;
 }
 
-map<char, DFA> DFA::getTransitions() {
+map<char, DFA*> DFA::getTransitions() {
     return transitions;
 }
-
 

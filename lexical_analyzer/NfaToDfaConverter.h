@@ -21,5 +21,4 @@ private:
     PriorityTable pTable;
 };
 
-
 #endif //COMPILER_NFATODFACONVERTER_H

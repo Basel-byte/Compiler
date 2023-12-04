@@ -14,22 +14,19 @@ class DFA {
 public:
     DFA();
 
-    DFA(string  name) : id(std::move(name)) {}
+    virtual ~DFA();
+
+    DFA(const string &id);
+
+    DFA(const string &id, bool isAccepting, const string &tokenClass);
 
     std::string getID() const { return id; }
 
-    virtual ~DFA();
+    DFA* move(char input);
 
-    DFA(bool isAccepting);
+    map<char, DFA*> getTransitions();
 
-    DFA(bool isAccepting, string tokenClass);
-
-    DFA move(char input);
-
-
-    map<char, DFA> getTransitions();
-
-    void addTransition(char input, const DFA& state);
+    void addTransition(char input, DFA& state);
 
     bool isAcceptingState() const;
 
@@ -41,7 +38,7 @@ public:
 
 private:
     string id;
-    map<char, DFA> transitions;
+    map<char, DFA*> transitions;
     bool isAccepting{};
     string tokenClass;
 };
