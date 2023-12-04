@@ -26,7 +26,7 @@ public:
 
     map<char, DFA*> getTransitions();
 
-    void addTransition(char input, DFA& state);
+    void addTransition(char input, DFA* state);
 
     bool isAcceptingState() const;
 

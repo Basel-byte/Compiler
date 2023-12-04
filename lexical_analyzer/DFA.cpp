@@ -41,8 +41,8 @@ void DFA::setTokenClass(const string &ClassToken) {
     DFA::tokenClass = ClassToken;
 }
 
-void DFA::addTransition(char input, DFA& state) {
-    transitions[input] = &state;
+void DFA::addTransition(char input, DFA* state) {
+    transitions[input] = state;
 }
 
 map<char, DFA*> DFA::getTransitions() {
