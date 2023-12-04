@@ -15,4 +15,5 @@ add_executable(Compiler
         RegexParser.cpp
         Utility.cpp
         DFA.cpp
-        main.cpp)
+        main.cpp
+        LexicalParser.cpp)

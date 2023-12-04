@@ -16,7 +16,7 @@ public:
 
     virtual ~DFA();
 
-    DFA(const string &id);
+    DFA(const string &id, int minimizationID);
 
     DFA(const string &id, bool isAccepting, const string &tokenClass);
 
@@ -26,7 +26,7 @@ public:
 
     map<char, DFA*> getTransitions();
 
-    void addTransition(char input, DFA& state);
+    void addTransition(char input, DFA* state);
 
     bool isAcceptingState() const;
 
@@ -38,6 +38,7 @@ public:
 
 private:
     string id;
+    int minimizationID;
     map<char, DFA*> transitions;
     bool isAccepting{};
     string tokenClass;
