@@ -84,13 +84,14 @@ void NfaToDfaConverter::setAcceptingState(DFA* dfaState, const vector<State*>& n
 }
 
 vector<DFA*> NfaToDfaConverter::convertNFAToDFA(State* startState) {
-
+    int id = 0;
     // get the epsilon closure of the start state
     vector<State*> epsilons = NfaToDfaConverter::getEpsilonClosure(startState);
 
     // make a new state containing the closure state
     string newName = NfaToDfaConverter::getStateNewName(epsilons);
-    DFA* inputState = new DFA(newName); // pointer to the closure state
+    DFA* inputState = new DFA(newName, id); // pointer to the closure state
+    id++;
 
     map<string, DFA*> visitedStates; // visited states
     map<string, pair<DFA*, vector<State*>>> toProcess; // states to be visited
@@ -152,7 +153,8 @@ vector<DFA*> NfaToDfaConverter::convertNFAToDFA(State* startState) {
             } else if (toProcess.count(NfaToDfaConverter::getStateNewName(itr.second)) != 0) {
                 temp.first->addTransition(itr.first, toProcess.at(NfaToDfaConverter::getStateNewName(itr.second)).first);
             } else {
-                DFA* newTran = new DFA(NfaToDfaConverter::getStateNewName(itr.second));
+                DFA* newTran = new DFA(NfaToDfaConverter::getStateNewName(itr.second), id);
+                id++;
                 toProcess.insert({newTran->getID(), pair<DFA*, vector<State*>>(newTran, itr.second)});
                 temp.first->addTransition(itr.first, newTran);
             }
