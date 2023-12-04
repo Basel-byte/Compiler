@@ -16,6 +16,7 @@ RegexParser::RegexParser() {
     punctRegex = regex(R"(\[.*\])");
     rangeLetter = regex("([A-Za-z])-(?!\1)([A-Za-z])");
     rangeDigit = regex("([0-9])-(?!\1)([0-9])");
+    epsilonRegex = regex (escapeRegex("\\L"));
     operators = set<char>{'+', '*', '(', ')', '|', '\1'};
     regexMap["\\L"] = ThomsonConstructor::createEpsilon();
 }
@@ -61,9 +62,10 @@ void RegexParser::parseRE(const string& lhs, string rhs) {
     smatch rangeMatch;
     findNonOverlappingMatches(rhs, rangeLetter, posToMatch);
     findNonOverlappingMatches(rhs, rangeDigit, posToMatch);
+//    findNonOverlappingMatches(rhs, epsilonRegex, posToMatch);
 
     for (auto & it : regexMap)
-        findAllOccurrences(rhs, regex(it.first), posToMatch);
+        findAllOccurrences(rhs, regex(escapeRegex(it.first)), posToMatch);
 
     vector<pair<char, NFA*>> tokens = tokenize(move(rhs), posToMatch);
     regexMap[lhs] = Utility::getCorrespondingNFA(tokens);
@@ -141,4 +143,16 @@ void RegexParser::findAllOccurrences(const string& input, const regex& reg, map<
         if (posToMatch.find(match.position()) == posToMatch.end() || posToMatch[match.position()].length() < match.length())
             posToMatch[match.position()] = (string)match.str();
     }
+}
+
+string RegexParser::escapeRegex(const string& input) {
+    std::string result;
+    for (char ch : input) {
+        if (ch == '\\') {
+            result += "\\\\";
+        } else {
+            result += ch;
+        }
+    }
+    return result;
 }

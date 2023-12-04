@@ -8,14 +8,18 @@ NFA::NFA() = default;
 
 NFA::~NFA() = default;
 
-NFA::NFA(const State &startState) : startState(startState) {}
+NFA::NFA(State* startState) : startState(startState) {}
 
-NFA::NFA(const State &startState, const State &endState) : startState(startState), endState(endState) {}
+NFA::NFA(State *startState, State *endState) : startState(startState), endState(endState) {}
 
-NFA::NFA(const NFA &other) : NFA(other.startState, other.endState) {}
-
-void NFA::setAcceptingState(const string& tokenClass) {
-    endState.setIsAccepting(true);
-    endState.setTokenClass(tokenClass);
+NFA::NFA(const NFA &other) {
+    endState = new State(*(other.endState));
+    map<string, State*> map;
+    map[endState->getID()] = endState;
+    startState = new State(*(other.startState), map);
 }
 
+void NFA::setAcceptingState(const string& tokenClass) const {
+    endState->setIsAccepting(true);
+    endState->setTokenClass(tokenClass);
+}

@@ -26,11 +26,13 @@ private:
     NFA *getCombinedNFA();
     void findNonOverlappingMatches(const string &input, const regex &reg, map<int, string> &posToMatch);
     static void findAllOccurrences(const string& input, const regex& reg, map<int, string> &posToMatch);
+    static string escapeRegex(const string& input);
 private:
     regex keywordsRegex;
     regex punctRegex;
     regex rangeLetter;
     regex rangeDigit;
+    regex epsilonRegex;
     map<string, NFA*> regexMap;
     set<char> operators; // - | + * ( )
 };

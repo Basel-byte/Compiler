@@ -15,17 +15,17 @@ public:
 
     virtual ~NFA();
 
-    NFA(const State &startState);
+    NFA(State* startState);
 
-    NFA(const State &startState, const State &endState);
+    NFA(State* startState, State* endState);
 
     NFA(const NFA &other);
 
-    void setAcceptingState(const string& tokenClass);
+    void setAcceptingState(const string& tokenClass) const;
 
 public:
-    State startState;
-    State endState;
+    State *startState;
+    State *endState;
 };
 
 

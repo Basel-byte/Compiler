@@ -26,13 +26,13 @@ vector<State*> NfaToDfaConverter::getEpsilonClosure(State* state){
         State* current = toProcess.back();
         toProcess.pop_back();
 
-        vector<State> epsilonTransitions = current->getTransitions()['\0'];
+        vector<State*> epsilonTransitions = current->getTransitions()['\0'];
 
-        for (State &s : epsilonTransitions) {
-            if (visited[&s] == 0) {
-                visited[&s]++;
-                toProcess.push_back(&s);
-                epsilons.push_back(&s);
+        for (State *s : epsilonTransitions) {
+            if (visited[s] == 0) {
+                visited[s]++;
+                toProcess.push_back(s);
+                epsilons.push_back(s);
             }
         }
     }
@@ -116,15 +116,15 @@ vector<DFA*> NfaToDfaConverter::convertNFAToDFA(State startNFAState) {
         // loop over every epsilon state combined this dfa state to get its reachable states
         for (auto& nfaState : nfaStateEpsilons) {
 
-            map<char, vector<State>> nfaTransitions = nfaState->getTransitions();
+            map<char, vector<State*>> nfaTransitions = nfaState->getTransitions();
 
             // loop over each input
             for (const auto& inputTransition : nfaTransitions) {
                 char in = inputTransition.first;
-                vector<State> transitions = inputTransition.second;
+                vector<State*> transitions = inputTransition.second;
                 // loop over each transaction of that specific input
                 for (auto & transition : transitions) {
-                    const State* constTrans = &transition;
+                    const State* constTrans = transition;
                     vector<State*> eps = NfaToDfaConverter::getEpsilonClosure(const_cast<State*>(constTrans));
                     if (currStateTransitions[in].empty()) {
                         currStateTransitions[in] = eps;
