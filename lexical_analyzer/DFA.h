@@ -4,6 +4,8 @@
 
 #ifndef COMPILER_DFA_H
 #define COMPILER_DFA_H
+#include <utility>
+
 #include "map"
 #include "vector"
 using namespace std;
@@ -12,7 +14,9 @@ class DFA {
 public:
     DFA();
 
-    DFA(string id);
+    DFA(string  name) : id(std::move(name)) {}
+
+    std::string getID() const { return id; }
 
     virtual ~DFA();
 
@@ -22,7 +26,6 @@ public:
 
     DFA move(char input);
 
-    string getID();
 
     map<char, DFA> getTransitions();
 

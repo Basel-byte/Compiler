@@ -5,11 +5,10 @@
 #include "DFA.h"
 #include <utility>
 
-DFA::DFA(string id) : id(std::move(id)) {}
 
 DFA::DFA() {
     isAccepting = false;
-    tokenClass = nullptr;
+    tokenClass = "";
 }
 
 DFA::~DFA() = default;
@@ -46,6 +45,4 @@ map<char, DFA> DFA::getTransitions() {
     return transitions;
 }
 
-string DFA::getID() {
-    return id;
-}
+

@@ -8,7 +8,7 @@
 
 State::State() {
     isAccepting = false;
-    tokenClass = nullptr;
+    tokenClass = "";
 }
 
 State::State(string id) : id(std::move(id)) {}

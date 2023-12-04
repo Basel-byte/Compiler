@@ -3,36 +3,41 @@
 //
 
 #include <algorithm>
+#include "list"
+#include "set"
+#include "stack"
+
 using namespace std;
 #include "NfaToDfaConverter.h"
 #include "DFA.h"
 #include <climits>
+#include <iostream>
 
-bool compareID(State *a, State *b) {
-    return a->getID() < b->getID();
+bool compareID(State a, State b) {
+    return a.getID() < b.getID();
 }
 
-vector<State*> NfaToDfaConverter::getEpsilonClosure(State* state){
-    map<State*, int> visited;
-    vector<State*> epsilons;
+vector<State> NfaToDfaConverter::getEpsilonClosure(State state){
+    map<string, int> visited;
+    vector<State> epsilons;
 
-    vector<State*> toProcess;
+    vector<State> toProcess;
     toProcess.push_back(state);
-    visited[state]++;
+    visited[state.getID()]++;
 
     epsilons.push_back(state);
 
     while (!toProcess.empty()) {
-        State* current = toProcess.back();
+        State current = toProcess.back();
         toProcess.pop_back();
 
-        vector<State> epsilonTransitions = current->getTransitions()['\0'];
+        vector<State> epsilonTransitions = current.getTransitions()['\0'];
 
         for (State &s : epsilonTransitions) {
-            if (visited[&s] == 0) {
-                visited[&s]++;
-                toProcess.push_back(&s);
-                epsilons.push_back(&s);
+            if (visited[s.getID()] == 0) {
+                visited[s.getID()]++;
+                toProcess.push_back(s);
+                epsilons.push_back(s);
             }
         }
     }
@@ -43,34 +48,33 @@ vector<State*> NfaToDfaConverter::getEpsilonClosure(State* state){
     return epsilons;
 }
 
-string NfaToDfaConverter::getStateNewName(vector<State*> states) {
+string NfaToDfaConverter::getStateNewName(vector<State> states) {
     string newName;
     map<string, int> dup;
-
     // remove duplicate states if occurred
     for (int i = 0; i < states.size(); i++) {
-        dup[states[i]->getID()]++;
-        if(dup[states[i]->getID()] > 1){
+        dup[states[i].getID()]++;
+        if(dup[states[i].getID()] > 1){
             states.erase(states.begin() + i);
         }
     }
-    for(int i=0; i<states.size(); i++){
-        newName += states[i]->getID();
-        newName += i!=states.size() ? "," : "";
-    }
 
+    for(int i=0; i<states.size(); i++){
+        newName += states[i].getID();
+        newName += i!=states.size() - 1? "," : "";
+    }
     return newName;
 }
 
-void NfaToDfaConverter::setAcceptingState(DFA* dfaState, const vector<State*>& nfaStates) {
+void NfaToDfaConverter::setAcceptingState(DFA* &dfaState, vector<State>& nfaStates) {
     int maxPriority = INT_MAX;
     string acceptPattern;
 
     for(const auto & nfaState : nfaStates){
-        if(nfaState->isAcceptingState()){
-            if(PriorityTable::table[nfaState->getTokenClass()] < maxPriority){
-                maxPriority = PriorityTable::table[nfaState->getTokenClass()];
-                acceptPattern = nfaState->getTokenClass();
+        if(nfaState.isAcceptingState()){
+            if(PriorityTable::table[nfaState.getTokenClass()] < maxPriority){
+                maxPriority = PriorityTable::table[nfaState.getTokenClass()];
+                acceptPattern = nfaState.getTokenClass();
             }
         }
 
@@ -82,71 +86,74 @@ void NfaToDfaConverter::setAcceptingState(DFA* dfaState, const vector<State*>& n
     }
 }
 
-vector<DFA*> NfaToDfaConverter::convertNFAToDFA(State startNFAState) {
-
-    State* startState = &startNFAState;
+vector<DFA> NfaToDfaConverter::convertNFAToDFA(State& startState) {
 
     // get the epsilon closure of the start state
-    vector<State*> epsilons = NfaToDfaConverter::getEpsilonClosure(startState);
+    vector<State> epsilons = NfaToDfaConverter::getEpsilonClosure(startState);
 
     // make a new state containing the closure state
-    DFA input = new DFA(NfaToDfaConverter::getStateNewName(epsilons));
-    DFA* inputState = &input; // pointer to the closure state
+    string newName = NfaToDfaConverter::getStateNewName(epsilons);
+    DFA inputState(newName); // pointer to the closure state
 
-    map<string, DFA*> visitedStates; // visited states
-    map<string, pair<DFA*, vector<State*>>> toProcess; // states to be visited
-    toProcess.insert({inputState->getID(), pair<DFA*, vector<State*>>(inputState, epsilons)});
+    map<string, DFA> visitedStates; // visited states
+    map<string, pair<DFA, vector<State>>> toProcess; // states to be visited
+    toProcess.insert({inputState.getID(), pair<DFA, vector<State>>(inputState, epsilons)});
 
     // final NfaToDfaConverter state vector
-    vector<DFA*> dfaStates;
+    vector<DFA> dfaStates;
 
     while (!toProcess.empty()) {
-        pair<DFA*, vector<State*>> temp = toProcess.begin()->second;
-        DFA* dfaState = temp.first;
-        vector<State*> nfaStateEpsilons = temp.second;
+        pair<DFA, vector<State>> temp = toProcess.begin()->second;
+        DFA dfaState = temp.first;
+        vector<State> nfaStateEpsilons = temp.second;
         toProcess.erase(toProcess.begin());
         dfaStates.push_back(dfaState);
-        visitedStates.insert(pair<string, DFA*>(dfaState->getID(), dfaState));
+        visitedStates.insert(pair<string, DFA>(dfaState.getID(), dfaState));
 
         // check if it will be an accept state, if accept state --> set its class token
-        NfaToDfaConverter::setAcceptingState(dfaState, nfaStateEpsilons);
+        NfaToDfaConverter::setAcceptingState(reinterpret_cast<DFA *&>(dfaState), nfaStateEpsilons);
 
-        map<char, vector<State*>> currStateTransitions;
+        map<char, vector<State>> currStateTransitions;
 
         // loop over every epsilon state combined this dfa state to get its reachable states
         for (auto& nfaState : nfaStateEpsilons) {
 
-            map<char, vector<State>> nfaTransitions = nfaState->getTransitions();
+            map<char, vector<State>> nfaTransitions = nfaState.getTransitions();
 
             // loop over each input
             for (const auto& inputTransition : nfaTransitions) {
                 char in = inputTransition.first;
-                vector<State> transitions = inputTransition.second;
-                // loop over each transaction of that specific input
-                for (auto & transition : transitions) {
-                    const State* constTrans = &transition;
-                    vector<State*> eps = NfaToDfaConverter::getEpsilonClosure(const_cast<State*>(constTrans));
-                    if (currStateTransitions[in].empty()) {
-                        currStateTransitions[in] = eps;
-                    }else {
-                        currStateTransitions[in].insert(currStateTransitions[in].end(), eps.begin(), eps.end());
+
+                if(in != '\0') {
+                    vector<State> transitions = inputTransition.second;
+                    // loop over each transaction of that specific input
+                    for (auto &transition: transitions) {
+                        vector<State> eps = NfaToDfaConverter::getEpsilonClosure(transition);
+
+                        if (currStateTransitions[in].empty()) {
+                            currStateTransitions[in] = eps;
+                        } else {
+                            currStateTransitions[in].insert(currStateTransitions[in].end(), eps.begin(), eps.end());
+                        }
                     }
                 }
             }
         }
 
         // make new states of the epsilons
-        for (const auto& itr: currStateTransitions) {
+        for (auto& itr: currStateTransitions) {
+
             if (visitedStates.count(NfaToDfaConverter::getStateNewName(itr.second)) != 0 ) { // visited before
-                dfaState->addTransition(itr.first, visitedStates.at(NfaToDfaConverter::getStateNewName(itr.second)));
+                dfaStates.back().addTransition(itr.first, visitedStates.at(NfaToDfaConverter::getStateNewName(itr.second)));
             } else if (toProcess.count(NfaToDfaConverter::getStateNewName(itr.second)) != 0) {
-                dfaState->addTransition(itr.first, toProcess.at(NfaToDfaConverter::getStateNewName(itr.second)).first);
+                dfaStates.back().addTransition(itr.first, toProcess.at(NfaToDfaConverter::getStateNewName(itr.second)).first);
             } else {
-                auto* newTran = new DFA(NfaToDfaConverter::getStateNewName(itr.second));
-                toProcess.insert({newTran->getID(), pair<DFA*, vector<State*>>(newTran, itr.second)});
-                dfaState->addTransition(itr.first, newTran);
+                DFA newTran(NfaToDfaConverter::getStateNewName(itr.second));
+                toProcess.insert({newTran.getID(), pair<DFA, vector<State>>(newTran, itr.second)});
+                dfaStates.back().addTransition(itr.first, newTran);
             }
         }
+
     }
 
     return dfaStates;
