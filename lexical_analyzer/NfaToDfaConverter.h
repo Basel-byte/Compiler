@@ -12,10 +12,10 @@
 
 class NfaToDfaConverter {
 public:
-    static vector<State*> getEpsilonClosure(State* state);
-    static string getStateNewName(vector<State*> states);
-    static void setAcceptingState(DFA* dfaState, const vector<State*>& nfaStates);
-    static vector<DFA*> convertNFAToDFA(State startNFAState);
+    static vector<State> getEpsilonClosure(State state);
+    static string getStateNewName(vector<State> states);
+    static void setAcceptingState(DFA* &dfaState, vector<State>& nfaStates);
+    static vector<DFA> convertNFAToDFA( State& startNFAState);
 
 private:
     PriorityTable pTable;
