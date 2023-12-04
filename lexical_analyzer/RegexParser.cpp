@@ -18,7 +18,7 @@ RegexParser::RegexParser() {
     rangeDigit = regex("([0-9])-(?!\1)([0-9])");
     epsilonRegex = regex (escapeRegex("\\L"));
     operators = set<char>{'+', '*', '(', ')', '|', '\1'};
-    regexMap["\\L"] = ThomsonConstructor::createEpsilon();
+    regexMap.insert({"\\L",  ThomsonConstructor::createEpsilon()});
 }
 
 NFA* RegexParser::parseREs(const string& filepath) {
@@ -56,7 +56,6 @@ void RegexParser::parseLine(string line) {
         if (colonPos < equalPos)
             PriorityTable::addTokenClass(lhs);
     }
-
 }
 
 void RegexParser::parseRE(const string& lhs, string rhs) {
@@ -73,7 +72,7 @@ void RegexParser::parseRE(const string& lhs, string rhs) {
     }
 
     vector<pair<char, NFA*>> tokens = tokenize(move(rhs), posToMatch);
-    regexMap[lhs] = Utility::getCorrespondingNFA(tokens);
+    regexMap.insert({lhs, Utility::getCorrespondingNFA(tokens)});
 }
 
 vector<pair<char, NFA*>> RegexParser::tokenize(string rhs, map<int, string>& posToMatch) {
@@ -96,8 +95,7 @@ vector<pair<char, NFA*>> RegexParser::tokenize(string rhs, map<int, string>& pos
             tokens.emplace_back(rhs[i], ThomsonConstructor::creatBasic(rhs[i]));
     }
     for (int i = 1; i < tokens.size(); i++) {
-        if ((tokens[i].second != nullptr && (tokens[i - 1].second != nullptr || tokens[i - 1].first == ')'))
-        || (tokens[i].first == '(' && tokens[i - 1].second != nullptr))
+        if (isConcat(tokens, i))
             tokens.insert(tokens.begin() + i, pair<char, NFA*>('\1', nullptr));
     }
     return tokens;
@@ -148,6 +146,14 @@ void RegexParser::findAllOccurrences(const string& input, const regex& reg, map<
         if (posToMatch.find(match.position()) == posToMatch.end() || posToMatch[match.position()].length() < match.length())
             posToMatch[match.position()] = (string)match.str();
     }
+}
+
+bool RegexParser::isConcat(vector<pair<char, NFA*>> &tokens, int i) {
+    char c = tokens[i].first, c_prev = tokens[i - 1].first;
+    NFA* nfa = tokens[i].second;
+    NFA* nfa_prev = tokens[i - 1].second;
+    return (nfa != nullptr && (nfa_prev != nullptr || c_prev == ')' || c_prev == '+' || c_prev == '*'))
+            || (nfa == nullptr && c == '(' && (nfa_prev != nullptr || c_prev == ')' || Utility::isUnary(c_prev)));
 }
 
 string RegexParser::escapeRegex(const string& input) {

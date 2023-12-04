@@ -11,11 +11,13 @@
 class Utility {
 public:
     static NFA* getCorrespondingNFA(vector<pair<char, NFA*>> infix);
+
+    static bool isUnary(char c);
+
 private:
     static vector<pair<char, NFA*>> infixToPostfix(const vector<pair<char, NFA*>>& infix);
     static NFA *doOperation(char c, NFA* nfa1, NFA* nfa2);
     static int getPrecedence(char c);
-    static bool isUnary(char c);
 };
 
 

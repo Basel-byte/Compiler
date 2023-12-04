@@ -7,21 +7,12 @@ include_directories(.)
 
 add_executable(Compiler
         NFA.cpp
-        NFA.h
         NfaToDfaConverter.cpp
-        NfaToDfaConverter.h
         State.cpp
-        State.h
         NfaToDfaConverter.cpp
-        NfaToDfaConverter.h
         PriorityTable.cpp
-        PriorityTable.h
         ThomsonConstructor.cpp
-        ThomsonConstructor.h
         RegexParser.cpp
-        RegexParser.h
         Utility.cpp
-        Utility.h
         DFA.cpp
-        DFA.h
         main.cpp)

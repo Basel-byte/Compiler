@@ -26,6 +26,7 @@ private:
     NFA *getCombinedNFA();
     void findNonOverlappingMatches(const string &input, const regex &reg, map<int, string> &posToMatch);
     static void findAllOccurrences(const string& input, const regex& reg, map<int, string> &posToMatch);
+    static bool isConcat(vector<pair<char, NFA*>> &tokens, int i);
     static string escapeRegex(const string& input);
 private:
     regex keywordsRegex;

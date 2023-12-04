@@ -19,17 +19,23 @@
   <component name="ChangeListManager">
     <list default="true" id="0ec0c81f-860d-41ca-8efa-3ba9173c23b5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DFA.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DFA.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DFA.h" beforeDir="false" afterPath="$PROJECT_DIR$/DFA.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NfaToDfaConverter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/NfaToDfaConverter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NfaToDfaConverter.h" beforeDir="false" afterPath="$PROJECT_DIR$/NfaToDfaConverter.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegexParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/RegexParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegexParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/RegexParser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/Utility.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-74cc0a30136e83f346be.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-cfce22a6ee63ea525231.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-12-03T16-01-18-0485.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-Compiler-Debug-979406575e33fc427bd2.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/DFA.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/DFA.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/NfaToDfaConverter.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/NfaToDfaConverter.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/RegexParser.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/RegexParser.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/Utility.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/Utility.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Compiler.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Compiler.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
@@ -61,21 +67,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
@@ -100,7 +107,7 @@
       <workItem from="1701313230949" duration="213000" />
       <workItem from="1701345028635" duration="1977000" />
       <workItem from="1701350837918" duration="41465000" />
-      <workItem from="1701560683608" duration="54170000" />
+      <workItem from="1701560683608" duration="72210000" />
     </task>
     <servers />
   </component>
@@ -127,11 +134,6 @@
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Utility.cpp</url>
-          <line>8</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/State.cpp</url>
           <line>24</line>
           <option name="timeStamp" value="32" />
@@ -140,21 +142,6 @@
           <url>file://$PROJECT_DIR$/NFA.cpp</url>
           <line>14</line>
           <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/RegexParser.cpp</url>
-          <line>61</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/RegexParser.cpp</url>
-          <line>78</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>17</line>
-          <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ThomsonConstructor.cpp</url>
@@ -167,19 +154,24 @@
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/RegexParser.cpp</url>
-          <line>74</line>
-          <option name="timeStamp" value="43" />
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>15</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/RegexParser.cpp</url>
-          <line>36</line>
-          <option name="timeStamp" value="44" />
+          <line>119</line>
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Utility.cpp</url>
-          <line>68</line>
-          <option name="timeStamp" value="45" />
+          <url>file://$PROJECT_DIR$/RegexParser.cpp</url>
+          <line>73</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/DFA.cpp</url>
+          <line>43</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -187,6 +179,8 @@
       <configuration name="CMakeRunConfiguration">
         <watch expression="this-&gt;regexMap" />
         <watch expression="this-&gt;regexMap[5]" />
+        <watch expression="posToMatch[4]" />
+        <watch expression="this-&gt;regexMap[11].second" />
       </configuration>
     </watches-manager>
   </component>
