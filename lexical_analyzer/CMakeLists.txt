@@ -24,4 +24,6 @@ add_executable(Compiler
         Utility.h
         DFA.cpp
         DFA.h
-        main.cpp)
+        main.cpp
+        LexicalParser.h
+        LexicalParser.cpp)

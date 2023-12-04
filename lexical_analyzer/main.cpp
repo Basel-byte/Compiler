@@ -11,6 +11,9 @@
 #include "PriorityTable.h"
 #include "DFA.h"
 #include "NfaToDfaConverter.h"
+#include "LexicalParser.h"
+
+using namespace std;
 
 int main() {
     NFA* part1 = ThomsonConstructor::range('a', 'c');
@@ -58,4 +61,39 @@ int main() {
         }
         cout<<"--------------------------------------------------------------------------------\n";
     }
+
+
+
+
+
+
+    DFA *A = new DFA("A"), *B = new DFA("B"), *C = new DFA("C"), *D = new DFA("D"), *E = new DFA("E"), *F = new DFA(
+            "F");
+    A->setIsAccepting(false);
+    B->setIsAccepting(true);
+    B->setTokenClass("b+a*");
+    C->setIsAccepting(true);
+    C->setTokenClass("ba");
+    D->setIsAccepting(true);
+    D->setTokenClass("b+a*");
+    E->setIsAccepting(true);
+    E->setTokenClass("b+a*");
+    F->setIsAccepting(true);
+    F->setTokenClass("bab");
+
+    A->addTransition('b', B);
+    B->addTransition('a', C);
+    B->addTransition('b', D);
+    C->addTransition('a', E);
+    C->addTransition('b', F);
+    D->addTransition('a', E);
+    D->addTransition('b', D);
+    E->addTransition('a', E);
+
+    LexicalParser parser(*A, "/home/louay/Compiler/lexical_analyzer/program.txt");
+    while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
+
+    LexicalParser parserFW(*A, "/home/louay/Compiler/lexical_analyzer/program.txt");
+    parserFW.writeAllTokens("/home/louay/Compiler/lexical_analyzer/tokens.txt");
+
 }
