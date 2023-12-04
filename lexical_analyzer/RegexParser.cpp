@@ -17,7 +17,7 @@ RegexParser::RegexParser() {
     rangeLetter = regex("([A-Za-z])-(?!\1)([A-Za-z])");
     rangeDigit = regex("([0-9])-(?!\1)([0-9])");
     epsilonRegex = regex (escapeRegex("\\L"));
-    operators = set<char>{'+', '*', '(', ')', '|', '\1'};
+    operators = set<char>{'-', '+', '*', '(', ')', '|', '\1'};
     regexMap.insert({"\\L",  ThomsonConstructor::createEpsilon()});
 }
 
