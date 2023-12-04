@@ -2,9 +2,9 @@
 
 abab
 
-aaa
+axc
 
-aababbba
+azbabbba
 
 ababbbaaaab
 

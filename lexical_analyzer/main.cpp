@@ -67,27 +67,21 @@ int main() {
 
 
 
-    DFA *A = new DFA("A"), *B = new DFA("B"), *C = new DFA("C"), *D = new DFA("D"), *E = new DFA("E"), *F = new DFA(
-            "F");
+    DFA *A = new DFA("A", 1), *B = new DFA("B", 2),
+    *C = new DFA("C", 3), *D = new DFA("D", 4),
+    *E = new DFA("E", 5), *F = new DFA("F", 6);
+
     A->setIsAccepting(false);
-    B->setIsAccepting(true);
-    B->setTokenClass("b+a*");
-    C->setIsAccepting(true);
-    C->setTokenClass("ba");
-    D->setIsAccepting(true);
-    D->setTokenClass("b+a*");
-    E->setIsAccepting(true);
-    E->setTokenClass("b+a*");
-    F->setIsAccepting(true);
-    F->setTokenClass("bab");
+    B->setIsAccepting(true); B->setTokenClass("b+a*");
+    C->setIsAccepting(true); C->setTokenClass("ba");
+    D->setIsAccepting(true); D->setTokenClass("b+a*");
+    E->setIsAccepting(true); E->setTokenClass("b+a*");
+    F->setIsAccepting(true); F->setTokenClass("bab");
 
     A->addTransition('b', B);
-    B->addTransition('a', C);
-    B->addTransition('b', D);
-    C->addTransition('a', E);
-    C->addTransition('b', F);
-    D->addTransition('a', E);
-    D->addTransition('b', D);
+    B->addTransition('a', C); B->addTransition('b', D);
+    C->addTransition('a', E); C->addTransition('b', F);
+    D->addTransition('a', E); D->addTransition('b', D);
     E->addTransition('a', E);
 
     LexicalParser parser(*A, "/home/louay/Compiler/lexical_analyzer/program.txt");
@@ -95,5 +89,4 @@ int main() {
 
     LexicalParser parserFW(*A, "/home/louay/Compiler/lexical_analyzer/program.txt");
     parserFW.writeAllTokens("/home/louay/Compiler/lexical_analyzer/tokens.txt");
-
 }
