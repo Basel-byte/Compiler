@@ -16,4 +16,6 @@ add_executable(Compiler
         Utility.cpp
         DFA.cpp
         main.cpp
-        LexicalParser.cpp)
+        LexicalParser.cpp
+        DFAMinimization.cpp
+        )

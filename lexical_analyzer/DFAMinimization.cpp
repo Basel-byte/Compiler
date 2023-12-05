@@ -13,7 +13,7 @@ using namespace std;
 #include "NfaToDfaConverter.h"
 #include "DFAMinimization.h"
 #include "DFA.h"
-
+#include <climits>
 
 bool compareDFAId(DFA *i1, DFA *i2) {
     return i1->getMinimizationId() < i2->getMinimizationId();
