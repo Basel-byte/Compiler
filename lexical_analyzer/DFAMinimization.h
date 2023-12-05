@@ -12,7 +12,7 @@
 
 class DFAMinimization {
 public:
-    set<DfaState*> minimization(vector<DfaState*>);
+    static set<DFA*> minimization(vector<DFA*>);
 
     static string minimizedStateName(set<DFA*>);
 

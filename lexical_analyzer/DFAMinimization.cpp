@@ -8,24 +8,29 @@ using namespace std;
 #include <set>
 #include <queue>
 #include <map>
-
-
+#include <algorithm>
+#include <iostream>
 #include "NfaToDfaConverter.h"
 #include "DFAMinimization.h"
 #include "DFA.h"
 
 
 bool compareDFAId(DFA *i1, DFA *i2) {
-    return i1->minimizationID < i2->minimizationID;
+    return i1->getMinimizationId() < i2->getMinimizationId();
 }
 
 set<DFA *> DFAMinimization::minimization(vector<DFA *> dfaStates) {
+
 
     // sort the dfa states by their id
     sort(dfaStates.begin(), dfaStates.end(), compareDFAId);
 
     //2D boolean array to mark distinguishable pairs of states.
-    bool pairsArray[dfaStates.size()][dfaStates.size()] = {{false}};
+    //bool pairsArray[dfaStates.size()][dfaStates.size()] = {{false}};
+
+
+    // Assuming dfaStates is a vector or another container with a size() method
+    std::vector<std::vector<bool>> pairsArray(dfaStates.size(), std::vector<bool>(dfaStates.size(), false));
 
 
     //1 - marking distinguishable patterns Distinguishable pairs are marked based on
@@ -89,10 +94,9 @@ set<DFA *> DFAMinimization::minimization(vector<DFA *> dfaStates) {
                             char inputSymbol = itr->first;
 
                             // if that inputSymbol exists in secondState so need to compare the transition states for both
-                            if (secondStateTransitions.find(key) != secondStateTransitions.end()) {
-                                int index1 = itr->second->minimizationID; // get id of  first transition
-                                int index2 = secondStateTransitions.find(
-                                        key)->second->minimizationID;  // get id of  second transition
+                            if (secondStateTransitions.find(inputSymbol) != secondStateTransitions.end()) {
+                                int index1 = itr->second->getMinimizationId(); // get id of  first transition
+                                int index2 = secondStateTransitions.find(inputSymbol)->second->getMinimizationId();  // get id of  second transition
 
                                 //because our  loop iterates over states preceding the current state (i).
                                 // so i > j
@@ -158,7 +162,7 @@ set<DFA *> DFAMinimization::minimization(vector<DFA *> dfaStates) {
 
     while (!notMarked.empty()) {
 
-        set < DfaState * > states = notMarked.front();
+        set < DFA * > states = notMarked.front();
         notMarked.pop();
 
         std::set < DFA * > combinedStates(states);//initializes a new set with the states dequeued
@@ -187,6 +191,7 @@ set<DFA *> DFAMinimization::minimization(vector<DFA *> dfaStates) {
         minimizedStates.insert(combinedStates);
     }
 
+    return  DFAMinimization::minimizeHelper(minimizedStates);
 
 }
 
@@ -216,7 +221,7 @@ void DFAMinimization::setAcceptingMinimizedStateDFA(DFA *dfaState, set<DFA *> st
 string DFAMinimization::minimizedStateName(set<DFA*> states) {
     string name ="";
     for (auto itr: states)
-        name.append(itr->id); // id is the string field
+        name.append(itr->getID()); // id is the string field
 
     return name;
 }
@@ -229,14 +234,13 @@ set<DFA *> DFAMinimization::minimizeHelper(set<set<DFA *>> minimizedStates) {
     // to create new combined states and associate them with a unique name.
     for (auto itr : minimizedStates)
     {
-     //  it creates a new Dfa State (newState) with a unique index (id) and a name obtained using minimizedStateName
+        //  it creates a new Dfa State (newState) with a unique index (id) and a name obtained using minimizedStateName
         DFA* newState=new DFA(minimizedStateName(itr), id);
 
         // determines whether the new state is an accepting state
-       DFAMinimization::setAcceptingMinimizedStateDFA(newState, itr);
+        DFAMinimization::setAcceptingMinimizedStateDFA(newState, itr);
 
         combinedStates.insert({itr,newState});
-
         id++;
     }
 
@@ -244,12 +248,12 @@ set<DFA *> DFAMinimization::minimizeHelper(set<set<DFA *>> minimizedStates) {
     set<DFA*> result;
     for (auto combinedState : combinedStates) {
         DFA * startState = *(combinedState.first.begin());
-        map<char, DFA *> mainTranstions = startState->getTransitions();
+        map<char, DFA *> mainTransitions = startState->getTransitions();
 
         for (auto itr: mainTransitions) { // itr (input ,destination)
             for (auto loopState: combinedStates) { //  Each pair represents (a set of original DFA states , a new combined state).
                 if (loopState.first.find(itr.second) != loopState.first.end()) {
-                    combinedState.second->addTransitions(itr.first,loopState.second);
+                    combinedState.second->addTransition(itr.first,loopState.second);
                     break;
                 }
             }

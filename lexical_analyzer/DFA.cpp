@@ -49,3 +49,7 @@ void DFA::addTransition(char input, DFA* state) {
 map<char, DFA*> DFA::getTransitions() {
     return transitions;
 }
+
+int DFA::getMinimizationId() const {
+    return minimizationID;
+}

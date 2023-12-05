@@ -35,6 +35,7 @@ public:
     const string &getTokenClass() const;
 
     void setTokenClass(const string &ClassToken);
+    int getMinimizationId() const;
 
 private:
     string id;
