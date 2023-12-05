@@ -47,19 +47,12 @@ vector<State*> NfaToDfaConverter::getEpsilonClosure(State* state){
 
 string NfaToDfaConverter::getStateNewName(vector<State*> states) {
     string newName;
-    map<string, int> dup;
-    // remove duplicate states if occurred
-    for (int i = 0; i < states.size(); i++) {
-        dup[states[i]->getID()]++;
-        if(dup[states[i]->getID()] > 1){
-            states.erase(states.begin() + i);
-        }
-    }
 
     for(int i=0; i<states.size(); i++){
         newName += states[i]->getID();
         newName += i!=states.size() - 1? "," : "";
     }
+
     return newName;
 }
 
@@ -135,8 +128,6 @@ vector<DFA*> NfaToDfaConverter::convertNFAToDFA(State* startState) {
                                 if (find(currStateTransitions.at(in).begin(), currStateTransitions.at(in).end(), state) == currStateTransitions.at(in).end()) {
                                     // State is not found, add it to currStateTransitions.at(in)
                                     currStateTransitions.at(in).push_back(state);
-                                } else {
-                                    // State already exists, handle accordingly (skip, log, etc.)
                                 }
                             }
                         }
