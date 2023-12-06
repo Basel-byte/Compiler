@@ -13,6 +13,7 @@ public:
     static int counter;
     static map<string, int> table;
     static void addTokenClass(const string& tokenClass);
+    static void addTokenClass(const string& tokenClass, int priority);
 };
 
 #endif //COMPILER_PRIORITYTABLE_H

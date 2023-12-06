@@ -19,6 +19,15 @@
   <component name="ChangeListManager">
     <list default="true" id="0ec0c81f-860d-41ca-8efa-3ba9173c23b5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PriorityTable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/PriorityTable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PriorityTable.h" beforeDir="false" afterPath="$PROJECT_DIR$/PriorityTable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegexParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/RegexParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/NfaToDfaConverter.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/NfaToDfaConverter.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/PriorityTable.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/PriorityTable.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/RegexParser.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/RegexParser.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Compiler.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Compiler.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,6 +92,8 @@
       <workItem from="1701345028635" duration="1977000" />
       <workItem from="1701350837918" duration="41465000" />
       <workItem from="1701560683608" duration="72586000" />
+      <workItem from="1701723064199" duration="247000" />
+      <workItem from="1701819698013" duration="2876000" />
     </task>
     <servers />
   </component>
@@ -118,7 +129,7 @@
           <line>14</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ThomsonConstructor.cpp</url>
           <line>62</line>
           <option name="timeStamp" value="41" />
@@ -133,12 +144,12 @@
           <line>17</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/RegexParser.cpp</url>
           <line>119</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/RegexParser.cpp</url>
           <line>73</line>
           <option name="timeStamp" value="60" />

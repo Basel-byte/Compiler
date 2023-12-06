@@ -42,7 +42,7 @@ void RegexParser::parseLine(string line) {
         string word;
         while (getline(ss, word, ' ')) {
             parseRE(word, word);
-            PriorityTable::addTokenClass(word);
+            PriorityTable::addTokenClass(word, 0);
         }
     }
     else {

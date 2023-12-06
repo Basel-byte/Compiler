@@ -18,3 +18,8 @@
 10	1700	7234262860908929	CMakeFiles/Compiler.dir/main.cpp.obj	b6b3a1de70c5f6f8
 3	3003	7234262873904468	CMakeFiles/Compiler.dir/RegexParser.cpp.obj	b7021f72cd3bbe4a
 3003	4214	7234262885992134	Compiler.exe	18efd2f3e71f5af4
+16	961	7235275038493473	CMakeFiles/Compiler.dir/PriorityTable.cpp.obj	2e393d2cd2424e99
+3	1410	7235275042971466	CMakeFiles/Compiler.dir/NfaToDfaConverter.cpp.obj	3e4d2d1d01f08530
+23	1415	7235275043041304	CMakeFiles/Compiler.dir/main.cpp.obj	b6b3a1de70c5f6f8
+10	2949	7235275058340066	CMakeFiles/Compiler.dir/RegexParser.cpp.obj	b7021f72cd3bbe4a
+2949	4464	7235275073487692	Compiler.exe	18efd2f3e71f5af4
