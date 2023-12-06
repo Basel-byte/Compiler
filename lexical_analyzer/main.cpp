@@ -17,42 +17,8 @@ using namespace std;
 int main() {
 
     RegexParser regexParser;
-    // NFA* nfa = regexParser.parseREs("D:\\college\\4th year\\Compilers\\project\\yarab\\Compilerrules");
-//    DFA* dfa = new DFA("1");
-//    dfa->addTransition('e', *dfa);
-    NFA* part1 = ThomsonConstructor::range('a', 'c');
-    NFA* part2 = ThomsonConstructor::kleenClosure(*part1);
-    NFA* part3 = ThomsonConstructor::creatBasic('a');
-    NFA* part4 = ThomsonConstructor::concat(*part2, *part3);
-
-    NFA* part5 = ThomsonConstructor::range('a', 'c');
-    State* end1 = part5->endState;
-    end1->setIsAccepting(true);
-    end1->setTokenClass("T1");
-    NFA* part6 = ThomsonConstructor::kleenClosure(*part5);
-    NFA* part7 = ThomsonConstructor::concat(*part4, *part6);
-
-    NFA* part8 = ThomsonConstructor::range('a', 'c');
-    NFA* part9 = ThomsonConstructor::kleenClosure(*part8);
-    NFA* part10 = ThomsonConstructor::createEpsilon();
-    NFA* part11 = ThomsonConstructor::creatBasic('b');
-    NFA* part12 = ThomsonConstructor::creatBasic('c');
-    State* end2 = part12->endState;
-    end2->setIsAccepting(true);
-    end2->setTokenClass("T2");
-    NFA* part13 = ThomsonConstructor::concat(*part11, *part12);
-    NFA* part14 = ThomsonConstructor::positiveClosure(*part13);
-    NFA* part15 = ThomsonConstructor::concat(*part9, *part10);
-    NFA* part16 = ThomsonConstructor::concat(*part15, *part14);
-
-    NFA* part17 = ThomsonConstructor::union_(*part7, *part16);
-
-    PriorityTable::addTokenClass("T1");
-    PriorityTable::addTokenClass("T2");
-
-    std::cout << "Debug: ID = \"" << part17->startState->getTransitions()['\0'][0]->getTransitions()['\0'][1]->getTransitions().size() << "\"" << std::endl;
-
-    vector<DFA*> dfa = NfaToDfaConverter::convertNFAToDFA(part17->startState);
+    NFA* nfa = regexParser.parseREs("/home/mai/Compiler/lexical_analyzer/rules");
+    vector<DFA*> dfa = NfaToDfaConverter::convertNFAToDFA(nfa->startState);
 
 
     // cout<<"----------------------------------------------------------------------------------";
@@ -66,23 +32,68 @@ int main() {
                       << (pair.second->isAcceptingState() ? (pair.second->getTokenClass() == "T1" ? "\033[1;31m"
                                                                                                   : "\033[1;32m")
                                                           : "\033[1;34m")
-                      << pair.second->getID() << "\033[0m\n";
+                      << pair.second->getID() << " " << pair.second->getTokenClass() << "\033[0m\n";
         }
         cout << "--------------------------------------------------------------------------------\n";
     }
-    // cout<<"----------------------------------------------------------------------------------";
 
     std::set<DFA*> minimizedDfa = DFAMinimization::minimization(dfa);
     std::cout << "\n"<< minimizedDfa.size() << "\n T1 --> red, T2 --> green, nt acceptance state --> blue\n";
-
+    DFA* startDFA;
+    int i=0;
     for (auto it = minimizedDfa.begin(); it != minimizedDfa.end(); ++it) {
+        if((*it)->getMinimizationId()==0){
+            startDFA = (*it);
+        }
+        i++;
         for (const auto &pair: (*it)->getTransitions()) {
             // Print the ID and transition information
             std::cout<< (*it)->getMinimizationId() << " ---" << pair.first << "---> "
-                     << pair.second->getMinimizationId() << "\n";
+                     << pair.second->getMinimizationId() << " " << pair.second->getTokenClass() << "\n";
+
         }
         std::cout << "--------------------------------------------------------------------------------\n";
     }
+
+    LexicalParser parser(*startDFA, "/home/mai/Compiler/lexical_analyzer/program.txt");
+    while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
+
+    LexicalParser parserFW(*startDFA, "/home/mai/Compiler/lexical_analyzer/program.txt");
+    parserFW.writeAllTokens("/home/mai/Compiler/lexical_analyzer/tokens.txt");
+
+
+
+//    NFA* part1 = ThomsonConstructor::creatBasic('b');
+//    NFA* part2 = ThomsonConstructor::creatBasic('a');
+//    State* end1 = part2->endState;
+//    NFA* part3 = ThomsonConstructor::concat(*part1, *part2);
+//
+//    NFA* part4 = ThomsonConstructor::creatBasic('b');
+//    NFA* part5 = ThomsonConstructor::creatBasic('a');
+//    NFA* part6 = ThomsonConstructor::concat(*part4, *part5);
+//    NFA* part7 = ThomsonConstructor::creatBasic('b');
+//    NFA* part8 = ThomsonConstructor::concat(*part6, *part7);
+//
+//    NFA* part9 = ThomsonConstructor::creatBasic('b');
+//    NFA* part10 = ThomsonConstructor::creatBasic('b');
+//    NFA* part11 = ThomsonConstructor::kleenClosure(*part10);
+//    NFA* part12 = ThomsonConstructor::concat(*part9, *part11);
+//    NFA* part13 = ThomsonConstructor::creatBasic('a');
+//    NFA* part14 = ThomsonConstructor::kleenClosure(*part13);
+//    NFA* part15 = ThomsonConstructor::concat(*part12, *part14);
+//
+//    pair<string, NFA*> p1;
+//    p1.first = "P1"; p1.second = part3;
+//    pair<string, NFA*> p2;
+//    p2.first = "P2"; p2.second = part8;
+//    pair<string, NFA*> p3;
+//    p3.first = "P3"; p3.second = part15;
+//    vector<pair<string, NFA*>> combinedNFA;
+//    combinedNFA.push_back(p1);
+//    combinedNFA.push_back(p2);
+//    combinedNFA.push_back(p3);
+//    NFA* part16 = ThomsonConstructor::getCombinedNFA(combinedNFA);
+
     /*   RegexParser regexParser;
        NFA* nfa = regexParser.parseREs("D:/Computer and Systems Engineering/7th Semster\\Compilers/Project/Compiler/lexical_analyzer/rules");
    //    DFA *dfa = new DFA("1");
@@ -133,8 +144,8 @@ int main() {
            cout<<"--------------------------------------------------------------------------------\n";
        }
 
-       DFA *A = new DFA("A", 1), *B = new DFA("B", 2),
-       *C = new DFA("C", 3), *D = new DFA("D", 4),
+       DFA *A = new DFA("A", 0), *B = new DFA("B", 1),
+       *C = new DFA("C", 4), *D = new DFA("D", 4),
        *E = new DFA("E", 5), *F = new DFA("F", 6);
 
        A->setIsAccepting(false);

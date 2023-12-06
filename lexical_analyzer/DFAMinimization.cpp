@@ -228,14 +228,23 @@ string DFAMinimization::minimizedStateName(set<DFA*> states) {
 
 set<DFA *> DFAMinimization::minimizeHelper(set<set<DFA *>> minimizedStates) {
 
-    int id=0;
+    int id=1;
     set<pair<set<DFA*>,DFA*>> combinedStates;
     //iterates over each set in minimizedStates
     // to create new combined states and associate them with a unique name.
+    bool flag = false;
     for (auto itr : minimizedStates)
     {
+        for (auto it : itr) {
+            if(it->getMinimizationId() == 0){
+                flag = true;
+            }
+        }
+
         //  it creates a new Dfa State (newState) with a unique index (id) and a name obtained using minimizedStateName
-        DFA* newState=new DFA(minimizedStateName(itr), id);
+        DFA* newState=new DFA(minimizedStateName(itr), flag?0:id);
+
+        flag = false;
 
         // determines whether the new state is an accepting state
         DFAMinimization::setAcceptingMinimizedStateDFA(newState, itr);
