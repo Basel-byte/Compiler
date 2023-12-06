@@ -1,0 +1,17 @@
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+        float x = 2433.4789;
+        int y = 1478;
+        long x = 1000000;
+
+
+        &&  &&   &&
+
+
+                        ^^+^^-
+
+        float z = 235.79E-10;
+        int x;
+    }
+}

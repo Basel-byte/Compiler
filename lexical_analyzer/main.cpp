@@ -17,7 +17,7 @@ using namespace std;
 int main() {
 
     RegexParser regexParser;
-    NFA* nfa = regexParser.parseREs("/home/mai/Compiler/lexical_analyzer/rules");
+    NFA* nfa = regexParser.parseREs("/home/louay/Compilers-Project/lexical_analyzer/rules");
     vector<DFA*> dfa = NfaToDfaConverter::convertNFAToDFA(nfa->startState);
 
 
@@ -54,12 +54,11 @@ int main() {
         }
         std::cout << "--------------------------------------------------------------------------------\n";
     }
-
-    LexicalParser parser(*startDFA, "/home/mai/Compiler/lexical_analyzer/program.txt");
+    LexicalParser parser(*startDFA, "/home/louay/Compilers-Project/lexical_analyzer/program.txt");
     while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
 
-    LexicalParser parserFW(*startDFA, "/home/mai/Compiler/lexical_analyzer/program.txt");
-    parserFW.writeAllTokens("/home/mai/Compiler/lexical_analyzer/tokens.txt");
+    LexicalParser parserFW(*startDFA, "/home/louay/Compilers-Project/lexical_analyzer/program.txt");
+    parserFW.writeAllTokens("/home/louay/Compilers-Project/lexical_analyzer/tokens.txt");
 
 
 
@@ -95,7 +94,7 @@ int main() {
 //    NFA* part16 = ThomsonConstructor::getCombinedNFA(combinedNFA);
 
     /*   RegexParser regexParser;
-       NFA* nfa = regexParser.parseREs("D:/Computer and Systems Engineering/7th Semster\\Compilers/Project/Compiler/lexical_analyzer/rules");
+       NFA* nfa = regexParser.parseREs("D:/Computer and Systems Engineering/7th Semster\\Compilers/Project/Compiler/lexical_analyzer/rules2");
    //    DFA *dfa = new DFA("1");
    //    dfa->addTransition('e', *dfa);
        NFA* part1 = ThomsonConstructor::range('a', 'c');
@@ -161,9 +160,9 @@ int main() {
        D->addTransition('a', E); D->addTransition('b', D);
        E->addTransition('a', E);
 
-       LexicalParser parser(*A, "/home/louay/Compiler/lexical_analyzer/program.txt");
+       LexicalParser parser(*A, "/home/louay/Compiler/lexical_analyzer/program2.txt");
        while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
 
-       LexicalParser parserFW(*A, "/home/louay/Compiler/lexical_analyzer/program.txt");
+       LexicalParser parserFW(*A, "/home/louay/Compiler/lexical_analyzer/program2.txt");
        parserFW.writeAllTokens("/home/louay/Compiler/lexical_analyzer/tokens.txt");*/
 }

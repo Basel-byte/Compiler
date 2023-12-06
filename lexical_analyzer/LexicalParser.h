@@ -21,7 +21,7 @@ private:
 
     int lastStartPos;
     long lastStartLine;
-    unsigned long lastStartCol;
+    long lastStartCol;
     long lineDiff;
     long colDiff;
 
