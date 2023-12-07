@@ -35,3 +35,9 @@
 16	1292	7236114559822748	CMakeFiles/Compiler.dir/DFAMinimization.cpp.obj	18721972bb267ff9
 10	1345	7236114560381258	CMakeFiles/Compiler.dir/LexicalParser.cpp.obj	567cf1e52067dfb6
 1345	2340	7236114570267955	Compiler.exe	65f35ae077fa27ad
+3	1058	7236116973251568	CMakeFiles/Compiler.dir/main.cpp.obj	b6b3a1de70c5f6f8
+1058	2087	7236116983517407	Compiler.exe	65f35ae077fa27ad
+3	2653	7236123596382577	CMakeFiles/Compiler.dir/RegexParser.cpp.obj	b7021f72cd3bbe4a
+2654	3643	7236123606335780	Compiler.exe	65f35ae077fa27ad
+4	338	7236124208769767	CMakeFiles/Compiler.dir/ThomsonConstructor.cpp.obj	9d7c5cdf1c81ec5
+338	1314	7236124218507837	Compiler.exe	65f35ae077fa27ad

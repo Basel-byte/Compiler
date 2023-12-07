@@ -54,42 +54,42 @@ int main() {
 //
 //    vector<DFA*> dfa = NfaToDfaConverter::convertNFAToDFA(part17->startState);
 //    NFA* nfa = regexParser.parseREs("/home/louay/Compilers-Project/lexical_analyzer/rules");
-//    vector<DFA*> dfa = NfaToDfaConverter::convertNFAToDFA(nfa->startState);
-//
-//
-//    // cout<<"----------------------------------------------------------------------------------";
-//    cout<<dfa.size()<<"\n T1 --> red,  T2 --> green, nt acceptance state --> blue\n";
-//    for (size_t i = 0; i < dfa.size(); ++i) {
-//        for (const auto &pair: dfa[i]->getTransitions()) {
-//            // Print the ID and transition information
-//            std::cout << (dfa[i]->isAcceptingState() ? (dfa[i]->getTokenClass() == "T1" ? "\033[1;31m" : "\033[1;32m")
-//                                                     : "\033[1;34m")
-//                      << dfa[i]->getID() << " ---" << pair.first << "---> "
-//                      << (pair.second->isAcceptingState() ? (pair.second->getTokenClass() == "T1" ? "\033[1;31m"
-//                                                                                                  : "\033[1;32m")
-//                                                          : "\033[1;34m")
-//                      << pair.second->getID() << " " << pair.second->getTokenClass() << "\033[0m\n";
-//        }
-//        cout << "--------------------------------------------------------------------------------\n";
-//    }
-//
-//    std::set<DFA*> minimizedDfa = DFAMinimization::minimization(dfa);
-//    std::cout << "\n"<< minimizedDfa.size() << "\n T1 --> red, T2 --> green, nt acceptance state --> blue\n";
-//    DFA* startDFA;
-//    int i=0;
-//    for (auto it = minimizedDfa.begin(); it != minimizedDfa.end(); ++it) {
-//        if((*it)->getMinimizationId()==0){
-//            startDFA = (*it);
-//        }
-//        i++;
-//        for (const auto &pair: (*it)->getTransitions()) {
-//            // Print the ID and transition information
-//            std::cout<< (*it)->getMinimizationId() << " ---" << pair.first << "---> "
-//                     << pair.second->getMinimizationId() << " " << pair.second->getTokenClass() << "\n";
-//
-//        }
-//        std::cout << "--------------------------------------------------------------------------------\n";
-//    }
+    vector<DFA*> dfa = NfaToDfaConverter::convertNFAToDFA(nfa->startState);
+
+
+    // cout<<"----------------------------------------------------------------------------------";
+    cout<<dfa.size()<<"\n T1 --> red,  T2 --> green, nt acceptance state --> blue\n";
+    for (size_t i = 0; i < dfa.size(); ++i) {
+        for (const auto &pair: dfa[i]->getTransitions()) {
+            // Print the ID and transition information
+            std::cout << (dfa[i]->isAcceptingState() ? (dfa[i]->getTokenClass() == "T1" ? "\033[1;31m" : "\033[1;32m")
+                                                     : "\033[1;34m")
+                      << dfa[i]->getID() << " ---" << pair.first << "---> "
+                      << (pair.second->isAcceptingState() ? (pair.second->getTokenClass() == "T1" ? "\033[1;31m"
+                                                                                                  : "\033[1;32m")
+                                                          : "\033[1;34m")
+                      << pair.second->getID() << " " << pair.second->getTokenClass() << "\033[0m\n";
+        }
+        cout << "--------------------------------------------------------------------------------\n";
+    }
+
+    std::set<DFA*> minimizedDfa = DFAMinimization::minimization(dfa);
+    std::cout << "\n"<< minimizedDfa.size() << "\n T1 --> red, T2 --> green, nt acceptance state --> blue\n";
+    DFA* startDFA;
+    int i=0;
+    for (auto it = minimizedDfa.begin(); it != minimizedDfa.end(); ++it) {
+        if((*it)->getMinimizationId()==0){
+            startDFA = (*it);
+        }
+        i++;
+        for (const auto &pair: (*it)->getTransitions()) {
+            // Print the ID and transition information
+            std::cout<< (*it)->getMinimizationId() << " ---" << pair.first << "---> "
+                     << pair.second->getMinimizationId() << " " << pair.second->getTokenClass() << "\n";
+
+        }
+        std::cout << "--------------------------------------------------------------------------------\n";
+    }
 //    LexicalParser parser(*startDFA, "/home/louay/Compilers-Project/lexical_analyzer/program.txt");
 //    while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
 //

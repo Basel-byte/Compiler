@@ -57,7 +57,14 @@ NFA* ThomsonConstructor::kleenClosure(NFA nfa) {
 }
 
 NFA* ThomsonConstructor::positiveClosure(const NFA& nfa) {
-    return concat(nfa, *kleenClosure(nfa));
+    auto *startState = new State(to_string(id++));
+    auto *endState = new State(to_string(id++));
+    nfa.endState->addTransition(epsilon, nfa.startState);
+    startState->addTransition(epsilon, nfa.startState);
+    nfa.endState->addTransition(epsilon, endState);
+    NFA* newNFA = new NFA(startState, endState);
+    return newNFA;
+//    return concat(nfa, *kleenClosure(nfa));
 }
 
 NFA *ThomsonConstructor::getCombinedNFA(const vector<pair<string, NFA *>>& nfas) {
