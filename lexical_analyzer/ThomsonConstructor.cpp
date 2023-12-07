@@ -4,12 +4,11 @@
 
 #include "ThomsonConstructor.h"
 
-int ThomsonConstructor::id = 0;
 char ThomsonConstructor::epsilon = '\0';
 
 NFA* ThomsonConstructor::creatBasic(char input) {
-    auto *startState = new State(to_string(id++));
-    auto *endState = new State(to_string(id++));
+    auto *startState = new State();
+    auto *endState = new State();
     startState->addTransition(input, endState);
     NFA* nfa = new NFA(startState, endState);
     return nfa;
@@ -20,8 +19,8 @@ NFA* ThomsonConstructor::createEpsilon() {
 }
 
 NFA* ThomsonConstructor::range(char src, char dest) {
-    auto *startState = new State(to_string(id++));
-    auto *endState = new State(to_string(id++));
+    auto *startState = new State();
+    auto *endState = new State();
     for (int i = int(src); i <= int(dest); i++)
         startState->addTransition((char)i, endState);
     NFA* nfa = new NFA(startState, endState);
@@ -29,8 +28,8 @@ NFA* ThomsonConstructor::range(char src, char dest) {
 }
 
 NFA* ThomsonConstructor::union_(NFA nfa1, NFA nfa2) {
-    auto *startState = new State(to_string(id++));
-    auto *endState = new State(to_string(id++));
+    auto *startState = new State();
+    auto *endState = new State();
     startState->addTransition(epsilon, nfa1.startState);
     startState->addTransition(epsilon, nfa2.startState);
     nfa1.endState->addTransition(epsilon, endState);
@@ -46,8 +45,8 @@ NFA* ThomsonConstructor::concat(NFA nfa1, const NFA& nfa2) {
 }
 
 NFA* ThomsonConstructor::kleenClosure(NFA nfa) {
-    auto *startState = new State(to_string(id++));
-    auto *endState = new State(to_string(id++));
+    auto *startState = new State();
+    auto *endState = new State();
     nfa.endState->addTransition(epsilon, nfa.startState);
     startState->addTransition(epsilon, nfa.startState);
     nfa.endState->addTransition(epsilon, endState);
@@ -57,18 +56,11 @@ NFA* ThomsonConstructor::kleenClosure(NFA nfa) {
 }
 
 NFA* ThomsonConstructor::positiveClosure(const NFA& nfa) {
-    auto *startState = new State(to_string(id++));
-    auto *endState = new State(to_string(id++));
-    nfa.endState->addTransition(epsilon, nfa.startState);
-    startState->addTransition(epsilon, nfa.startState);
-    nfa.endState->addTransition(epsilon, endState);
-    NFA* newNFA = new NFA(startState, endState);
-    return newNFA;
-//    return concat(nfa, *kleenClosure(nfa));
+    return concat(nfa, *kleenClosure(nfa));
 }
 
 NFA *ThomsonConstructor::getCombinedNFA(const vector<pair<string, NFA *>>& nfas) {
-    auto *startState = new State(to_string(id++));
+    auto *startState = new State();
     for (const pair<string, NFA*>& pair : nfas) {
         string tokenClass = pair.first;
         NFA* nfa = pair.second;
@@ -77,12 +69,13 @@ NFA *ThomsonConstructor::getCombinedNFA(const vector<pair<string, NFA *>>& nfas)
         nfa->endState->setTokenClass(tokenClass);
     }
     NFA* combinedNFA = new NFA(startState);
+    combinedNFA->giveIDs();
     return combinedNFA;
 }
 
 NFA *ThomsonConstructor::createNFA(vector<char> &inputs) {
-    auto *startState = new State(to_string(id++));
-    auto *endState = new State(to_string(id++));
+    auto *startState = new State();
+    auto *endState = new State();
     startState->addTransitions(inputs, endState);
     NFA* nfa = new NFA(startState, endState);
     return nfa;

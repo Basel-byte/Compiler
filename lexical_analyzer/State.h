@@ -6,6 +6,7 @@
 #define COMPILER_STATE_H
 
 
+#include <set>
 #include "map"
 #include "vector"
 using namespace std;
@@ -22,13 +23,15 @@ public:
 
     State(string id, bool isAccepting, string tokenClass);
 
-    State(const State &other, map<string, State*> &map);
+    State(State &other, map<State*, State*> &map);
 
     virtual ~State();
 
     vector<State*> move(char input);
 
     string getID();
+
+    void setID(const string &id);
 
     map<char, vector<State*>> getTransitions();
 
@@ -48,6 +51,9 @@ public:
 
     void set(string id, bool isAccepting, string tokenClass);
 
+    void setIDs(int *id, std::set<State*> &visited);
+
+    string toString();
 private:
     string id;
     map<char, vector<State*>> transitions;

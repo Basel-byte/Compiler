@@ -22,7 +22,6 @@ public:
 private:
     static NFA * createNFA(vector<char> &inputs);
 public:
-    static int id;
     static char epsilon;
 };
 

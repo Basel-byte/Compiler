@@ -23,9 +23,16 @@ public:
 
     void setAcceptingState(const string& tokenClass) const;
 
+    void giveIDs();
+
+    int getSize() const;
+
+    string toString() const;
 public:
     State *startState;
     State *endState;
+private:
+    int size;
 };
 
 
