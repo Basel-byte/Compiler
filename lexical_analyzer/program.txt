@@ -1,5 +1,21 @@
-int sum , count , pass , mnt; while(pass !=
-10)
+        i%
+    %nt sum , count , pass , mnt;
+
+            while(pass !=
+10
+    )
 {
-pass = pass + 1 ;
+                        pass = pass + 1 ;
+
 }
+E9
+s3f5
+10E
+2.35E
+2.E
+2.
+192.168.1.1
+123.97E-9
+123.97E9
+
+

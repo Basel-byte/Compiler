@@ -93,11 +93,11 @@ int main() {
         }
         std::cout << "--------------------------------------------------------------------------------\n";
     }
-//    LexicalParser parser(*startDFA, "/home/louay/Compilers-Project/lexical_analyzer/program.txt");
-//    while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
-//
-//    LexicalParser parserFW(*startDFA, "/home/louay/Compilers-Project/lexical_analyzer/program.txt");
-//    parserFW.writeAllTokens("/home/louay/Compilers-Project/lexical_analyzer/tokens.txt");
+    LexicalParser parser(*startDFA, "/home/louay/Compiler/lexical_analyzer/program.txt");
+    while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
+    cout << "===================================================================\n";
+    LexicalParser parserFW(*startDFA, "/home/louay/Compiler/lexical_analyzer/program.txt");
+    parserFW.writeAllTokens("/home/louay/Compiler/lexical_analyzer/tokens.txt");
 
 
 
