@@ -22,11 +22,12 @@ private:
     void parseLine(string line);
     void parseRE(const string& lhs, string rhs);
     void parsePunctuationSymbols(string symbols);
-    bool isOperator(char c);
-    NFA *getCombinedNFA();
+    void handleKeyword(const string& keyword);
+    NFA* getCombinedNFA();
     void findNonOverlappingMatches(const string &input, const regex &reg, map<int, string> &posToMatch);
     static void findAllOccurrences(const string& input, const regex& reg, map<int, string> &posToMatch);
     static bool isConcat(vector<pair<char, NFA*>> &tokens, int i);
+    bool isOperator(char c);
     static string escapeRegex(const string& input);
 private:
     regex keywordsRegex;

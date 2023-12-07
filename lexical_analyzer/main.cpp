@@ -17,7 +17,7 @@ using namespace std;
 int main() {
 
     RegexParser regexParser;
-    // NFA* nfa = regexParser.parseREs("D:\\college\\4th year\\Compilers\\project\\yarab\\Compilerrules");
+     NFA* nfa = regexParser.parseREs("D:\\Computer and Systems Engineering\\7th Semster\\Compilers\\Project\\Compiler\\lexical_analyzer\\rules");
 //    DFA* dfa = new DFA("1");
 //    dfa->addTransition('e', *dfa);
     NFA* part1 = ThomsonConstructor::range('a', 'c');

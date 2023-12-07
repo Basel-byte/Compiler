@@ -41,8 +41,10 @@ void RegexParser::parseLine(string line) {
         stringstream ss(line.substr(1, line.length() - 2));
         string word;
         while (getline(ss, word, ' ')) {
-            parseRE(word, word);
-            PriorityTable::addTokenClass(word, 0);
+            if (!word.empty())
+                handleKeyword(word);
+//            parseRE(word, word);
+//            PriorityTable::addTokenClass(word, 0);
         }
     }
     else {
@@ -88,7 +90,7 @@ vector<pair<char, NFA*>> RegexParser::tokenize(string rhs, map<int, string>& pos
         }
         else if (posToMatch.find(i) != posToMatch.end()) {
             string str = posToMatch[i];
-            tokens.emplace_back(rhs[i], regexMap[str]);
+            tokens.emplace_back(rhs[i + str.length() - 1], regexMap[str]);
             i += (int)str.length() - 1;
         }
         else
@@ -113,8 +115,12 @@ void RegexParser::parsePunctuationSymbols(string symbols) {
     }
 }
 
-bool RegexParser::isOperator(char c) {
-    return this->operators.find(c) != this->operators.end();
+void RegexParser::handleKeyword(const string& keyword) {
+    NFA* nfa = ThomsonConstructor::creatBasic(keyword[0]);
+    for (int i = 1; i < keyword.length(); i++)
+        nfa = ThomsonConstructor::concat(*nfa, *ThomsonConstructor::creatBasic(keyword[i]));
+    regexMap.insert({keyword, nfa});
+    PriorityTable::addTokenClass(keyword, 0);
 }
 
 NFA* RegexParser::getCombinedNFA() {
@@ -154,6 +160,10 @@ bool RegexParser::isConcat(vector<pair<char, NFA*>> &tokens, int i) {
     NFA* nfa_prev = tokens[i - 1].second;
     return (nfa != nullptr && (nfa_prev != nullptr || c_prev == ')' || c_prev == '+' || c_prev == '*'))
             || (nfa == nullptr && c == '(' && (nfa_prev != nullptr || c_prev == ')' || Utility::isUnary(c_prev)));
+}
+
+bool RegexParser::isOperator(char c) {
+    return this->operators.find(c) != this->operators.end();
 }
 
 string RegexParser::escapeRegex(const string& input) {

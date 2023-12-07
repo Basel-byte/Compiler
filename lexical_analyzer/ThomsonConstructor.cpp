@@ -60,7 +60,7 @@ NFA* ThomsonConstructor::positiveClosure(const NFA& nfa) {
     return concat(nfa, *kleenClosure(nfa));
 }
 
-NFA *ThomsonConstructor::getCombinedNFA(vector<pair<string, NFA *>> nfas) {
+NFA *ThomsonConstructor::getCombinedNFA(const vector<pair<string, NFA *>>& nfas) {
     auto *startState = new State(to_string(id++));
     for (const pair<string, NFA*>& pair : nfas) {
         string tokenClass = pair.first;

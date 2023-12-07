@@ -18,7 +18,7 @@ public:
     static NFA * concat(NFA nfa1, const NFA& nfa2);
     static NFA * kleenClosure(NFA nfa);
     static NFA * positiveClosure(const NFA& nfa);
-    static NFA * getCombinedNFA(vector<pair<string, NFA*>> nfas);
+    static NFA * getCombinedNFA(const vector<pair<string, NFA*>>& nfas);
 private:
     static NFA * createNFA(vector<char> &inputs);
 public:
