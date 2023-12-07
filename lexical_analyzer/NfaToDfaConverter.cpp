@@ -77,6 +77,7 @@ void NfaToDfaConverter::setAcceptingState(DFA* dfaState, const vector<State*>& n
 }
 
 vector<DFA*> NfaToDfaConverter::convertNFAToDFA(State* startState) {
+
     int id = 0;
     // get the epsilon closure of the start state
     vector<State*> epsilons = NfaToDfaConverter::getEpsilonClosure(startState);
@@ -113,7 +114,8 @@ vector<DFA*> NfaToDfaConverter::convertNFAToDFA(State* startState) {
             for ( auto inputTransition : nfaTransitions) {
                 char in = inputTransition.first;
 
-                if(in != '\0') {
+                if(in != '\0' && in != ' ') {
+
                     // loop over each transaction of that specific input
                     for (auto transition: inputTransition.second) {
 
@@ -122,6 +124,7 @@ vector<DFA*> NfaToDfaConverter::convertNFAToDFA(State* startState) {
                             currStateTransitions.insert({in, eps});
                         } else {
                             vector<State*> eps = NfaToDfaConverter::getEpsilonClosure(transition);
+                        //    currStateTransitions.at(in).insert(currStateTransitions.at(in).end(),eps.begin(), eps.end());
 
                             for (auto& state : eps) {
                                 // Check if the state already exists in currStateTransitions.at(in)
