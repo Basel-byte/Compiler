@@ -43,8 +43,6 @@ void RegexParser::parseLine(string line) {
         while (getline(ss, word, ' ')) {
             if (!word.empty())
                 handleKeyword(word);
-//            parseRE(word, word);
-//            PriorityTable::addTokenClass(word, 0);
         }
     }
     else {

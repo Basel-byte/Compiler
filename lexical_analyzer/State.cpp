@@ -112,6 +112,7 @@ string State::toString() {
         for (const auto & it : state->getTransitions()) {
             char input = it.first;
             for (State* next : it.second) {
+//                s += state->getID() + " " + next->getID() + " " + (input == '\0' ? "\\L" : string(1, input)) + "\n";
                 s += state->getID() + " ---" + (input == '\0' ? "\\L" : string(1, input)) + "---> " + next->getID() + "\n";
                 if (v.find(next) == v.end()) {
                     q.push(next);
