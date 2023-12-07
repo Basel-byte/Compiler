@@ -243,6 +243,9 @@ set<DFA *> DFAMinimization::minimizeHelper(set<set<DFA *>> minimizedStates) {
 
         //  it creates a new Dfa State (newState) with a unique index (id) and a name obtained using minimizedStateName
         DFA* newState=new DFA(minimizedStateName(itr), flag?0:id);
+        if(!flag){
+            id++;
+        }
 
         flag = false;
 
@@ -250,7 +253,7 @@ set<DFA *> DFAMinimization::minimizeHelper(set<set<DFA *>> minimizedStates) {
         DFAMinimization::setAcceptingMinimizedStateDFA(newState, itr);
 
         combinedStates.insert({itr,newState});
-        id++;
+
     }
 
 
