@@ -1,0 +1,14 @@
+letter = a-z | A-Z | _
+digit = 0 - 9
+{System out int void return class object}
+accessMod: public | protected | private | default
+id: letter (letter|digit)*
+digits = digit+
+{boolean in float String long}
+num: digit+ | digit+ . digits ( \L | E digits)
+relop: == | != | > | >= | < | <=
+assign: =
+{if else while}
+[; , \( \) { } [ ]]
+addop: \+ | \-
+mulop: \* | /

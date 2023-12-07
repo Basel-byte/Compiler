@@ -30,20 +30,16 @@ void LexicalParser :: updateMeasures(char input) {
 }
 
 string LexicalParser :: getNextToken(){
+    char c;
     string toRecognize;
     while(toRecognize.empty()){
         if(isClosedFile()) return "Input File EOF has been reached!!";
-        char c;
         sourceProgFile.get(c);
         if (sourceProgFile.eof()) {
             closeFile();
             c = -1;
         }
         updateMeasures(c);
-        if(c == '\r' || c == '\t' || c == '\n' || c == ' ') {
-            lastStartPos--;
-            continue;
-        }
         toRecognize = traverseDFA(c);
     }
     return toRecognize;
@@ -51,23 +47,24 @@ string LexicalParser :: getNextToken(){
 
 string LexicalParser :: traverseDFA(char input) {
     auto it = dFAIterator.getTransitions().find(input);
-    if(it == dFAIterator.getTransitions().end() || input == -1){ // to PHI state !!
+    if(it == dFAIterator.getTransitions().end() || input == -1 || isspace(input)){ // to PHI state !!
+        // No Previous Accepting States
         if(lastAC == nullptr) return panicRecover();
+        // There is a previous Accepting States
         string recToken = lastAC->getTokenClass();
         lastStartLine += lineDiff;
-        lastStartCol += colDiff - 1;
+        lastStartCol += isspace(input)? colDiff : colDiff - 1;
         lastStartPos = colDiff = lineDiff = 0;
         delete lastAC; lastAC = nullptr;
         dFAIterator = DFA(miniDFA);
-        sourceProgFile.seekg(-1, ios_base::cur);
+        if(!isspace(input)) sourceProgFile.seekg(-1, ios_base::cur);
         return recToken;
     }
-    dFAIterator = *dFAIterator.move(input);
     lastStartPos--;
+    dFAIterator = *dFAIterator.move(input);
     if(dFAIterator.isAcceptingState()) lastAC = new DFA(dFAIterator);
     return "";
 }
-
 
 void LexicalParser :: writeAllTokens(string outFileName) {
     parsedTokenFile.open(outFileName);
@@ -79,21 +76,27 @@ string LexicalParser :: panicRecover() {
     char c;
     sourceProgFile.seekg(lastStartPos - 1, ios_base::cur);
     sourceProgFile.get(c);
-    while(c == '\r' || c == '\t' || c == '\n' || c == ' '){
+    while(lastStartPos < 0 && isspace(c)){
         if(c == '\n') {
             lastStartLine ++;
             lastStartCol = 0;
         }
         else lastStartCol++;
+        lastStartPos++;
         sourceProgFile.get(c);
     }
     if(sourceProgFile.eof() || c == -1) {
         closeFile();
         return "Input File EOF has been reached!!";
     }
-    lastStartCol++;
-    lastStartPos = colDiff = lineDiff = 0;
+    if(c == '\n') {
+        lastStartLine++;
+        lastStartCol = 0;
+    }
+    else lastStartCol++;
+    colDiff = lineDiff = 0;
     dFAIterator = DFA(miniDFA);
+    if(lastStartPos == 0 && (isspace(c))) return "";
     return "PANIC MODE RECOVERY APPLIED: Deleting Character ( " + string(1, c) + " ) At Ln.: "
            + to_string(lastStartLine + 1) + " , Col.: " + to_string(lastStartCol);
 }

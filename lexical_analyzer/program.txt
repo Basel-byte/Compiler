@@ -1,13 +1,5 @@
-
-
-abab
-
-axc
-
-azbabbba
-
-ababbbaaaab
-
-bbabbaabab
-
-aa
+int sum , count , pass , mnt; while(pass !=
+10)
+{
+pass = pass + 1 ;
+}

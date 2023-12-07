@@ -1,17 +1,23 @@
-PANIC MODE RECOVERY APPLIED: Deleting Character ( a ) At Ln.: 3 , Col.: 1
-bab
-PANIC MODE RECOVERY APPLIED: Deleting Character ( a ) At Ln.: 5 , Col.: 1
-PANIC MODE RECOVERY APPLIED: Deleting Character ( x ) At Ln.: 5 , Col.: 2
-PANIC MODE RECOVERY APPLIED: Deleting Character ( c ) At Ln.: 5 , Col.: 3
-PANIC MODE RECOVERY APPLIED: Deleting Character ( a ) At Ln.: 7 , Col.: 1
-PANIC MODE RECOVERY APPLIED: Deleting Character ( z ) At Ln.: 7 , Col.: 2
-bab
-b+a*
-bab
-b+a*
-b+a*
-b+a*
-bab
-PANIC MODE RECOVERY APPLIED: Deleting Character ( a ) At Ln.: 13 , Col.: 1
-PANIC MODE RECOVERY APPLIED: Deleting Character ( a ) At Ln.: 13 , Col.: 2
-Input File EOF has been reached!!
+int
+id
+,
+id
+,
+id
+,
+id
+;
+while
+(
+id
+relop
+num
+)
+{
+id
+assign
+id
+addop
+num
+;
+}
