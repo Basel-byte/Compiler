@@ -17,8 +17,8 @@ using namespace std;
 int main() {
 
     RegexParser regexParser;
-     NFA* nfa = regexParser.parseREs("/home/louay/Compiler/lexical_analyzer/rules");
-     cout << nfa->getSize() << " nfa states" << endl;
+    NFA* nfa = regexParser.parseREs("/home/mai/Compiler/lexical_analyzer/rules");
+    cout << nfa->getSize() << " nfa states" << endl;
 //    DFA* dfa = new DFA("1");
 //    dfa->addTransition('e', *dfa);
 //    NFA* part1 = ThomsonConstructor::range('a', 'c');
@@ -75,7 +75,6 @@ int main() {
     }
 
     std::set<DFA*> minimizedDfa = DFAMinimization::minimization(dfa);
-    std::cout << "\n"<< minimizedDfa.size() << "\n T1 --> red, T2 --> green, nt acceptance state --> blue\n";
     DFA* startDFA;
     int i=0;
     for (auto it = minimizedDfa.begin(); it != minimizedDfa.end(); ++it) {
@@ -91,11 +90,35 @@ int main() {
         }
         std::cout << "--------------------------------------------------------------------------------\n";
     }
-    LexicalParser parser(*startDFA, "/home/louay/Compiler/lexical_analyzer/program.txt");
+
+    std::ofstream outFile("/home/mai/Compiler/lexical_analyzer/minimizedDFA.txt");
+
+    if (!outFile.is_open()) {
+        std::cerr << "Error opening output file!" << std::endl;
+        return 1; // Return an error code
+    }
+
+
+    for (auto it = minimizedDfa.begin(); it != minimizedDfa.end(); ++it) {
+
+        for (const auto &pair: (*it)->getTransitions()) {
+            outFile << (*it)->getMinimizationId() << " ---" << pair.first << "---> "
+                    << pair.second->getMinimizationId() << " " << pair.second->getTokenClass() << "\n";
+
+        }
+        if ((*it)->getTransitions().empty()) {
+            outFile << (*it)->getMinimizationId() << " final acceptance state ( " << (*it)->getTokenClass() << " )\n";
+        }
+        outFile << "--------------------------------------------------------------------------------\n";
+    }
+
+    outFile.close();
+
+    LexicalParser parser(*startDFA, "/home/mai/Compiler/lexical_analyzer/program.txt");
     while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
     cout << "===================================================================\n";
-    LexicalParser parserFW(*startDFA, "/home/louay/Compiler/lexical_analyzer/program.txt");
-    parserFW.writeAllTokens("/home/louay/Compiler/lexical_analyzer/tokens.txt");
+    LexicalParser parserFW(*startDFA, "/home/mai/Compiler/lexical_analyzer/program.txt");
+    parserFW.writeAllTokens("/home/mai/Compiler/lexical_analyzer/tokens.txt");
 
 
 
