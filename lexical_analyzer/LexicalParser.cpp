@@ -30,15 +30,12 @@ void LexicalParser :: updateMeasures(char input) {
 }
 
 string LexicalParser :: getNextToken(){
-    char c;
+    char c = 0;
     string toRecognize;
-    while(toRecognize.empty()){
+    while(toRecognize.empty() && c != -1){
         if(isClosedFile()) return "Input File EOF has been reached!!";
         sourceProgFile.get(c);
-        if (sourceProgFile.eof()) {
-            closeFile();
-            c = -1;
-        }
+        if (sourceProgFile.eof()) c = -1;
         updateMeasures(c);
         toRecognize = traverseDFA(c);
     }
@@ -50,19 +47,27 @@ string LexicalParser :: traverseDFA(char input) {
     if(it == dFAIterator.getTransitions().end() || input == -1 || isspace(input)){ // to PHI state !!
         // No Previous Accepting States
         if(lastAC == nullptr) return panicRecover();
-        // There is a previous Accepting States
+        // There is a previous Accepting State
         string recToken = lastAC->getTokenClass();
-        lastStartLine += lineDiff;
-        lastStartCol += isspace(input)? colDiff : colDiff - 1;
-        lastStartPos = colDiff = lineDiff = 0;
+        lastStartLine += (isspace(input) && lastStartPos > -1)? lineDiff : 0;
+        lastStartCol += (isspace(input) && lastStartPos > -1)? colDiff : 0;
         delete lastAC; lastAC = nullptr;
         dFAIterator = DFA(miniDFA);
-        if(!isspace(input)) sourceProgFile.seekg(-1, ios_base::cur);
+        if(input == -1 && !recToken.empty() && lastStartPos < 0) {
+            sourceProgFile.clear(ios_base::eofbit);
+            lastStartPos++;
+        }
+        sourceProgFile.seekg((isspace(input) && lastStartPos > -1)? 0 : lastStartPos - 1, ios_base::cur);
+        lastStartPos = colDiff = lineDiff = 0;
         return recToken;
     }
-    lastStartPos--;
     dFAIterator = *dFAIterator.move(input);
-    if(dFAIterator.isAcceptingState()) lastAC = new DFA(dFAIterator);
+    if(dFAIterator.isAcceptingState()) {
+        lastAC = new DFA(dFAIterator);
+        lastStartCol += colDiff;
+        lastStartPos = colDiff = 0;
+    }
+    else lastStartPos--;
     return "";
 }
 

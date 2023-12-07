@@ -17,7 +17,7 @@ using namespace std;
 int main() {
 
     RegexParser regexParser;
-     NFA* nfa = regexParser.parseREs("D:\\Computer and Systems Engineering\\7th Semster\\Compilers\\Project\\Compiler\\lexical_analyzer\\rules");
+     NFA* nfa = regexParser.parseREs("/home/louay/Compiler/lexical_analyzer/rules");
      cout << nfa->getSize() << " nfa states" << endl;
 //    DFA* dfa = new DFA("1");
 //    dfa->addTransition('e', *dfa);
@@ -91,11 +91,11 @@ int main() {
         }
         std::cout << "--------------------------------------------------------------------------------\n";
     }
-//    LexicalParser parser(*startDFA, "/home/louay/Compilers-Project/lexical_analyzer/program.txt");
-//    while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
-//
-//    LexicalParser parserFW(*startDFA, "/home/louay/Compilers-Project/lexical_analyzer/program.txt");
-//    parserFW.writeAllTokens("/home/louay/Compilers-Project/lexical_analyzer/tokens.txt");
+    LexicalParser parser(*startDFA, "/home/louay/Compiler/lexical_analyzer/program.txt");
+    while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
+    cout << "===================================================================\n";
+    LexicalParser parserFW(*startDFA, "/home/louay/Compiler/lexical_analyzer/program.txt");
+    parserFW.writeAllTokens("/home/louay/Compiler/lexical_analyzer/tokens.txt");
 
 
 
