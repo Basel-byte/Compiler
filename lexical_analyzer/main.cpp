@@ -109,7 +109,7 @@ int main() {
         std::cout << "--------------------------------------------------------------------------------\n";
     }
 ///home/mai/Compiler/lexical_analyzer/SampleTests/testPrograms/program1.txt
-    std::ofstream outFile("/home/mai/Compiler/lexical_analyzer/SampleTests/output/minimizedDFA.txt");
+    std::ofstream outFile("../SampleTests/output/minimizedDFA.txt");
 
     if (!outFile.is_open()) {
         std::cerr << "Error opening output file!" << std::endl;
@@ -139,7 +139,7 @@ int main() {
 
     std::cout << "===================================================================\n";
     LexicalParser parserFW(*startDFA, programFilePath);
-    parserFW.writeAllTokens("/home/mai/Compiler/lexical_analyzer/SampleTests/output/tokens.txt");
+    parserFW.writeAllTokens("../SampleTests/output/tokens.txt");
 
 
 
