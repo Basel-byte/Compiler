@@ -17,9 +17,25 @@
 using namespace std;
 
 int main() {
+    std::string rulesFilePath, programFilePath, tokensFilePath, outputDirPath;
+
+    // Get the rules file path from the user
+    std::cout << "Enter the path of the rules file: \n";
+    std::cin >> rulesFilePath;
+
+    // Get the program file path from the user
+    std::cout << "Enter the path of the program file: \n";
+    std::cin >> programFilePath;
+
+    // Set the tokens file path to be in the same directory as rules file
+    tokensFilePath = rulesFilePath.substr(0, programFilePath.find_last_of("/\\") + 1) + "output/tokens.txt";
+
+    // Set the tokens file path to be in the same directory as rules file
+    outputDirPath = programFilePath.substr(0, rulesFilePath.find_last_of("/\\") + 1) + "output";
+
     auto start = chrono::high_resolution_clock::now();
     RegexParser regexParser;
-    NFA* nfa = regexParser.parseREs("../SampleTests/rules/rules1");
+    NFA* nfa = regexParser.parseREs(rulesFilePath);
     vector<DFA*> dfa = NfaToDfaConverter::convertNFAToDFA(nfa->startState);
     std::set<DFA*> minimizedDfa = DFAMinimization::minimization(dfa);
     auto end = std::chrono::high_resolution_clock::now();
@@ -30,13 +46,16 @@ int main() {
     cout << "No of minimized DFA states: " << minimizedDfa.size() << endl;
     cout << "Execution time of grammar parsing: " << duration.count() << " milliseconds" << endl;
 
-    TransitionTableWriter::writeTableInTabularForm(minimizedDfa, "../SampleTests/output");
+    TransitionTableWriter::writeTableInTabularForm(minimizedDfa, outputDirPath);
 
     DFA* startDFA = DFAMinimization::getStartState(minimizedDfa);
-    LexicalParser parser(*startDFA, "../SampleTests/testPrograms/program1.txt");
-    while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
-    cout << "===================================================================\n";
-    LexicalParser parserFW(*startDFA, "../SampleTests/testPrograms/program1.txt");
-    parserFW.writeAllTokens("../SampleTests/output/tokens.txt");
 
+    LexicalParser parser(*startDFA, programFilePath);
+    while (!parser.isClosedFile()) {
+        std::cout << "Token: " << parser.getNextToken() << std::endl;
+    }
+
+    std::cout << "===================================================================\n";
+    LexicalParser parserFW(*startDFA, programFilePath);
+    parserFW.writeAllTokens(tokensFilePath);
 }
