@@ -18,4 +18,5 @@ add_executable(Compiler
         main.cpp
         LexicalParser.cpp
         DFAMinimization.cpp
+        TransitionTableWriter.cpp
         )

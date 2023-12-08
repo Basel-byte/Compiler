@@ -20,8 +20,9 @@ public:
 
     static set<DFA*> minimizeHelper(set<set<DFA*>>);
 
+    static bool compareDFAId(DFA *i1, DFA *i2);
 
-
+    static DFA* getStartState(set<DFA*> &dfas);
 };
 
 #endif //COMPILER_DFAMINIMIZATION_H

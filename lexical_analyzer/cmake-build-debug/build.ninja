@@ -126,6 +126,13 @@ build CMakeFiles/Compiler.dir/DFAMinimization.cpp.obj: CXX_COMPILER__Compiler_De
   OBJECT_DIR = CMakeFiles\Compiler.dir
   OBJECT_FILE_DIR = CMakeFiles\Compiler.dir
 
+build CMakeFiles/Compiler.dir/TransitionTableWriter.cpp.obj: CXX_COMPILER__Compiler_Debug D$:/Computer$ and$ Systems$ Engineering/7th$ Semster/Compilers/Project/Compiler/lexical_analyzer/TransitionTableWriter.cpp || cmake_object_order_depends_target_Compiler
+  DEP_FILE = CMakeFiles\Compiler.dir\TransitionTableWriter.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -I"D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/lexical_analyzer/."
+  OBJECT_DIR = CMakeFiles\Compiler.dir
+  OBJECT_FILE_DIR = CMakeFiles\Compiler.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Compiler
@@ -134,7 +141,7 @@ build CMakeFiles/Compiler.dir/DFAMinimization.cpp.obj: CXX_COMPILER__Compiler_De
 #############################################
 # Link the executable Compiler.exe
 
-build Compiler.exe: CXX_EXECUTABLE_LINKER__Compiler_Debug CMakeFiles/Compiler.dir/NFA.cpp.obj CMakeFiles/Compiler.dir/NfaToDfaConverter.cpp.obj CMakeFiles/Compiler.dir/State.cpp.obj CMakeFiles/Compiler.dir/PriorityTable.cpp.obj CMakeFiles/Compiler.dir/ThomsonConstructor.cpp.obj CMakeFiles/Compiler.dir/RegexParser.cpp.obj CMakeFiles/Compiler.dir/Utility.cpp.obj CMakeFiles/Compiler.dir/DFA.cpp.obj CMakeFiles/Compiler.dir/main.cpp.obj CMakeFiles/Compiler.dir/LexicalParser.cpp.obj CMakeFiles/Compiler.dir/DFAMinimization.cpp.obj
+build Compiler.exe: CXX_EXECUTABLE_LINKER__Compiler_Debug CMakeFiles/Compiler.dir/NFA.cpp.obj CMakeFiles/Compiler.dir/NfaToDfaConverter.cpp.obj CMakeFiles/Compiler.dir/State.cpp.obj CMakeFiles/Compiler.dir/PriorityTable.cpp.obj CMakeFiles/Compiler.dir/ThomsonConstructor.cpp.obj CMakeFiles/Compiler.dir/RegexParser.cpp.obj CMakeFiles/Compiler.dir/Utility.cpp.obj CMakeFiles/Compiler.dir/DFA.cpp.obj CMakeFiles/Compiler.dir/main.cpp.obj CMakeFiles/Compiler.dir/LexicalParser.cpp.obj CMakeFiles/Compiler.dir/DFAMinimization.cpp.obj CMakeFiles/Compiler.dir/TransitionTableWriter.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Compiler.dir

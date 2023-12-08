@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <chrono>
 #include "NFA.h"
 #include "RegexParser.h"
 #include "State.h"
@@ -11,71 +12,27 @@
 #include "NfaToDfaConverter.h"
 #include "LexicalParser.h"
 #include "DFAMinimization.h"
+#include "TransitionTableWriter.h"
+
 using namespace std;
 
 int main() {
-
+    auto start = chrono::high_resolution_clock::now();
     RegexParser regexParser;
     NFA* nfa = regexParser.parseREs("../SampleTests/rules/rules1");
-    cout << nfa->getSize() << " nfa states" << endl;
     vector<DFA*> dfa = NfaToDfaConverter::convertNFAToDFA(nfa->startState);
-
-
-    cout<<dfa.size()<<"\n T1 --> red,  T2 --> green, nt acceptance state --> blue\n";
-    for (size_t i = 0; i < dfa.size(); ++i) {
-        for (const auto &pair: dfa[i]->getTransitions()) {
-            // Print the ID and transition information
-            std::cout << (dfa[i]->isAcceptingState() ? (dfa[i]->getTokenClass() == "T1" ? "\033[1;31m" : "\033[1;32m")
-                                                     : "\033[1;34m")
-                      << dfa[i]->getID() << " ---" << pair.first << "---> "
-                      << (pair.second->isAcceptingState() ? (pair.second->getTokenClass() == "T1" ? "\033[1;31m"
-                                                                                                  : "\033[1;32m")
-                                                          : "\033[1;34m")
-                      << pair.second->getID() << " " << pair.second->getTokenClass() << "\033[0m\n";
-        }
-        cout << "--------------------------------------------------------------------------------\n";
-    }
-
     std::set<DFA*> minimizedDfa = DFAMinimization::minimization(dfa);
-    DFA* startDFA;
-    int i=0;
-    for (auto it = minimizedDfa.begin(); it != minimizedDfa.end(); ++it) {
-        if((*it)->getMinimizationId()==0){
-            startDFA = (*it);
-        }
-        i++;
-        for (const auto &pair: (*it)->getTransitions()) {
-            // Print the ID and transition information
-            std::cout<< (*it)->getMinimizationId() << " ---" << pair.first << "---> "
-                     << pair.second->getMinimizationId() << " " << pair.second->getTokenClass() << "\n";
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
 
-        }
-        std::cout << "--------------------------------------------------------------------------------\n";
-    }
+    cout << "No of NFA states: " << nfa->getSize() << endl;
+    cout << "No of DFA states: " << dfa.size() << endl;
+    cout << "No of minimized DFA states: " << minimizedDfa.size() << endl;
+    cout << "Execution time of grammar parsing: " << duration.count() << " milliseconds" << endl;
 
-    std::ofstream outFile("../SampleTests/output/minimizedDFA.txt");
+    TransitionTableWriter::writeTableInTabularForm(minimizedDfa, "../SampleTests/output");
 
-    if (!outFile.is_open()) {
-        std::cerr << "Error opening output file!" << std::endl;
-        return 1; // Return an error code
-    }
-
-
-    for (auto it = minimizedDfa.begin(); it != minimizedDfa.end(); ++it) {
-
-        for (const auto &pair: (*it)->getTransitions()) {
-            outFile << (*it)->getMinimizationId() << " ---" << pair.first << "---> "
-                    << pair.second->getMinimizationId() << " " << pair.second->getTokenClass() << "\n";
-
-        }
-        if ((*it)->getTransitions().empty()) {
-            outFile << (*it)->getMinimizationId() << " final acceptance state ( " << (*it)->getTokenClass() << " )\n";
-        }
-        outFile << "--------------------------------------------------------------------------------\n";
-    }
-
-    outFile.close();
-
+    DFA* startDFA = DFAMinimization::getStartState(minimizedDfa);
     LexicalParser parser(*startDFA, "../SampleTests/testPrograms/program1.txt");
     while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
     cout << "===================================================================\n";

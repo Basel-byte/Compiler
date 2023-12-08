@@ -15,7 +15,7 @@ using namespace std;
 #include "DFA.h"
 #include <climits>
 
-bool compareDFAId(DFA *i1, DFA *i2) {
+bool DFAMinimization::compareDFAId(DFA *i1, DFA *i2) {
     return i1->getMinimizationId() < i2->getMinimizationId();
 }
 
@@ -274,6 +274,13 @@ set<DFA *> DFAMinimization::minimizeHelper(set<set<DFA *>> minimizedStates) {
     }
 
     return result;
+}
+
+DFA *DFAMinimization::getStartState(set<DFA*> &dfas) {
+    for (auto &it : dfas)
+        if (it->getMinimizationId() == 0)
+            return it;
+    return nullptr;
 }
 
 

@@ -36,7 +36,6 @@ private:
     regex rangeDigit;
     regex epsilonRegex;
     set<char> operators; // - | + * ( )
-public:
     map<string, NFA*> regexMap;
 };
 
