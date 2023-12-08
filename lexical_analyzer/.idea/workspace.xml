@@ -19,13 +19,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0ec0c81f-860d-41ca-8efa-3ba9173c23b5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegexParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/RegexParser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegexParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/RegexParser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/State.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/State.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SampleTests/output/minimizedDFA.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SampleTests/output/minimizedDFA.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/NfaToDfaConverter.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/NfaToDfaConverter.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/RegexParser.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/RegexParser.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/DFAMinimization.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/DFAMinimization.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/LexicalParser.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/LexicalParser.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/State.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/State.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Compiler.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Compiler.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Compiler.exe" afterDir="false" />
@@ -146,7 +144,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>18</line>
+          <line>17</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">

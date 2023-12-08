@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include "ThomsonConstructor.h"
 #include "NFA.h"
 #include "RegexParser.h"
 #include "State.h"
@@ -17,7 +16,7 @@ using namespace std;
 int main() {
 
     RegexParser regexParser;
-    NFA* nfa = regexParser.parseREs("/home/louay/Compiler/lexical_analyzer/SampleTests/rules/rules1");
+    NFA* nfa = regexParser.parseREs("../SampleTests/rules/rules1");
     cout << nfa->getSize() << " nfa states" << endl;
     vector<DFA*> dfa = NfaToDfaConverter::convertNFAToDFA(nfa->startState);
 
@@ -54,7 +53,7 @@ int main() {
         std::cout << "--------------------------------------------------------------------------------\n";
     }
 
-    std::ofstream outFile("/home/louay/Compiler/lexical_analyzer/SampleTests/output/minimizedDFA.txt");
+    std::ofstream outFile("../SampleTests/output/minimizedDFA.txt");
 
     if (!outFile.is_open()) {
         std::cerr << "Error opening output file!" << std::endl;
@@ -77,10 +76,10 @@ int main() {
 
     outFile.close();
 
-    LexicalParser parser(*startDFA, "/home/louay/Compiler/lexical_analyzer/SampleTests/testPrograms/program1.txt");
+    LexicalParser parser(*startDFA, "../SampleTests/testPrograms/program1.txt");
     while(!parser.isClosedFile()) cout << "Token: " << parser.getNextToken() << endl;
     cout << "===================================================================\n";
-    LexicalParser parserFW(*startDFA, "/home/louay/Compiler/lexical_analyzer/SampleTests/testPrograms/program1.txt");
-    parserFW.writeAllTokens("/home/louay/Compiler/lexical_analyzer/SampleTests/output/tokens.txt");
+    LexicalParser parserFW(*startDFA, "../SampleTests/testPrograms/program1.txt");
+    parserFW.writeAllTokens("../SampleTests/output/tokens.txt");
 
 }

@@ -44,3 +44,12 @@
 2821	3852	7236677942577343	Compiler.exe	65f35ae077fa27ad
 3	729	7236683820735421	CMakeFiles/Compiler.dir/State.cpp.obj	9f18fdaa2f515f5d
 729	1720	7236683830607015	Compiler.exe	65f35ae077fa27ad
+5	887	7237392108550324	CMakeFiles/Compiler.dir/State.cpp.obj	9f18fdaa2f515f5d
+18	1212	7237392111801343	CMakeFiles/Compiler.dir/DFAMinimization.cpp.obj	18721972bb267ff9
+10	1222	7237392111921321	CMakeFiles/Compiler.dir/LexicalParser.cpp.obj	567cf1e52067dfb6
+15	1306	7237392112758764	CMakeFiles/Compiler.dir/main.cpp.obj	b6b3a1de70c5f6f8
+1307	2332	7237392122987511	Compiler.exe	65f35ae077fa27ad
+2	1010	7237392427208773	CMakeFiles/Compiler.dir/main.cpp.obj	b6b3a1de70c5f6f8
+1010	1992	7237392436980646	Compiler.exe	65f35ae077fa27ad
+4	1018	7237392952250869	CMakeFiles/Compiler.dir/main.cpp.obj	b6b3a1de70c5f6f8
+1018	1989	7237392961926729	Compiler.exe	65f35ae077fa27ad
