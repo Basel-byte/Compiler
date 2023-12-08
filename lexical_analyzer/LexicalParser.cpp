@@ -11,7 +11,7 @@ LexicalParser :: LexicalParser(const DFA &miniDFA, string srcPrgPath): miniDFA(m
         cout << "Source Program File Not Found!!";
         exit(1);
     }
-    lastStartPos = lineDiff = colDiff = lastStartLine = lastStartCol = 0;
+    lastStartDiff = lineDiff = colDiff = lastStartLine = lastStartCol = 0;
     lastAC = nullptr;
 }
 
@@ -21,7 +21,7 @@ bool LexicalParser :: isClosedFile() {return !sourceProgFile.is_open();}
 
 void LexicalParser :: closeFile() {sourceProgFile.close();}
 
-void LexicalParser :: updateMeasures(char input) {
+void LexicalParser :: updateLnColDiff(char input) {
     if(input == '\n') {
         lineDiff++;
         colDiff = -lastStartCol;
@@ -36,12 +36,15 @@ string LexicalParser :: getNextToken(){
         if(isClosedFile()) return "Input File EOF has been reached!!";
         sourceProgFile.get(c);
         if (sourceProgFile.eof()) c = -1;
-        updateMeasures(c);
+        updateLnColDiff(c);
         toRecognize = traverseDFA(c);
+        if(c == -1 && lastStartDiff == 0) {
+            closeFile();
+            return "Input File EOF has been reached!!";
+        }
     }
     return toRecognize;
 }
-
 string LexicalParser :: traverseDFA(char input) {
     auto it = dFAIterator.getTransitions().find(input);
     if(it == dFAIterator.getTransitions().end() || input == -1 || isspace(input)){ // to PHI state !!
@@ -49,25 +52,25 @@ string LexicalParser :: traverseDFA(char input) {
         if(lastAC == nullptr) return panicRecover();
         // There is a previous Accepting State
         string recToken = lastAC->getTokenClass();
-        lastStartLine += (isspace(input) && lastStartPos > -1)? lineDiff : 0;
-        lastStartCol += (isspace(input) && lastStartPos > -1)? colDiff : 0;
+        lastStartLine += (isspace(input) && lastStartDiff > -1) ? lineDiff : 0;
+        lastStartCol += (isspace(input) && lastStartDiff > -1) ? colDiff : 0;
         delete lastAC; lastAC = nullptr;
         dFAIterator = DFA(miniDFA);
-        if(input == -1 && !recToken.empty() && lastStartPos < 0) {
+        if(input == -1 && !recToken.empty() && lastStartDiff < 0) {
             sourceProgFile.clear(ios_base::eofbit);
-            lastStartPos++;
+            lastStartDiff++;
         }
-        sourceProgFile.seekg((isspace(input) && lastStartPos > -1)? 0 : lastStartPos - 1, ios_base::cur);
-        lastStartPos = colDiff = lineDiff = 0;
+        sourceProgFile.seekg((isspace(input) && lastStartDiff > -1) ? 0 : lastStartDiff - 1, ios_base::cur);
+        lastStartDiff = colDiff = lineDiff = 0;
         return recToken;
     }
     dFAIterator = *dFAIterator.move(input);
     if(dFAIterator.isAcceptingState()) {
         lastAC = new DFA(dFAIterator);
         lastStartCol += colDiff;
-        lastStartPos = colDiff = 0;
+        lastStartDiff = colDiff = 0;
     }
-    else lastStartPos--;
+    else lastStartDiff--;
     return "";
 }
 
@@ -79,15 +82,15 @@ void LexicalParser :: writeAllTokens(string outFileName) {
 
 string LexicalParser :: panicRecover() {
     char c;
-    sourceProgFile.seekg(lastStartPos - 1, ios_base::cur);
+    sourceProgFile.seekg(lastStartDiff - 1, ios_base::cur);
     sourceProgFile.get(c);
-    while(lastStartPos < 0 && isspace(c)){
+    while(lastStartDiff < 0 && isspace(c)){
         if(c == '\n') {
             lastStartLine ++;
             lastStartCol = 0;
         }
         else lastStartCol++;
-        lastStartPos++;
+        lastStartDiff++;
         sourceProgFile.get(c);
     }
     if(sourceProgFile.eof() || c == -1) {
@@ -101,7 +104,7 @@ string LexicalParser :: panicRecover() {
     else lastStartCol++;
     colDiff = lineDiff = 0;
     dFAIterator = DFA(miniDFA);
-    if(lastStartPos == 0 && (isspace(c))) return "";
+    if(lastStartDiff == 0 && (isspace(c))) return "";
     return "PANIC MODE RECOVERY APPLIED: Deleting Character ( " + string(1, c) + " ) At Ln.: "
            + to_string(lastStartLine + 1) + " , Col.: " + to_string(lastStartCol);
 }
