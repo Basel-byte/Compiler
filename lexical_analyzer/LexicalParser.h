@@ -19,7 +19,7 @@ private:
     ifstream sourceProgFile;
     ofstream parsedTokenFile;
 
-    int lastStartPos;
+    int lastStartDiff;
     long lastStartLine;
     long lastStartCol;
     long lineDiff;
@@ -29,7 +29,7 @@ private:
     string traverseDFA(char input);
 
     void closeFile();
-    void updateMeasures(char input);
+    void updateLnColDiff(char input);
 
 public:
     bool isClosedFile();

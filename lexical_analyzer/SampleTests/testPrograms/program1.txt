@@ -1,4 +1,4 @@
-        i%
+        i%%%%%%%%%%%%%
     %nt sum , count , pass , mnt;
 
             while(pass !=
