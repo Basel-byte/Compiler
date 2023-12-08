@@ -17,7 +17,7 @@
 using namespace std;
 
 int main() {
-    std::string rulesFilePath, programFilePath, tokensFilePath, outputDirPath;
+    std::string rulesFilePath, programFilePath;
 
     // Get the rules file path from the user
     std::cout << "Enter the path of the rules file: \n";
@@ -27,11 +27,9 @@ int main() {
     std::cout << "Enter the path of the program file: \n";
     std::cin >> programFilePath;
 
-    // Set the tokens file path to be in the same directory as rules file
-    tokensFilePath = rulesFilePath.substr(0, programFilePath.find_last_of("/\\") + 1) + "output/tokens.txt";
+    string rulesFileName = rulesFilePath.substr(rulesFilePath.find_last_of("/\\") + 1);
 
-    // Set the tokens file path to be in the same directory as rules file
-    outputDirPath = programFilePath.substr(0, rulesFilePath.find_last_of("/\\") + 1) + "output";
+    string programFileName = programFilePath.substr(programFilePath.find_last_of("/\\") + 1);
 
     auto start = chrono::high_resolution_clock::now();
     RegexParser regexParser;
@@ -46,7 +44,7 @@ int main() {
     cout << "No of minimized DFA states: " << minimizedDfa.size() << endl;
     cout << "Execution time of grammar parsing: " << duration.count() << " milliseconds" << endl;
 
-    TransitionTableWriter::writeTableInTabularForm(minimizedDfa, outputDirPath);
+    TransitionTableWriter::writeTableInTabularForm(minimizedDfa, "../output", rulesFileName);
 
     DFA* startDFA = DFAMinimization::getStartState(minimizedDfa);
 
@@ -57,5 +55,5 @@ int main() {
 
     std::cout << "===================================================================\n";
     LexicalParser parserFW(*startDFA, programFilePath);
-    parserFW.writeAllTokens(tokensFilePath);
+    parserFW.writeAllTokens("../output/" + programFileName + "_tokens.txt");
 }

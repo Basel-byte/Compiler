@@ -11,12 +11,12 @@
 
 using namespace std;
 
-void TransitionTableWriter::writeTableInTabularForm(set<DFA *> &dfa, string dirpath) {
+void TransitionTableWriter::writeTableInTabularForm(set<DFA *> &dfa, string dirpath, string rulesFileName) {
     vector<DFA*> sortedDfa(dfa.begin(), dfa.end());
     sort(sortedDfa.begin(), sortedDfa.end(), DFAMinimization::compareDFAId);
     set<char> inputs = getInputs(sortedDfa);
 
-    ofstream tablefile(dirpath + "/transition_table.txt");
+    ofstream tablefile(dirpath + "/" + rulesFileName + "_transition_table.txt");
 
     if (!tablefile.is_open()) {
         std::cerr << "Error opening output file!" << std::endl;
@@ -66,13 +66,13 @@ void TransitionTableWriter::writeTableInTabularForm(set<DFA *> &dfa, string dirp
         tablefile << "+" << endl;
     }
     tablefile.close();
-    writeAcceptingStates(acceptingStates, dirpath);
+    writeAcceptingStates(acceptingStates, dirpath, rulesFileName);
 }
 
-void TransitionTableWriter::writeAcceptingStates(set<DFA*> &acceptingStates, string dirpath) {
+void TransitionTableWriter::writeAcceptingStates(set<DFA*> &acceptingStates, string dirpath, string rulesFileName) {
     vector<DFA*> sortedStates(acceptingStates.begin(), acceptingStates.end());
     sort(sortedStates.begin(), sortedStates.end(), DFAMinimization::compareDFAId);
-    ofstream tablefile(dirpath + "/accepting_states.txt");
+    ofstream tablefile(dirpath + "/" + rulesFileName + "_accepting_states.txt");
 
     tablefile << "+=======+============+" << endl;
     tablefile << setw(4) << "| State";
