@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.22)
 project(Compiler)
 
 set(CMAKE_CXX_STANDARD 14)
-
 include_directories(.)
 
 add_executable(Compiler
@@ -18,5 +17,4 @@ add_executable(Compiler
         main.cpp
         LexicalParser.cpp
         DFAMinimization.cpp
-        TransitionTableWriter.cpp
-        )
+        TransitionTableWriter.cpp)

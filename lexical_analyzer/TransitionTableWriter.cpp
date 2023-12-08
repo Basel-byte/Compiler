@@ -40,6 +40,7 @@ void TransitionTableWriter::writeTableInTabularForm(set<DFA *> &dfa, string dirp
     tablefile << "+" << endl;
 
     set<DFA*> acceptingStates;
+    int width = 4;
     for (auto & it : sortedDfa) {
         int id = it->getMinimizationId();
         auto transitions = it->getTransitions();
@@ -49,15 +50,15 @@ void TransitionTableWriter::writeTableInTabularForm(set<DFA *> &dfa, string dirp
                 auto next = transitions[input];
                 if (next->isAcceptingState()) {
                     acceptingStates.insert(next);
-                    tablefile << setw(4) << "|" << setw(4) << "*" + to_string(next->getMinimizationId());
+                    tablefile << setw(width) << "|" << setw(width) << "*" + to_string(next->getMinimizationId());
                 }
                 else
-                    tablefile << setw(4) << "|" << setw(4) << next->getMinimizationId();
+                    tablefile << setw(width) << "|" << setw(width) << next->getMinimizationId();
             }
             else
-                tablefile << setw(4) << "|" << setw(5) << "φ";
+                tablefile << setw(width) << "|" << setw(width + 1) << "φ";
         }
-        tablefile << setw(4) << "|" << endl;
+        tablefile << setw(width) << "|" << endl;
 
         tablefile << "+-------";
         for (size_t i = 0; i < inputs.size(); ++i) {

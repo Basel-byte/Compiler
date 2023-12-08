@@ -16,20 +16,19 @@
 
 using namespace std;
 
-int main() {
-    std::string rulesFilePath, programFilePath;
+string getFileName(const string& filePath) {
+    return filePath.substr(filePath.find_last_of("/\\") + 1);
+}
 
-    // Get the rules file path from the user
-    std::cout << "Enter the path of the rules file: \n";
-    std::cin >> rulesFilePath;
+int main(int argc, char* argv[]) {
+    if (argc < 3) {
+        cerr << "Expected 3 arguments, but got " << argc << std::endl;
+        exit(1); // Return an error
+    }
+    string rulesFilePath = argv[1];
 
-    // Get the program file path from the user
-    std::cout << "Enter the path of the program file: \n";
-    std::cin >> programFilePath;
+    string rulesFileName = getFileName(rulesFilePath);
 
-    string rulesFileName = rulesFilePath.substr(rulesFilePath.find_last_of("/\\") + 1);
-
-    string programFileName = programFilePath.substr(programFilePath.find_last_of("/\\") + 1);
 
     auto start = chrono::high_resolution_clock::now();
     RegexParser regexParser;
@@ -48,12 +47,13 @@ int main() {
 
     DFA* startDFA = DFAMinimization::getStartState(minimizedDfa);
 
-    LexicalParser parser(*startDFA, programFilePath);
-    while (!parser.isClosedFile()) {
-        std::cout << "Token: " << parser.getNextToken() << std::endl;
+    for (int i = 2; i < argc; i++) {
+        LexicalParser parser(*startDFA, argv[i]);
+        while (!parser.isClosedFile()) {
+            std::cout << "Token: " << parser.getNextToken() << std::endl;
+        }
+        std::cout << "===================================================================\n";
+        LexicalParser parserFW(*startDFA, argv[i]);
+        parserFW.writeAllTokens("../output/" + getFileName(argv[i]) + "_tokens.txt");
     }
-
-    std::cout << "===================================================================\n";
-    LexicalParser parserFW(*startDFA, programFilePath);
-    parserFW.writeAllTokens("../output/" + programFileName + "_tokens.txt");
 }
