@@ -1,0 +1,58 @@
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 10
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 11
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 12
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 13
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 14
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 15
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 16
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 17
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 18
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 19
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 20
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 21
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 1 , Col.: 22
+PANIC MODE RECOVERY APPLIED: Deleting Character ( % ) At Ln.: 2 , Col.: 5
+id
+id
+,
+id
+,
+id
+,
+id
+;
+while
+(
+id
+relop
+num
+)
+{
+id
+assign
+id
+addop
+num
+;
+}
+id
+id
+num
+id
+num
+id
+num
+PANIC MODE RECOVERY APPLIED: Deleting Character ( . ) At Ln.: 15 , Col.: 2
+id
+num
+PANIC MODE RECOVERY APPLIED: Deleting Character ( . ) At Ln.: 16 , Col.: 2
+num
+PANIC MODE RECOVERY APPLIED: Deleting Character ( . ) At Ln.: 17 , Col.: 8
+num
+num
+id
+addop
+num
+num
+Input File EOF has been reached!!
