@@ -4,7 +4,7 @@ project(Compiler)
 set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
-add_executable(Compiler
+add_executable(lexical_analyzer
         NFA.cpp
         NfaToDfaConverter.cpp
         State.cpp
