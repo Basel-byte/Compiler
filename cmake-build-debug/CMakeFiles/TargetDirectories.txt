@@ -1,0 +1,9 @@
+D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/cmake-build-debug/CMakeFiles/compiler.dir
+D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/cmake-build-debug/lexical_analyzer/CMakeFiles/lexical_analyzer.dir
+D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/cmake-build-debug/lexical_analyzer/CMakeFiles/edit_cache.dir
+D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/cmake-build-debug/lexical_analyzer/CMakeFiles/rebuild_cache.dir
+D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/cmake-build-debug/syntax_analyzer/CMakeFiles/edit_cache.dir
+D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/cmake-build-debug/syntax_analyzer/CMakeFiles/rebuild_cache.dir

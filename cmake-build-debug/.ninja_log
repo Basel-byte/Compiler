@@ -1,0 +1,19 @@
+# ninja log v5
+1	153	7247118818005630	build.ninja	3b95ee3c2a657427
+4	1073	7247116364747399	CMakeFiles/compiler.dir/main.cpp.obj	fed6a8f75ea2b52a
+10	1087	7247111457404566	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/State.cpp.obj	e6402f00b5057f07
+23	455	7247111451091461	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/ThomsonConstructor.cpp.obj	24ca17092fc22035
+13	508	7247111451620044	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/PriorityTable.cpp.obj	ac439864cb5574ed
+6	778	7247111454312842	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NFA.cpp.obj	ba749b6a762f607
+1088	2314	7247111469671760	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFAMinimization.cpp.obj	ea0b2110485cf49a
+508	1174	7247111458282229	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/Utility.cpp.obj	cfc67078606464d8
+779	1325	7247111459778222	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFA.cpp.obj	e964975258760c7e
+17	1520	7247111461732994	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NfaToDfaConverter.cpp.obj	43e5fd3d06b24c73
+1174	2140	7247111467936397	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/TransitionTableWriter.cpp.obj	521365458742922a
+1326	2572	7247111472274789	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/LexicalParser.cpp.obj	af46ca9ddfe2a2c1
+455	3660	7247111483105819	lexical_analyzer/CMakeFiles/lexical_analyzer.dir/RegexParser.cpp.obj	eec22168e4d139ba
+3661	4470	7247111491239830	lexical_analyzer/liblexical_analyzer.a	4852a3cc49b4cfbd
+1073	2137	7247116375553979	compiler.exe	d5c0ce95fa27fe4f
+8	62	7247116354823951	syntax_analyzer/CMakeFiles/syntax_analyzer.dir/tmp.cpp.obj	1f74dc55e8aa7e5d
+62	129	7247116355522085	syntax_analyzer/libsyntax_analyzer.a	8398e6f2bea42fcf
+1	147	7247118818005630	build.ninja	3b95ee3c2a657427

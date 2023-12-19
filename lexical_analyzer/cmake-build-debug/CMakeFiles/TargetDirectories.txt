@@ -1,3 +1,0 @@
-D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/lexical_analyzer/cmake-build-debug/CMakeFiles/lexical_analyzer.dir
-D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/lexical_analyzer/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/lexical_analyzer/cmake-build-debug/CMakeFiles/rebuild_cache.dir
