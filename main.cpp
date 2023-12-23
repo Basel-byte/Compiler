@@ -14,6 +14,8 @@
 #include "lexical_analyzer/DFAMinimization.h"
 #include "lexical_analyzer/TransitionTableWriter.h"
 
+#include "syntax_analyzer/CFGReader.h"
+
 using namespace std;
 
 string getFileName(const string& filePath) {
@@ -21,6 +23,18 @@ string getFileName(const string& filePath) {
 }
 
 int main(int argc, char* argv[]) {
+    CFGReader reader = CFGReader((string &) argv[1]);
+    map<string, vector<vector<string>>> rules = reader.parseRules();
+    for (const auto& pair : rules){
+        cout << "\nNT: " << pair.first << endl;
+        vector<vector<string>> oredRules = rules[pair.first];
+        for(const auto& rule : oredRules){
+            for(const auto & i : rule) cout << i << "-";
+            cout << endl;
+        }
+    }
+    return 0;
+
     if (argc < 3) {
         cerr << "Expected 3 arguments, but got " << argc << std::endl;
         exit(1); // Return an error
