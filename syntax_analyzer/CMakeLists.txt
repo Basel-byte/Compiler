@@ -8,6 +8,7 @@ add_library(syntax_analyzer
         FirstSet.cpp
         CFGReader.cpp
         LeftRecursionEliminator.cpp
+        NTSorter.cpp
 )
 
 target_include_directories(syntax_analyzer

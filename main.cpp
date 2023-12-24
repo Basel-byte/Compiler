@@ -15,6 +15,8 @@
 #include "lexical_analyzer/TransitionTableWriter.h"
 
 #include "syntax_analyzer/CFGReader.h"
+#include "syntax_analyzer/NTSorter.h"
+#include "syntax_analyzer/LeftRecursionEliminator.h"
 
 using namespace std;
 
@@ -25,14 +27,10 @@ string getFileName(const string& filePath) {
 int main(int argc, char* argv[]) {
     CFGReader reader = CFGReader((string &) argv[1]);
     map<string, vector<vector<string>>> rules = reader.parseRules();
-    for (const auto& pair : rules){
-        cout << "\nNT: " << pair.first << endl;
-        vector<vector<string>> oredRules = rules[pair.first];
-        for(const auto& rule : oredRules){
-            for(const auto & i : rule) cout << i << "-";
-            cout << endl;
-        }
-    }
+    NTSorter sorter = NTSorter(rules);
+    LeftRecursionEliminator lREliminator = LeftRecursionEliminator(rules, sorter);
+    lREliminator.removeLeftRecursion();
+
     return 0;
 
     if (argc < 3) {
