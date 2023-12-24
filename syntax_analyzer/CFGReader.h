@@ -11,6 +11,7 @@ using namespace std;
 class CFGReader {
     private:
         ifstream CFGFile;
+        string startSymbol;
 
         static vector<vector<string>> productionToVector(string& production);
         static vector<string> splitOn(string toSplit, const string& separator);
@@ -19,6 +20,7 @@ class CFGReader {
     public:
         CFGReader(string& CFGFilePath);
         map<string, vector<vector<string>>> parseRules();
+        string getStartSymbol();
 };
 
 

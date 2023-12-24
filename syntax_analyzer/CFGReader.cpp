@@ -11,7 +11,11 @@ CFGReader :: CFGReader(string& CFGFilePath) {
         cout << "CFG File Not Found!!";
         exit(1);
     }
+
 }
+
+string CFGReader :: getStartSymbol(){return startSymbol;}
+
 
 map<string, vector<vector<string>>> CFGReader :: parseRules() {
     map<string, vector<vector<string>>> rules;
@@ -23,6 +27,7 @@ map<string, vector<vector<string>>> CFGReader :: parseRules() {
         if(line[0] == '#' && regex_search(line, matcher, assignPattern)) { // a new rule
             size_t position = matcher.position();
             currentNT = line.substr(2, position - 3); // 2 because of # + space and pos - 3 because of space + =
+            if(startSymbol.empty()) startSymbol = currentNT;
             string productions = line.substr(position + 2); // pos + 2 because of = + space
             rules[currentNT] = productionToVector(productions);
         }

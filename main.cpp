@@ -63,7 +63,9 @@ int main(int argc, char* argv[]) {
     map<string, vector<vector<string>>> rules = reader.parseRules();
     LeftRecursionEliminator lREliminator = LeftRecursionEliminator(rules);
     rules = lREliminator.removeLeftRecursion();
-    for(auto pair : rules){
+    string startSymbol = reader.getStartSymbol();
+    cout << "\nStart Symbol: " << startSymbol << endl;
+    for(const auto& pair : rules){
         cout << "\nNon-Terminal: " << pair.first << endl;
         vector<vector<string>> rulesPerNT = pair.second;
         for (const auto& rule : rulesPerNT) {
