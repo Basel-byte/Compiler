@@ -12,7 +12,7 @@
 4. If First (Non-terminal) doesn't contain ɛ but its follow set is not empty, make all follow set values "sync"
  */
 
-set<string> getTermFirst(map<string, vector<vector<string>>> rules, map<string, set<string>> firstSet, vector<string> term){
+set<string> getTermFirst(map<string, set<string>> firstSet, vector<string> term){
     int i = 0;
     set<string> subFirst;
     string subTerm = term[i];
@@ -54,7 +54,7 @@ map<string, set<string>> firstSet, map<string, set <string>> followSet){
     for(const auto& rule : rules){
         map<string, vector<string>> terminalMap;
         for(const auto& term : rule.second){
-            set<string> termFirst = getTermFirst(rules, firstSet,term);
+            set<string> termFirst = getTermFirst(firstSet, term);
 
             for(const auto& terminal : termFirst){
                 if(terminal != "\\L"){
