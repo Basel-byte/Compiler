@@ -27,10 +27,8 @@ string getFileName(const string& filePath) {
 int main(int argc, char* argv[]) {
     CFGReader reader = CFGReader((string &) argv[1]);
     map<string, vector<vector<string>>> rules = reader.parseRules();
-    NTSorter sorter = NTSorter(rules);
-    LeftRecursionEliminator lREliminator = LeftRecursionEliminator(rules, sorter);
+    LeftRecursionEliminator lREliminator = LeftRecursionEliminator(rules);
     lREliminator.removeLeftRecursion();
-
     return 0;
 
     if (argc < 3) {

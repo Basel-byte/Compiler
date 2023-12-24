@@ -5,6 +5,9 @@
 #include "NTSorter.h"
 using namespace std;
 
+
+NTSorter ::NTSorter() = default;
+
 NTSorter :: NTSorter(map<string, vector<vector<string>>> rules) {
     int index = 0;
     for(const auto& pair : rules) NT_index[pair.first] = ++index;

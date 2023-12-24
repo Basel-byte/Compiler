@@ -14,6 +14,7 @@ class NTSorter {
         vector<vector<bool>> adjacencyMatrix;
 
     public:
+        NTSorter();
         NTSorter(map<string, vector<vector<string>>> rules);
         void applyFloydWarshall();
         vector<string> getNTSorted();

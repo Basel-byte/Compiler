@@ -13,12 +13,16 @@ class LeftRecursionEliminator {
     private:
         map<string, vector<vector<string>>> myRules;
         NTSorter nTSorter;
+        unordered_set<string> fixedNTs;
+
 
         vector<string> sortNonTerminals();
+        vector<vector<string>> substituteRule(vector<string> rule);
+        vector<vector<string>> substituteRules(vector<vector<string>> rules);
+        void removeLeftRecursion(vector<vector<string>> rulesPerNT, string NT);
 
     public:
-        LeftRecursionEliminator(map<std::string, vector<vector<std::string>>> rules,
-                                NTSorter nTSorter);
+        LeftRecursionEliminator(map<string, vector<vector<string>>> rules);
         map<string, vector<string>> removeLeftRecursion();
 };
 
