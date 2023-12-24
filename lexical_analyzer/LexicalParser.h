@@ -32,6 +32,7 @@ private:
     void updateLnColDiff(char input);
 
 public:
+    vector<string> tokens;
     bool isClosedFile();
 
     LexicalParser(const DFA &miniDFA, string srcPrgPath);

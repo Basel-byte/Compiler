@@ -32,7 +32,9 @@ void LexicalParser :: updateLnColDiff(char input) {
 string LexicalParser :: getNextToken(){
     char c = 0;
     string toRecognize;
+    string token;
     while(toRecognize.empty() && c != -1){
+        token += c;
         if(isClosedFile()) return "Input File EOF has been reached!!";
         sourceProgFile.get(c);
         if (sourceProgFile.eof()) c = -1;
@@ -43,6 +45,8 @@ string LexicalParser :: getNextToken(){
             return "Input File EOF has been reached!!";
         }
     }
+    token = token.substr(1, token.size());
+    tokens.push_back(token);
     return toRecognize;
 }
 string LexicalParser :: traverseDFA(char input) {
