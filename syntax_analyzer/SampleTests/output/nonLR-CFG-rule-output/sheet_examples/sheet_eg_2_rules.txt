@@ -1,0 +1,24 @@
+#### NOTICE : DO NOT READ THESE RULES. THEY ARE JUST TO CHECK IF LEFT RECURSION ELIMINATION ALGORITHM IS CORRECT ####
+
+The Following are the Productions written in the order in which The Original Productions were Parsed:
+=====================================================================================================
+
+Non Terminal: bexpr
+--> [bterm, bexpr']
+
+Non Terminal: bexpr'
+--> ['or', bterm, bexpr']
+--> [\L]
+
+Non Terminal: bterm
+--> [bfactor, bterm']
+
+Non Terminal: bterm'
+--> ['and', bfactor, bterm']
+--> [\L]
+
+Non Terminal: bfactor
+--> ['not', bfactor]
+--> ['(', bexpr, ')']
+--> ['true']
+--> ['false']

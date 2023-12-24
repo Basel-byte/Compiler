@@ -18,12 +18,14 @@ class LeftRecursionEliminator {
 
         vector<string> sortNonTerminals();
         vector<vector<string>> substituteRule(vector<string> rule);
-        vector<vector<string>> substituteRules(vector<vector<string>> rules);
-        void removeLeftRecursion(vector<vector<string>> rulesPerNT, string NT);
+        vector<vector<string>> substituteRules(const vector<vector<string>>& rules);
+        void removeLeftRecursion(const vector<vector<string>>& rulesPerNT, const string& NT);
+
+        static bool areRuleChanged(vector<vector<string>> oldRules, vector<vector<string>> newRules);
 
     public:
-        LeftRecursionEliminator(map<string, vector<vector<string>>> rules);
-        map<string, vector<string>> removeLeftRecursion();
+        LeftRecursionEliminator(const map<string, vector<vector<string>>>& rules);
+        map<string, vector<vector<string>>> removeLeftRecursion();
 };
 
 
