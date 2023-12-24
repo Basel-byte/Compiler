@@ -14,6 +14,10 @@
 #include "lexical_analyzer/DFAMinimization.h"
 #include "lexical_analyzer/TransitionTableWriter.h"
 
+#include "syntax_analyzer/CFGReader.h"
+#include "syntax_analyzer/NTSorter.h"
+#include "syntax_analyzer/LeftRecursionEliminator.h"
+
 using namespace std;
 
 string getFileName(const string& filePath) {
@@ -21,8 +25,13 @@ string getFileName(const string& filePath) {
 }
 
 int main(int argc, char* argv[]) {
+    // arguments are as follows:
+    // 1. Lexical Rules FilePath
+    // 2. CFG Rules FilePath
+    // 3. paths of any number of input source programs
+
     if (argc < 3) {
-        cerr << "Expected 3 arguments, but got " << argc << std::endl;
+        cerr << "Expected 4 arguments, but got " << argc << std::endl;
         exit(1); // Return an error
     }
     string rulesFilePath = argv[1];
@@ -46,8 +55,29 @@ int main(int argc, char* argv[]) {
     TransitionTableWriter::writeTableInTabularForm(minimizedDfa, "../lexical_analyzer/output", rulesFileName);
 
     DFA* startDFA = DFAMinimization::getStartState(minimizedDfa);
+    cout << "===================================================\n";
 
-    for (int i = 2; i < argc; i++) {
+    /// Parser Part
+    cout << "\n\nRules After Left Recursion Elimination: \n";
+    CFGReader reader = CFGReader((string &) argv[2]);
+    map<string, vector<vector<string>>> rules = reader.parseRules();
+    LeftRecursionEliminator lREliminator = LeftRecursionEliminator(rules);
+    rules = lREliminator.removeLeftRecursion();
+    for(auto pair : rules){
+        cout << "\nNon-Terminal: " << pair.first << endl;
+        vector<vector<string>> rulesPerNT = pair.second;
+        for (const auto& rule : rulesPerNT) {
+            cout << "--> [";
+            for (size_t i = 0; i < rule.size(); ++i) {
+                cout << rule[i];
+                if (i < rule.size() - 1) cout << ", ";
+            }
+            cout << "]" << endl;
+        }
+    }
+    cout << "===================================================\n";
+    cout << "\n\nLexical Analyzer Output:\n";
+    for (int i = 3; i < argc; i++) {
         LexicalParser parser(*startDFA, argv[i]);
         while (!parser.isClosedFile()) {
             std::cout << "Token: " << parser.getNextToken() << std::endl;
@@ -56,4 +86,6 @@ int main(int argc, char* argv[]) {
         LexicalParser parserFW(*startDFA, argv[i]);
         parserFW.writeAllTokens("../lexical_analyzer/output/" + getFileName(argv[i]) + "_tokens.txt");
     }
+
+    return 0;
 }

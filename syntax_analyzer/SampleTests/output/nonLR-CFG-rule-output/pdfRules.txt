@@ -1,0 +1,64 @@
+#### NOTICE : DO NOT READ THESE RULES. THEY ARE JUST TO CHECK IF LEFT RECURSION ELIMINATION ALGORITHM IS CORRECT ####
+
+The Following are the Productions written in the order in which The Original Productions were Parsed:
+=====================================================================================================
+
+Non-Terminal: METHOD_BODY
+--> [STATEMENT_LIST]
+
+Non-Terminal: STATEMENT_LIST
+--> [STATEMENT, STATEMENT_LIST']
+
+Non-Terminal: STATEMENT_LIST'
+--> [STATEMENT, STATEMENT_LIST']
+--> [\L]
+
+Non-Terminal: STATEMENT
+--> [DECLARATION]
+--> [IF]
+--> [WHILE]
+--> [ASSIGNMENT]
+
+Non-Terminal: EXPRESSION
+--> [SIMPLE_EXPRESSION]
+--> [SIMPLE_EXPRESSION, 'relop', SIMPLE_EXPRESSION]
+
+Non-Terminal: SIMPLE_EXPRESSION
+--> [TERM, SIMPLE_EXPRESSION']
+--> [SIGN, TERM, SIMPLE_EXPRESSION']
+
+Non-Terminal: SIMPLE_EXPRESSION'
+--> ['addop', TERM, SIMPLE_EXPRESSION']
+--> [\L]
+
+Non-Terminal: DECLARATION
+--> [PRIMITIVE_TYPE, 'id', ';']
+
+Non-Terminal: TERM
+--> [FACTOR, TERM']
+
+Non-Terminal: TERM'
+--> ['mulop', FACTOR, TERM']
+--> [\L]
+
+Non-Terminal: ASSIGNMENT
+--> ['id', '=', EXPRESSION, ';']
+
+Non-Terminal: FACTOR
+--> ['id']
+--> ['num']
+--> ['(', EXPRESSION, ')']
+
+Non-Terminal: IF
+--> ['if', '(', EXPRESSION, ')', '{', STATEMENT, '}', 'else', '{', STATEMENT, '}']
+
+Non-Terminal: PRIMITIVE_TYPE
+--> ['int']
+--> ['float']
+
+Non-Terminal: SIGN
+--> ['+']
+--> ['-']
+
+Non-Terminal: WHILE
+--> ['while', '(', EXPRESSION, ')', '{', STATEMENT, '}']

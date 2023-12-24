@@ -1,0 +1,24 @@
+int
+id
+,
+id
+,
+id
+,
+id
+;
+while
+(
+id
+relop
+num
+)
+{
+id
+assign
+id
+addop
+num
+;
+}
+Input File EOF has been reached!!
