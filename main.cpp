@@ -4,25 +4,46 @@
 
 #include <iostream>
 #include <chrono>
-#include "NFA.h"
-#include "lexical_analyzer/RegexParser.h"
-#include "lexical_analyzer/State.h"
-#include "lexical_analyzer/PriorityTable.h"
-#include "lexical_analyzer/DFA.h"
-#include "lexical_analyzer/NfaToDfaConverter.h"
-#include "lexical_analyzer/LexicalParser.h"
-#include "lexical_analyzer/DFAMinimization.h"
-#include "lexical_analyzer/TransitionTableWriter.h"
+#include "lexical_analyzer/NFA.cpp"
+#include "lexical_analyzer/RegexParser.cpp"
+#include "lexical_analyzer/State.cpp"
+#include "lexical_analyzer/PriorityTable.cpp"
+#include "lexical_analyzer/DFA.cpp"
+#include "lexical_analyzer/NfaToDfaConverter.cpp"
+#include "lexical_analyzer/LexicalParser.cpp"
+#include "lexical_analyzer/DFAMinimization.cpp"
+#include "lexical_analyzer/TransitionTableWriter.cpp"
+#include "lexical_analyzer/ThomsonConstructor.cpp"
+#include "lexical_analyzer/Utility.cpp"
 
-#include "syntax_analyzer/CFGReader.h"
-#include "syntax_analyzer/NTSorter.h"
-#include "syntax_analyzer/LeftRecursionEliminator.h"
+#include "syntax_analyzer/CFGReader.cpp"
+#include "syntax_analyzer/NTSorter.cpp"
+#include "syntax_analyzer/LeftRecursionEliminator.cpp"
+#include "syntax_analyzer/ParsingTable.cpp"
+#include "syntax_analyzer/FollowSet.cpp"
+#include "syntax_analyzer/FirstSet.cpp"
 
 using namespace std;
 
 string getFileName(const string& filePath) {
     return filePath.substr(filePath.find_last_of("/\\") + 1);
 }
+void printTable(map<string, vector<vector<string>>> rules, map<string, map<string, vector<string>>> parsingTable){
+    cout<<"\n\n******Parsing Table******\n\n";
+    cout << "------------------------------------------------------------------------\n" << endl;
+    for(auto rule : rules){
+        cout<< "****** " + rule.first + " ******\n\n";
+        for(auto firstSet : parsingTable[rule.first]){
+            cout<< "[ " + firstSet.first + " ] ==> ";
+            for(auto first : firstSet.second){
+                cout<< first;
+            }
+            cout<<"\n";
+        }
+        cout << endl << "==================================================================================================" << endl;
+    }
+}
+
 
 int main(int argc, char* argv[]) {
     // arguments are as follows:
@@ -51,8 +72,8 @@ int main(int argc, char* argv[]) {
     cout << "No of DFA states: " << dfa.size() << endl;
     cout << "No of minimized DFA states: " << minimizedDfa.size() << endl;
     cout << "Execution time of grammar parsing: " << duration.count() << " milliseconds" << endl;
-
-    TransitionTableWriter::writeTableInTabularForm(minimizedDfa, "../lexical_analyzer/output", rulesFileName);
+    cout<<"jii "<<rulesFileName;
+    TransitionTableWriter::writeTableInTabularForm(minimizedDfa, "/home/mai/Compiler/lexical_analyzer/output", rulesFileName);
 
     DFA* startDFA = DFAMinimization::getStartState(minimizedDfa);
     cout << "===================================================\n";
@@ -89,5 +110,51 @@ int main(int argc, char* argv[]) {
         parserFW.writeAllTokens("../lexical_analyzer/output/" + getFileName(argv[i]) + "_tokens.txt");
     }
 
+    map<string, set<string>> firstSet = FirstSet::firstSet(rules);
+
+    // Print FIRST sets
+    cout << "FIRST sets:" << endl;
+    for (const auto& entry : firstSet) {
+        int count = 0;
+        cout << "First( " <<entry.first << " ) = { " ;
+        for (const auto& terminal : entry.second) {
+            cout << terminal ;
+            count++;
+            if(count == entry.second.size())
+                cout << " }" << endl;
+            else
+                cout << ", ";
+        }
+
+    }
+
+
+    // Compute FOLLOW sets
+    //string startSymbol ="E";
+    map<string, set<string>> followSet = FollowSet::followSet(rules, firstSet, startSymbol);
+
+
+
+    // Print FOLLOW sets
+    cout << "\nFOLLOW sets:" << endl;
+    for (const auto& entry : followSet) {
+        int count = 0;
+        cout << "FOLLOW( " <<entry.first << " ) = { " ;
+        for (const auto& terminal : entry.second) {
+            cout << terminal ;
+            count++;
+            if(count == entry.second.size())
+                cout << " }" << endl;
+            else
+                cout << ", ";
+        }
+
+    }
+
+    // Print Parsing table
+    map<string, map<string, vector<string>>> parsingTable = ParsingTable::getParsingTable(rules, firstSet, followSet);
+    printTable(rules, parsingTable);
+
     return 0;
 }
+
