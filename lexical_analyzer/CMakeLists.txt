@@ -17,9 +17,8 @@ add_library(lexical_analyzer
         LexicalParser.cpp
         DFAMinimization.cpp
         TransitionTableWriter.cpp
-        ../syntax_analyzer/FirstSet.cpp
-        ../syntax_analyzer/ParsingTable.cpp
-        ../syntax_analyzer/FollowSet.cpp)
+        )
 
 target_include_directories(lexical_analyzer
-        PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+        PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+)

@@ -13,7 +13,7 @@ class TransitionTableWriter {
 public:
     static void writeTableInTabularForm(set<DFA*> &dfa, string dirpath, string rulesFileName);
 private:
-    static void writeAcceptingStates(set<DFA*> &acceptingStates, string dirpath, string rulesFileName);
+    static void writeAcceptingStates(set<DFA*> &acceptingStates, const string& dirpath, const string& rulesFileName);
     static set<char> getInputs(vector<DFA *> &dfa);
 };
 

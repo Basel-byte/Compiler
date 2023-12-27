@@ -1,4 +1,4 @@
-# Install script for directory: /home/louay/compilers-P2/lexical_analyzer
+# Install script for directory: /home/basel/Projects/Compiler/lexical_analyzer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

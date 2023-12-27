@@ -1,4 +1,4 @@
-# Install script for directory: /home/louay/compilers-P2
+# Install script for directory: /home/basel/Projects/Compiler
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,12 +44,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/louay/compilers-P2/cmake-build-debug/lexical_analyzer/cmake_install.cmake")
+  include("/home/basel/Projects/Compiler/cmake-build-debug/lexical_analyzer/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/louay/compilers-P2/cmake-build-debug/syntax_analyzer/cmake_install.cmake")
+  include("/home/basel/Projects/Compiler/cmake-build-debug/syntax_analyzer/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -60,5 +60,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/louay/compilers-P2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/basel/Projects/Compiler/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

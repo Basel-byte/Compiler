@@ -69,7 +69,7 @@ vector<vector<string>> LeftRecursionEliminator :: substituteRules(const vector<v
 void LeftRecursionEliminator :: removeLeftRecursion(const vector<vector<string>>& rulesPerNT, const string& NT){
     vector<vector<string>> recursiveRules;
     vector<vector<string>> independentRules;
-    string newNT = NT + "\'";
+    string newNT = NT + "`";
     for(vector<string> rulePerNT : rulesPerNT){ // Classifying rules to recursive and independent rules
         if(rulePerNT[0] == NT) {
             rulePerNT.erase(rulePerNT.begin());

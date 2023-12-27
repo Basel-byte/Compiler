@@ -20,7 +20,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						2
 					]
 				},
 				{
@@ -50,7 +51,7 @@
 					"source" : "syntax_analyzer",
 					"targetIndexes" : 
 					[
-						2
+						3
 					]
 				}
 			],
@@ -70,7 +71,8 @@
 					"name" : "Compiler",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						2
 					]
 				},
 				{
@@ -94,7 +96,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						2
+						3
 					]
 				}
 			],
@@ -103,21 +105,28 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "compiler::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-compiler-Debug-f42a1d372266c1ca0733.json",
+					"jsonFile" : "target-compiler-Debug-cde19e9e3e9a27568f43.json",
 					"name" : "compiler",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
 					"id" : "lexical_analyzer::@f8f85e186ca516fcfbbb",
-					"jsonFile" : "target-lexical_analyzer-Debug-5f15777ff97b4ef19e70.json",
+					"jsonFile" : "target-lexical_analyzer-Debug-790f4772a08e4c4a6c52.json",
 					"name" : "lexical_analyzer",
 					"projectIndex" : 1
 				},
 				{
+					"directoryIndex" : 0,
+					"id" : "lf_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lf_test-Debug-10fa4cdca947eb8a6f7b.json",
+					"name" : "lf_test",
+					"projectIndex" : 0
+				},
+				{
 					"directoryIndex" : 2,
 					"id" : "syntax_analyzer::@62e7c1ebb150220e3b6f",
-					"jsonFile" : "target-syntax_analyzer-Debug-ad5d296830eef61ae63c.json",
+					"jsonFile" : "target-syntax_analyzer-Debug-b9b916420c14846dc02d.json",
 					"name" : "syntax_analyzer",
 					"projectIndex" : 2
 				}
@@ -127,8 +136,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/louay/compilers-P2/cmake-build-debug",
-		"source" : "/home/louay/compilers-P2"
+		"build" : "/home/basel/Projects/Compiler/cmake-build-debug",
+		"source" : "/home/basel/Projects/Compiler"
 	},
 	"version" : 
 	{
