@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.22)
-project(Compiler)
+project(LexicalAnalyzer)
 
 set(CMAKE_CXX_STANDARD 14)
-include_directories(.)
 
-add_executable(lexical_analyzer
+add_library(lexical_analyzer
         NFA.cpp
+        NfaToDfaConverter.cpp
         NfaToDfaConverter.cpp
         State.cpp
         NfaToDfaConverter.cpp
@@ -14,7 +14,11 @@ add_executable(lexical_analyzer
         RegexParser.cpp
         Utility.cpp
         DFA.cpp
-        main.cpp
         LexicalParser.cpp
         DFAMinimization.cpp
-        TransitionTableWriter.cpp)
+        TransitionTableWriter.cpp
+        )
+
+target_include_directories(lexical_analyzer
+        PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+)

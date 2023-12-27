@@ -1,0 +1,147 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						2
+					]
+				},
+				{
+					"build" : "lexical_analyzer",
+					"jsonFile" : "directory-lexical_analyzer-Debug-ad73e67f69bc77ada9f4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "lexical_analyzer",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "syntax_analyzer",
+					"jsonFile" : "directory-syntax_analyzer-Debug-29177570b03c82d36926.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "syntax_analyzer",
+					"targetIndexes" : 
+					[
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Compiler",
+					"targetIndexes" : 
+					[
+						0,
+						2
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "LexicalAnalyzer",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "SyntaxAnalyzer",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "compiler::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-compiler-Debug-cde19e9e3e9a27568f43.json",
+					"name" : "compiler",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "lexical_analyzer::@f8f85e186ca516fcfbbb",
+					"jsonFile" : "target-lexical_analyzer-Debug-790f4772a08e4c4a6c52.json",
+					"name" : "lexical_analyzer",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lf_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lf_test-Debug-10fa4cdca947eb8a6f7b.json",
+					"name" : "lf_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "syntax_analyzer::@62e7c1ebb150220e3b6f",
+					"jsonFile" : "target-syntax_analyzer-Debug-b9b916420c14846dc02d.json",
+					"name" : "syntax_analyzer",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/basel/Projects/Compiler/cmake-build-debug",
+		"source" : "/home/basel/Projects/Compiler"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

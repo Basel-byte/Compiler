@@ -5,7 +5,7 @@
 #include "LexicalParser.h"
 using namespace std;
 
-LexicalParser :: LexicalParser(const DFA &miniDFA, string srcPrgPath): miniDFA(miniDFA), dFAIterator(miniDFA) {
+LexicalParser :: LexicalParser(const DFA &miniDFA, const string &srcPrgPath): miniDFA(miniDFA), dFAIterator(miniDFA) {
     sourceProgFile.open(srcPrgPath);
     if (!sourceProgFile.is_open()){
         cout << "Source Program File Not Found!!";
@@ -32,17 +32,21 @@ void LexicalParser :: updateLnColDiff(char input) {
 string LexicalParser :: getNextToken(){
     char c = 0;
     string toRecognize;
+    string token;
     while(toRecognize.empty() && c != -1){
-        if(isClosedFile()) return "Input File EOF has been reached!!";
+        token += c;
+        if(isClosedFile()) return "$";
         sourceProgFile.get(c);
         if (sourceProgFile.eof()) c = -1;
         updateLnColDiff(c);
         toRecognize = traverseDFA(c);
         if(c == -1 && lastStartDiff == 0) {
             closeFile();
-            return "Input File EOF has been reached!!";
+            return "$";
         }
     }
+    token = token.substr(1, token.size());
+    tokens.push_back(token);
     return toRecognize;
 }
 string LexicalParser :: traverseDFA(char input) {
@@ -74,9 +78,15 @@ string LexicalParser :: traverseDFA(char input) {
     return "";
 }
 
-void LexicalParser :: writeAllTokens(string outFileName) {
+void LexicalParser :: writeAllTokens(const string &outFileName){
     parsedTokenFile.open(outFileName);
-    while(!isClosedFile()) parsedTokenFile << getNextToken() << endl;
+    while(!isClosedFile()) {
+        string tokenClass = getNextToken();
+        if (tokenClass == "$")
+            parsedTokenFile << "Input File EOF has been reached!!" << endl;
+        else
+            parsedTokenFile << tokenClass << endl;
+    }
     parsedTokenFile.close();
 }
 

@@ -1,0 +1,13 @@
+/home/basel/Projects/Compiler/cmake-build-debug/CMakeFiles/compiler.dir
+/home/basel/Projects/Compiler/cmake-build-debug/CMakeFiles/lf_test.dir
+/home/basel/Projects/Compiler/cmake-build-debug/CMakeFiles/test.dir
+/home/basel/Projects/Compiler/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/basel/Projects/Compiler/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/basel/Projects/Compiler/cmake-build-debug/lexical_analyzer/CMakeFiles/lexical_analyzer.dir
+/home/basel/Projects/Compiler/cmake-build-debug/lexical_analyzer/CMakeFiles/test.dir
+/home/basel/Projects/Compiler/cmake-build-debug/lexical_analyzer/CMakeFiles/edit_cache.dir
+/home/basel/Projects/Compiler/cmake-build-debug/lexical_analyzer/CMakeFiles/rebuild_cache.dir
+/home/basel/Projects/Compiler/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+/home/basel/Projects/Compiler/cmake-build-debug/syntax_analyzer/CMakeFiles/test.dir
+/home/basel/Projects/Compiler/cmake-build-debug/syntax_analyzer/CMakeFiles/edit_cache.dir
+/home/basel/Projects/Compiler/cmake-build-debug/syntax_analyzer/CMakeFiles/rebuild_cache.dir

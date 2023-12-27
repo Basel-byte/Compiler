@@ -32,13 +32,15 @@ private:
     void updateLnColDiff(char input);
 
 public:
+    vector<string> tokens;
     bool isClosedFile();
 
-    LexicalParser(const DFA &miniDFA, string srcPrgPath);
+    LexicalParser(const DFA &miniDFA, const string &srcPrgPath);
     ~LexicalParser();
 
     string getNextToken();
-    void writeAllTokens(string outFileName);
+
+    void writeAllTokens(const string &outFileName);
 };
 
 #endif //COMPILER_LEXICALPARSER_H
