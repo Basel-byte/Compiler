@@ -1,0 +1,3 @@
+# S = a S | b X
+# X = Z c | Z d
+# Y = Y e | f

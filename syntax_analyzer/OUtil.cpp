@@ -23,8 +23,7 @@ void OUtil::printCFG(const string &startSymbol, map<string, vector<vector<string
 }
 
 void OUtil::printTable(const map<string, map<string, vector<string>>> &parsingTable){
-    cout <<"\n\n******Parsing Table******\n\n";
-    cout << "------------------------------------------------------------------------\n" << endl;
+    cout <<"\n\n********** Parsing Table **********\n\n";
     for(const auto& row : parsingTable){
         cout << "****** " + row.first + " ******\n\n";
         for(const auto&  col : row.second){

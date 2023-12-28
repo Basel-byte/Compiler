@@ -1,7 +1,6 @@
 //
 // Created by Dell on 03/12/2023.
 //
-
 #include <iostream>
 #include <chrono>
 #include "lexical_analyzer/NFA.cpp"
@@ -15,9 +14,7 @@
 #include "lexical_analyzer/TransitionTableWriter.cpp"
 #include "lexical_analyzer/ThomsonConstructor.cpp"
 #include "lexical_analyzer/Utility.cpp"
-
 #include "syntax_analyzer/CFGReader.h"
-#include "syntax_analyzer/NTSorter.h"
 #include "syntax_analyzer/LeftRecursionEliminator.h"
 #include "syntax_analyzer/LeftFactorer.h"
 #include "syntax_analyzer/ParsingTable.h"
@@ -46,7 +43,6 @@ int main(int argc, char* argv[]) {
 
     string rulesFileName = getFileName(rulesFilePath);
 
-
     auto start = chrono::high_resolution_clock::now();
     RegexParser regexParser;
     NFA* nfa = regexParser.parseREs(rulesFilePath);
@@ -64,18 +60,19 @@ int main(int argc, char* argv[]) {
     DFA* startDFA = DFAMinimization::getStartState(minimizedDfa);
     cout << "===================================================\n";
 
-    cout << "\n\nLexical Analyzer Output:\n";
+    cout << "\nLexical Analyzer Output:\n";
     for (int i = 3; i < argc; i++) {
+        std::cout << "Token Classes of " << argv[i] << ":\n\n";
         LexicalParser parser(*startDFA, argv[i]);
         while (!parser.isClosedFile()) {
             string tokenClass = parser.getNextToken();
-            std::cout << "Token: ";
+            cout << "Token: ";
             if (tokenClass == "$")
-                std::cout << "Input File EOF has been reached!!" << std::endl;
+                cout << "Input File EOF has been reached!!" << std::endl;
             else
-                std::cout << tokenClass << std::endl;
+                cout << tokenClass << std::endl;
         }
-        std::cout << "===================================================================\n";
+        cout << "\n===================================================================\n";
         LexicalParser parserFW(*startDFA, argv[i]);
         parserFW.writeAllTokens("../lexical_analyzer/output/" + getFileName(argv[i]) + "_tokens.txt");
     }
@@ -89,35 +86,37 @@ int main(int argc, char* argv[]) {
     cout << "\n\nRules After Left Recursion Elimination: \n";
     OUtil::printCFG(startSymbol, rules);
     rules = LeftFactorer::leftFactor(rules);
+
     cout << "\n\nRules After Left Factoring: \n";
     OUtil::printCFG(startSymbol, rules);
 
-    std::cout << "\n===================================================================\n";
+    cout << "\n===================================================================\n";
 
     // Compute FIRST sets
     map<string, set<string>> firstSet = FirstSet::firstSet(rules);
     OUtil::printSet(firstSet, "FIRST");
 
-    std::cout << "\n===================================================================\n";
+    cout << "\n===================================================================\n";
 
     // Compute FOLLOW sets
     //string startSymbol ="E";
     map<string, set<string>> followSet = FollowSet::followSet(rules, firstSet, startSymbol);
     OUtil::printSet(followSet, "FOLLOW");
 
-    std::cout << "\n===================================================================\n";
+    cout << "\n===================================================================\n";
 
     // Print Parsing table
     map<string, map<string, vector<string>>> parsingTable = ParsingTable::getParsingTable(rules, firstSet, followSet);
     OUtil::printTable(parsingTable);
 
     for (int i = 3; i < argc; i++) {
+        cout << "Parser Output of " << argv[i] << ":\n\n";
         LexicalParser lexicalParser(*startDFA, argv[i]);
         SyntaxParser::init(lexicalParser, parsingTable, startSymbol);
         auto pair = SyntaxParser::parseProgram();
         OUtil::writeDerivations(pair.first, "../syntax_analyzer/output", getFileName(argv[i]));
         OUtil::printOutput(pair.second);
-        std::cout << "\n===================================================================\n";
+        cout << "\n===================================================================\n";
     }
     return 0;
 }

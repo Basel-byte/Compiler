@@ -1,0 +1,8 @@
+id
+int
+id
+;
+mulop
+addop
+;
+Input File EOF has been reached!!

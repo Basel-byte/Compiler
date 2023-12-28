@@ -1,0 +1,21 @@
+METHOD_BODY 
+STATEMENT_LIST 
+STATEMENT STATEMENT_LIST` 
+ASSIGNMENT STATEMENT_LIST` 
+'id' 'assign' EXPRESSION ';' STATEMENT_LIST` 
+'id' 'assign' EXPRESSION ';' STATEMENT_LIST` 
+'id' 'assign' EXPRESSION ';' STATEMENT_LIST` 
+'id' 'assign' EXPRESSION ';' STATEMENT_LIST` 
+'id' 'assign' SIMPLE_EXPRESSION EXPRESSION` ';' STATEMENT_LIST` 
+'id' 'assign' TERM SIMPLE_EXPRESSION` EXPRESSION` ';' STATEMENT_LIST` 
+'id' 'assign' FACTOR TERM` SIMPLE_EXPRESSION` EXPRESSION` ';' STATEMENT_LIST` 
+'id' 'assign' 'id' TERM` SIMPLE_EXPRESSION` EXPRESSION` ';' STATEMENT_LIST` 
+'id' 'assign' 'id' TERM` SIMPLE_EXPRESSION` EXPRESSION` ';' STATEMENT_LIST` 
+'id' 'assign' 'id' SIMPLE_EXPRESSION` EXPRESSION` ';' STATEMENT_LIST` 
+'id' 'assign' 'id' EXPRESSION` ';' STATEMENT_LIST` 
+'id' 'assign' 'id' ';' STATEMENT_LIST` 
+'id' 'assign' 'id' ';' STATEMENT_LIST` 
+'id' 'assign' 'id' ';' STATEMENT_LIST` 
+'id' 'assign' 'id' ';' STATEMENT_LIST` 
+'id' 'assign' 'id' ';' STATEMENT_LIST` 
+'id' 'assign' 'id' ';' 

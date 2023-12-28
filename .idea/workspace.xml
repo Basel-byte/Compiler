@@ -25,30 +25,15 @@
   <component name="ChangeListManager">
     <list default="true" id="0ec0c81f-860d-41ca-8efa-3ba9173c23b5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/SampleTests/rules/CFG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-09d623c0456b5ba076b9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-12-27T23-54-37-0030.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-syntax_analyzer-Debug-7b298d88c427d7dc86da.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/compiler.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/compiler.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/CTestCostData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/CTestCostData.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/compiler" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/compiler" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/Printer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/Printer.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/libsyntax_analyzer.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/libsyntax_analyzer.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexical_analyzer/LexicalParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lexical_analyzer/LexicalParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/lf_test" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/lf_test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syntax_analyzer/CFGReader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/CFGReader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syntax_analyzer/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syntax_analyzer/Printer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/OUtil.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syntax_analyzer/Printer.h" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/OUtil.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syntax_analyzer/SampleTests/programs/example.txt" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/SampleTests/programs/example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syntax_analyzer/SampleTests/rules/pdfRules.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_analyzer/OUtil.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/OUtil.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/syntax_analyzer/SyntaxParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/SyntaxParser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syntax_analyzer/SyntaxParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/SyntaxParser.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +96,7 @@
       <recent name="D:\Computer and Systems Engineering\7th Semster\Compilers\Project\Compiler\syntax_analyzer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/input" />
       <recent name="$PROJECT_DIR$/syntax_analyzer/SampleTests/rules" />
       <recent name="$PROJECT_DIR$/syntax_analyzer/SampleTests/programs" />
       <recent name="$PROJECT_DIR$/syntax_analyzer" />
@@ -118,7 +104,12 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.compiler">
-    <configuration name="compiler" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../lexical_analyzer/SampleTests/rules/rules1 ../syntax_analyzer/SampleTests/rules/CFG ../syntax_analyzer/SampleTests/programs/example2" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Compiler" TARGET_NAME="compiler" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Compiler" RUN_TARGET_NAME="compiler">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="compiler" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../lexical_analyzer/SampleTests/rules/rules1 ../syntax_analyzer/SampleTests/rules/CFG ../syntax_analyzer/SampleTests/programs/example ../syntax_analyzer/SampleTests/programs/example2" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Compiler" TARGET_NAME="compiler" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Compiler" RUN_TARGET_NAME="compiler">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -208,7 +199,8 @@
       <workItem from="1703709657181" duration="18526000" />
       <workItem from="1703729834095" duration="63000" />
       <workItem from="1703729907623" duration="2166000" />
-      <workItem from="1703740710988" duration="4035000" />
+      <workItem from="1703740710988" duration="4932000" />
+      <workItem from="1703786964252" duration="5144000" />
     </task>
     <servers />
   </component>
