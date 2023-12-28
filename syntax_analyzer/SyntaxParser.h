@@ -20,7 +20,7 @@ private:
     static LexicalParser* lexicalParser;
     static map<string, map<string, vector<string>>> parsingTable;
     static string startSymbol;
-    static void handleNonTerminal(const string &symbol, const string &token,
+    static void handleNonTerminal(const string &symbol, string &currToken,
                                   stack<string> &stack, vector<pair<bool, string>> &derivations);
     static bool isTerminal(const string &symbol);
     static bool isEmptyCell(const string &symbol, const string &token);

@@ -353,6 +353,13 @@ build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o: CXX_COM
   OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
   OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
 
+build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/Printer.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/basel/Projects/Compiler/syntax_analyzer/Printer.cpp || cmake_object_order_depends_target_syntax_analyzer
+  DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/Printer.cpp.o.d
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/syntax_analyzer
+  OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+  OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target syntax_analyzer
@@ -361,7 +368,7 @@ build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o: CXX_COM
 #############################################
 # Link the static library syntax_analyzer/libsyntax_analyzer.a
 
-build syntax_analyzer/libsyntax_analyzer.a: CXX_STATIC_LIBRARY_LINKER__syntax_analyzer_Debug syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FirstSet.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/ParsingTable.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FollowSet.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftRecursionEliminator.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/NTSorter.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftFactorer.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o
+build syntax_analyzer/libsyntax_analyzer.a: CXX_STATIC_LIBRARY_LINKER__syntax_analyzer_Debug syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FirstSet.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/ParsingTable.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FollowSet.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftRecursionEliminator.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/NTSorter.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftFactorer.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/Printer.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
   POST_BUILD = :

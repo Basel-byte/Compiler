@@ -24,69 +24,12 @@
 #include "syntax_analyzer/FollowSet.h"
 #include "syntax_analyzer/FirstSet.h"
 #include "syntax_analyzer/SyntaxParser.h"
+#include "syntax_analyzer/Printer.h"
 
 using namespace std;
 
 string getFileName(const string& filePath) {
     return filePath.substr(filePath.find_last_of("/\\") + 1);
-}
-
-void printCFG(const string &startSymbol, map<string, vector<vector<string>>> rules) {
-    cout << "\nStart Symbol: " << startSymbol << endl;
-    for(const auto& pair : rules){
-        cout << "\nNon-Terminal: " << pair.first << endl;
-        vector<vector<string>> rulesPerNT = pair.second;
-        for (const auto& rule : rulesPerNT) {
-            cout << "--> [";
-            for (size_t i = 0; i < rule.size(); ++i) {
-                cout << rule[i];
-                if (i < rule.size() - 1) cout << ", ";
-            }
-            cout << "]" << endl;
-        }
-    }
-}
-void printTable(map<string, vector<vector<string>>> rules, map<string, map<string, vector<string>>> parsingTable){
-    cout<<"\n\n******Parsing Table******\n\n";
-    cout << "------------------------------------------------------------------------\n" << endl;
-    for(auto rule : rules){
-        cout<< "****** " + rule.first + " ******\n\n";
-        for(auto firstSet : parsingTable[rule.first]){
-            cout<< "[ " + firstSet.first + " ] ==> ";
-            for(auto first : firstSet.second){
-                cout<< first;
-            }
-            cout<<"\n";
-        }
-        cout << endl << "==================================================================================================" << endl;
-    }
-}
-
-void printSet(map<string, set<string>> set, string s) {
-    cout << s + " sets:" << endl;
-    for (const auto& entry : set) {
-        int count = 0;
-        cout << s + "( " <<entry.first << " ) = { " ;
-        for (const auto& terminal : entry.second) {
-            cout << terminal ;
-            count++;
-            if(count == entry.second.size())
-                cout << " }" << endl;
-            else
-                cout << ", ";
-        }
-    }
-}
-
-
-void printOutput(const vector<pair<bool, string>>& derivations) {
-    for (auto &pair : derivations) {
-        if (!pair.first)
-            cout << "\033[31m";
-        else
-            cout << "\033[0m";
-        cout << pair.second << endl;
-    }
 }
 
 int main(int argc, char* argv[]) {
@@ -138,35 +81,37 @@ int main(int argc, char* argv[]) {
     }
 
     /// Parser Part
-    cout << "\n\nRules After Left Recursion Elimination: \n";
     CFGReader reader = CFGReader((string &) argv[2]);
     map<string, vector<vector<string>>> rules = reader.parseRules();
     LeftRecursionEliminator lREliminator = LeftRecursionEliminator(rules);
     rules = lREliminator.removeLeftRecursion();
     string startSymbol = reader.getStartSymbol();
-    printCFG(startSymbol, rules);
-//    rules = LeftFactorer::leftFactor(rules);
+    cout << "\n\nRules After Left Recursion Elimination: \n";
+    Printer::printCFG(startSymbol, rules);
+    rules = LeftFactorer::leftFactor(rules);
+    cout << "\n\nRules After Left Factoring: \n";
+    Printer::printCFG(startSymbol, rules);
 
     // Compute FIRST sets
     map<string, set<string>> firstSet = FirstSet::firstSet(rules);
-    printSet(firstSet, "FIRST");
+    Printer::printSet(firstSet, "FIRST");
 
     std::cout << "\n===================================================================\n";
 
     // Compute FOLLOW sets
     //string startSymbol ="E";
     map<string, set<string>> followSet = FollowSet::followSet(rules, firstSet, startSymbol);
-    printSet(followSet, "FOLLOW");
+    Printer::printSet(followSet, "FOLLOW");
 
     // Print Parsing table
     map<string, map<string, vector<string>>> parsingTable = ParsingTable::getParsingTable(rules, firstSet, followSet);
-    printTable(rules, parsingTable);
+    Printer::printTable(parsingTable);
 
     for (int i = 3; i < argc; i++) {
         LexicalParser lexicalParser(*startDFA, argv[i]);
         SyntaxParser::init(lexicalParser, parsingTable, startSymbol);
         vector<pair<bool, string>> derivations = SyntaxParser::parseProgram();
-        printOutput(derivations);
+        Printer::printOutput(derivations);
         std::cout << "\n===================================================================\n";
     }
     return 0;

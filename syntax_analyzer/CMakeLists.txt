@@ -11,7 +11,10 @@ add_library(syntax_analyzer
         LeftRecursionEliminator.cpp
         NTSorter.cpp
         LeftFactorer.cpp
-        SyntaxParser.cpp)
+        SyntaxParser.cpp
+        Printer.cpp
+        Printer.h
+)
 
 target_include_directories(syntax_analyzer
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
