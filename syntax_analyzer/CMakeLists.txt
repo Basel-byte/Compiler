@@ -12,8 +12,8 @@ add_library(syntax_analyzer
         NTSorter.cpp
         LeftFactorer.cpp
         SyntaxParser.cpp
-        Printer.cpp
-        Printer.h
+        OUtil.cpp
+        OUtil.h
 )
 
 target_include_directories(syntax_analyzer

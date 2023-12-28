@@ -8,7 +8,7 @@ using namespace std;
 LexicalParser :: LexicalParser(const DFA &miniDFA, const string &srcPrgPath): miniDFA(miniDFA), dFAIterator(miniDFA) {
     sourceProgFile.open(srcPrgPath);
     if (!sourceProgFile.is_open()){
-        cout << "Source Program File Not Found!!";
+        cout << srcPrgPath << " Source Program File Not Found!!";
         exit(1);
     }
     lastStartDiff = lineDiff = colDiff = lastStartLine = lastStartCol = 0;

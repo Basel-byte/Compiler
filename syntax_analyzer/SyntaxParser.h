@@ -6,6 +6,7 @@
 #define COMPILER_SYNTAXPARSER_H
 
 #include <string>
+#include <stack>
 #include "../lexical_analyzer/LexicalParser.h"
 
 using namespace std;
@@ -15,13 +16,13 @@ public:
                                  const map<string, map<string, vector<string>>> &parsingTable,
                                  const string &startSymbol_);
 
-    static vector<pair<bool, string>> parseProgram();
+    static pair<vector<string>, vector<pair<bool, string>>> parseProgram();
 private:
     static LexicalParser* lexicalParser;
     static map<string, map<string, vector<string>>> parsingTable;
     static string startSymbol;
-    static void handleNonTerminal(const string &symbol, string &currToken,
-                                  stack<string> &stack, vector<pair<bool, string>> &derivations);
+    static void handleNonTerminal(const string &symbol, string &currToken, stack<string> &stack,
+                                  vector<pair<bool, string>> &output);
     static bool isTerminal(const string &symbol);
     static bool isEmptyCell(const string &symbol, const string &token);
 };

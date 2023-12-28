@@ -10,6 +10,7 @@ map<string, map<string, vector<string>>> SyntaxParser::parsingTable;
 string SyntaxParser::startSymbol;
 
 string toString(vector<string> & production);
+string stringfyStack(stack<string> stack);
 
 void SyntaxParser::init(LexicalParser &lexicalParser_,
                                     const map<string, map<string, vector<string>>> &parsingTable_,
@@ -19,33 +20,37 @@ void SyntaxParser::init(LexicalParser &lexicalParser_,
     startSymbol = startSymbol_;
 }
 
-vector<pair<bool, string>> SyntaxParser::parseProgram() {
-    vector<pair<bool, string>> output;
-    vector<stack<string>> derivations;
+
+pair<vector<string>, vector<pair<bool, string>>> SyntaxParser::parseProgram() {
+    vector<pair<bool, string>> output{};
+    vector<string> derivations;
+    string terminals;
     stack<string> stack;
     stack.emplace("$");
     stack.push(startSymbol);
-    derivations.push_back(stack);
+    derivations.push_back(stringfyStack(stack));
     string currToken = lexicalParser->getNextToken();
     while (stack.size() > 1) {
         string currSymbol = stack.top();
         if (isTerminal(currSymbol)) {
-            if (currSymbol != "'" + currToken + "'") {
+            terminals += currSymbol + " ";
+            if (currSymbol != "'" + currToken + "'")
                 output.emplace_back(false, "Error: missing " + currSymbol + ", inserted");
+            else currToken = lexicalParser->getNextToken();
             stack.pop();
-            currToken = lexicalParser->getNextToken();
         }
         else handleNonTerminal(currSymbol, currToken, stack, output);
+        derivations.push_back(terminals + stringfyStack(stack));
     }
     if (stack.top() == "$" && lexicalParser->getNextToken() == "$")
         output.emplace_back(true, "Accepted :)");
     else
         output.emplace_back(false, "Error: fail to parse input program :(");
-    return output;
+    return {derivations, output};
 }
 
-void SyntaxParser::handleNonTerminal(const string &symbol, string &currToken,
-                                     stack<string> &stack, vector<pair<bool, string>> &output) {
+void SyntaxParser::handleNonTerminal(const string &symbol, string &currToken, stack<string> &stack,
+                                     vector<pair<bool, string>> &output) {
     if (isEmptyCell(symbol, currToken)) {
         output.emplace_back(false, "Error:(illegal " + symbol + ") – discard " + currToken);
         currToken = lexicalParser->getNextToken();
@@ -77,4 +82,13 @@ string toString(vector<string> & production) {
     for (string &symbol : production)
         prod += symbol + " ";
     return prod;
+}
+
+string stringfyStack(stack<string> stack) {
+    string s;
+    while (stack.size() > 1) {
+        s += stack.top() + " ";
+        stack.pop();
+    }
+    return s;
 }

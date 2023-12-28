@@ -24,7 +24,7 @@
 #include "syntax_analyzer/FollowSet.h"
 #include "syntax_analyzer/FirstSet.h"
 #include "syntax_analyzer/SyntaxParser.h"
-#include "syntax_analyzer/Printer.h"
+#include "syntax_analyzer/OUtil.h"
 
 using namespace std;
 
@@ -81,37 +81,42 @@ int main(int argc, char* argv[]) {
     }
 
     /// Parser Part
-    CFGReader reader = CFGReader((string &) argv[2]);
+    CFGReader reader = CFGReader(argv[2]);
     map<string, vector<vector<string>>> rules = reader.parseRules();
     LeftRecursionEliminator lREliminator = LeftRecursionEliminator(rules);
     rules = lREliminator.removeLeftRecursion();
     string startSymbol = reader.getStartSymbol();
     cout << "\n\nRules After Left Recursion Elimination: \n";
-    Printer::printCFG(startSymbol, rules);
+    OUtil::printCFG(startSymbol, rules);
     rules = LeftFactorer::leftFactor(rules);
     cout << "\n\nRules After Left Factoring: \n";
-    Printer::printCFG(startSymbol, rules);
+    OUtil::printCFG(startSymbol, rules);
+
+    std::cout << "\n===================================================================\n";
 
     // Compute FIRST sets
     map<string, set<string>> firstSet = FirstSet::firstSet(rules);
-    Printer::printSet(firstSet, "FIRST");
+    OUtil::printSet(firstSet, "FIRST");
 
     std::cout << "\n===================================================================\n";
 
     // Compute FOLLOW sets
     //string startSymbol ="E";
     map<string, set<string>> followSet = FollowSet::followSet(rules, firstSet, startSymbol);
-    Printer::printSet(followSet, "FOLLOW");
+    OUtil::printSet(followSet, "FOLLOW");
+
+    std::cout << "\n===================================================================\n";
 
     // Print Parsing table
     map<string, map<string, vector<string>>> parsingTable = ParsingTable::getParsingTable(rules, firstSet, followSet);
-    Printer::printTable(parsingTable);
+    OUtil::printTable(parsingTable);
 
     for (int i = 3; i < argc; i++) {
         LexicalParser lexicalParser(*startDFA, argv[i]);
         SyntaxParser::init(lexicalParser, parsingTable, startSymbol);
-        vector<pair<bool, string>> derivations = SyntaxParser::parseProgram();
-        Printer::printOutput(derivations);
+        auto pair = SyntaxParser::parseProgram();
+        OUtil::writeDerivations(pair.first, "../syntax_analyzer/output", getFileName(argv[i]));
+        OUtil::printOutput(pair.second);
         std::cout << "\n===================================================================\n";
     }
     return 0;
