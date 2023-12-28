@@ -1,0 +1,49 @@
+int
+id
+;
+while
+(
+id
+relop
+num
+)
+{
+id
+assign
+id
+addop
+num
+;
+}
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( : ) At Ln.: 3 , Col.: 4
+id
+int
+id
+;
+mulop
+addop
+;
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( : ) At Ln.: 7 , Col.: 6
+id
+assign
+id
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( | ) At Ln.: 8 , Col.: 9
+id
+id
+id
+assign
+id
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( | ) At Ln.: 9 , Col.: 9
+id
+id
+id
+assign
+id
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( | ) At Ln.: 10 , Col.: 9
+id
+Input File EOF has been reached!!

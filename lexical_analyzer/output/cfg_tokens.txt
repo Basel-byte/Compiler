@@ -1,0 +1,23 @@
+PANIC MODE RECOVERY APPLIED: Deleting Character ( # ) At Ln.: 1 , Col.: 1
+id
+assign
+id
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( | ) At Ln.: 1 , Col.: 11
+id
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( # ) At Ln.: 2 , Col.: 1
+id
+assign
+id
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( | ) At Ln.: 2 , Col.: 11
+id
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( # ) At Ln.: 3 , Col.: 1
+id
+assign
+id
+id
+PANIC MODE RECOVERY APPLIED: Deleting Character ( | ) At Ln.: 3 , Col.: 11
+Input File EOF has been reached!!

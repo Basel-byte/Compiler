@@ -59,7 +59,7 @@ void SyntaxParser::handleNonTerminal(const string &symbol, string &currToken, st
         stack.pop();
         vector<string> production = parsingTable[symbol][currToken];
         if (production.size() == 1 && production[0] == "sync")
-            output.emplace_back(false, "Error: Discard " + symbol);
+            output.emplace_back(false, "Error: missing " + symbol);
         else {
             output.emplace_back(true, symbol + " ---> " + toString(production));
             if (production.size() != 1 || production[0] != "\\L")
