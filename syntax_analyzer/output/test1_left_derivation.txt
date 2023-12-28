@@ -1,0 +1,52 @@
+METHOD_BODY 
+STATEMENT_LIST 
+STATEMENT STATEMENT_LIST` 
+DECLARATION STATEMENT_LIST` 
+PRIMITIVE_TYPE 'id' ';' STATEMENT_LIST` 
+'int' 'id' ';' STATEMENT_LIST` 
+'int' 'id' ';' STATEMENT_LIST` 
+'int' 'id' ';' STATEMENT_LIST` 
+'int' 'id' ';' STATEMENT_LIST` 
+'int' 'id' ';' STATEMENT STATEMENT_LIST` 
+'int' 'id' ';' WHILE STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' EXPRESSION ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' EXPRESSION ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' EXPRESSION ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' SIMPLE_EXPRESSION EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' TERM SIMPLE_EXPRESSION` EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' FACTOR TERM` SIMPLE_EXPRESSION` EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' TERM` SIMPLE_EXPRESSION` EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' TERM` SIMPLE_EXPRESSION` EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' SIMPLE_EXPRESSION` EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' SIMPLE_EXPRESSION ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' SIMPLE_EXPRESSION ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' TERM SIMPLE_EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' FACTOR TERM` SIMPLE_EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' TERM` SIMPLE_EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' TERM` SIMPLE_EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' SIMPLE_EXPRESSION` ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' STATEMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' ASSIGNMENT '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' EXPRESSION ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' EXPRESSION ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' EXPRESSION ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' SIMPLE_EXPRESSION EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' TERM SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' FACTOR TERM` SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' TERM` SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' TERM` SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' TERM SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' TERM SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' FACTOR TERM` SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' 'num' TERM` SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' 'num' TERM` SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' 'num' SIMPLE_EXPRESSION` EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' 'num' EXPRESSION` ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' 'num' ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' 'num' ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' 'num' ';' '}' STATEMENT_LIST` 
+'int' 'id' ';' 'while' '(' 'id' 'relop' 'num' ')' '{' 'id' 'assign' 'id' 'addop' 'num' ';' '}' 
