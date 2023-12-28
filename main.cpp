@@ -16,34 +16,21 @@
 #include "lexical_analyzer/ThomsonConstructor.cpp"
 #include "lexical_analyzer/Utility.cpp"
 
-#include "syntax_analyzer/CFGReader.cpp"
-#include "syntax_analyzer/NTSorter.cpp"
-#include "syntax_analyzer/LeftRecursionEliminator.cpp"
-#include "syntax_analyzer/ParsingTable.cpp"
-#include "syntax_analyzer/FollowSet.cpp"
-#include "syntax_analyzer/FirstSet.cpp"
+#include "syntax_analyzer/CFGReader.h"
+#include "syntax_analyzer/NTSorter.h"
+#include "syntax_analyzer/LeftRecursionEliminator.h"
+#include "syntax_analyzer/LeftFactorer.h"
+#include "syntax_analyzer/ParsingTable.h"
+#include "syntax_analyzer/FollowSet.h"
+#include "syntax_analyzer/FirstSet.h"
+#include "syntax_analyzer/SyntaxParser.h"
+#include "syntax_analyzer/OUtil.h"
 
 using namespace std;
 
 string getFileName(const string& filePath) {
     return filePath.substr(filePath.find_last_of("/\\") + 1);
 }
-void printTable(map<string, vector<vector<string>>> rules, map<string, map<string, vector<string>>> parsingTable){
-    cout<<"\n\n******Parsing Table******\n\n";
-    cout << "------------------------------------------------------------------------\n" << endl;
-    for(auto rule : rules){
-        cout<< "****** " + rule.first + " ******\n\n";
-        for(auto firstSet : parsingTable[rule.first]){
-            cout<< "[ " + firstSet.first + " ] ==> ";
-            for(auto first : firstSet.second){
-                cout<< first;
-            }
-            cout<<"\n";
-        }
-        cout << endl << "==================================================================================================" << endl;
-    }
-}
-
 
 int main(int argc, char* argv[]) {
     // arguments are as follows:
@@ -72,89 +59,66 @@ int main(int argc, char* argv[]) {
     cout << "No of DFA states: " << dfa.size() << endl;
     cout << "No of minimized DFA states: " << minimizedDfa.size() << endl;
     cout << "Execution time of grammar parsing: " << duration.count() << " milliseconds" << endl;
-    cout<<"jii "<<rulesFileName;
-    TransitionTableWriter::writeTableInTabularForm(minimizedDfa, "/home/mai/Compiler/lexical_analyzer/output", rulesFileName);
+    TransitionTableWriter::writeTableInTabularForm(minimizedDfa, "../lexical_analyzer/output", rulesFileName);
 
     DFA* startDFA = DFAMinimization::getStartState(minimizedDfa);
     cout << "===================================================\n";
 
-    /// Parser Part
-    cout << "\n\nRules After Left Recursion Elimination: \n";
-    CFGReader reader = CFGReader((string &) argv[2]);
-    map<string, vector<vector<string>>> rules = reader.parseRules();
-    LeftRecursionEliminator lREliminator = LeftRecursionEliminator(rules);
-    rules = lREliminator.removeLeftRecursion();
-    string startSymbol = reader.getStartSymbol();
-    cout << "\nStart Symbol: " << startSymbol << endl;
-    for(const auto& pair : rules){
-        cout << "\nNon-Terminal: " << pair.first << endl;
-        vector<vector<string>> rulesPerNT = pair.second;
-        for (const auto& rule : rulesPerNT) {
-            cout << "--> [";
-            for (size_t i = 0; i < rule.size(); ++i) {
-                cout << rule[i];
-                if (i < rule.size() - 1) cout << ", ";
-            }
-            cout << "]" << endl;
-        }
-    }
-    cout << "===================================================\n";
     cout << "\n\nLexical Analyzer Output:\n";
     for (int i = 3; i < argc; i++) {
         LexicalParser parser(*startDFA, argv[i]);
         while (!parser.isClosedFile()) {
-            std::cout << "Token: " << parser.getNextToken() << std::endl;
+            string tokenClass = parser.getNextToken();
+            std::cout << "Token: ";
+            if (tokenClass == "$")
+                std::cout << "Input File EOF has been reached!!" << std::endl;
+            else
+                std::cout << tokenClass << std::endl;
         }
         std::cout << "===================================================================\n";
         LexicalParser parserFW(*startDFA, argv[i]);
         parserFW.writeAllTokens("../lexical_analyzer/output/" + getFileName(argv[i]) + "_tokens.txt");
     }
 
+    /// Parser Part
+    CFGReader reader = CFGReader(argv[2]);
+    map<string, vector<vector<string>>> rules = reader.parseRules();
+    LeftRecursionEliminator lREliminator = LeftRecursionEliminator(rules);
+    rules = lREliminator.removeLeftRecursion();
+    string startSymbol = reader.getStartSymbol();
+    cout << "\n\nRules After Left Recursion Elimination: \n";
+    OUtil::printCFG(startSymbol, rules);
+    rules = LeftFactorer::leftFactor(rules);
+    cout << "\n\nRules After Left Factoring: \n";
+    OUtil::printCFG(startSymbol, rules);
+
+    std::cout << "\n===================================================================\n";
+
+    // Compute FIRST sets
     map<string, set<string>> firstSet = FirstSet::firstSet(rules);
+    OUtil::printSet(firstSet, "FIRST");
 
-    // Print FIRST sets
-    cout << "FIRST sets:" << endl;
-    for (const auto& entry : firstSet) {
-        int count = 0;
-        cout << "First( " <<entry.first << " ) = { " ;
-        for (const auto& terminal : entry.second) {
-            cout << terminal ;
-            count++;
-            if(count == entry.second.size())
-                cout << " }" << endl;
-            else
-                cout << ", ";
-        }
-
-    }
-
+    std::cout << "\n===================================================================\n";
 
     // Compute FOLLOW sets
     //string startSymbol ="E";
     map<string, set<string>> followSet = FollowSet::followSet(rules, firstSet, startSymbol);
+    OUtil::printSet(followSet, "FOLLOW");
 
-
-
-    // Print FOLLOW sets
-    cout << "\nFOLLOW sets:" << endl;
-    for (const auto& entry : followSet) {
-        int count = 0;
-        cout << "FOLLOW( " <<entry.first << " ) = { " ;
-        for (const auto& terminal : entry.second) {
-            cout << terminal ;
-            count++;
-            if(count == entry.second.size())
-                cout << " }" << endl;
-            else
-                cout << ", ";
-        }
-
-    }
+    std::cout << "\n===================================================================\n";
 
     // Print Parsing table
     map<string, map<string, vector<string>>> parsingTable = ParsingTable::getParsingTable(rules, firstSet, followSet);
-    printTable(rules, parsingTable);
+    OUtil::printTable(parsingTable);
 
+    for (int i = 3; i < argc; i++) {
+        LexicalParser lexicalParser(*startDFA, argv[i]);
+        SyntaxParser::init(lexicalParser, parsingTable, startSymbol);
+        auto pair = SyntaxParser::parseProgram();
+        OUtil::writeDerivations(pair.first, "../syntax_analyzer/output", getFileName(argv[i]));
+        OUtil::printOutput(pair.second);
+        std::cout << "\n===================================================================\n";
+    }
     return 0;
 }
 

@@ -4,12 +4,18 @@ project(SyntaxAnalyzer)
 set(CMAKE_CXX_STANDARD 14)
 
 add_library(syntax_analyzer
-        tmp.cpp
         FirstSet.cpp
+        ParsingTable.cpp
+        FollowSet.cpp
         CFGReader.cpp
         LeftRecursionEliminator.cpp
         NTSorter.cpp
+        LeftFactorer.cpp
+        SyntaxParser.cpp
+        OUtil.cpp
+        OUtil.h
 )
 
 target_include_directories(syntax_analyzer
-        PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+        PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+)

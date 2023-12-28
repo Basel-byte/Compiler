@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/louay/compilers-P2/cmake-build-debug/
+cmake_ninja_workdir = /home/basel/Projects/Compiler/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target compiler
 
@@ -49,10 +49,10 @@ cmake_ninja_workdir = /home/louay/compilers-P2/cmake-build-debug/
 
 build cmake_object_order_depends_target_compiler: phony || cmake_object_order_depends_target_lexical_analyzer cmake_object_order_depends_target_syntax_analyzer
 
-build CMakeFiles/compiler.dir/main.cpp.o: CXX_COMPILER__compiler_unscanned_Debug /home/louay/compilers-P2/main.cpp || cmake_object_order_depends_target_compiler
+build CMakeFiles/compiler.dir/main.cpp.o: CXX_COMPILER__compiler_unscanned_Debug /home/basel/Projects/Compiler/main.cpp || cmake_object_order_depends_target_compiler
   DEP_FILE = CMakeFiles/compiler.dir/main.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer -I/home/louay/compilers-P2/syntax_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer -I/home/basel/Projects/Compiler/syntax_analyzer
   OBJECT_DIR = CMakeFiles/compiler.dir
   OBJECT_FILE_DIR = CMakeFiles/compiler.dir
 
@@ -73,12 +73,57 @@ build compiler: CXX_EXECUTABLE_LINKER__compiler_Debug CMakeFiles/compiler.dir/ma
   TARGET_FILE = compiler
   TARGET_PDB = compiler.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target lf_test
+
+
+#############################################
+# Order-only phony target for lf_test
+
+build cmake_object_order_depends_target_lf_test: phony || cmake_object_order_depends_target_lexical_analyzer cmake_object_order_depends_target_syntax_analyzer
+
+build CMakeFiles/lf_test.dir/tests/lf_test.cpp.o: CXX_COMPILER__lf_test_unscanned_Debug /home/basel/Projects/Compiler/tests/lf_test.cpp || cmake_object_order_depends_target_lf_test
+  DEP_FILE = CMakeFiles/lf_test.dir/tests/lf_test.cpp.o.d
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer -I/home/basel/Projects/Compiler/syntax_analyzer
+  OBJECT_DIR = CMakeFiles/lf_test.dir
+  OBJECT_FILE_DIR = CMakeFiles/lf_test.dir/tests
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target lf_test
+
+
+#############################################
+# Link the executable lf_test
+
+build lf_test: CXX_EXECUTABLE_LINKER__lf_test_Debug CMakeFiles/lf_test.dir/tests/lf_test.cpp.o | lexical_analyzer/liblexical_analyzer.a syntax_analyzer/libsyntax_analyzer.a || lexical_analyzer/liblexical_analyzer.a syntax_analyzer/libsyntax_analyzer.a
+  FLAGS = -g
+  LINK_LIBRARIES = lexical_analyzer/liblexical_analyzer.a  syntax_analyzer/libsyntax_analyzer.a
+  OBJECT_DIR = CMakeFiles/lf_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lf_test
+  TARGET_PDB = lf_test.dbg
+
+
+#############################################
+# Utility command for test
+
+build CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/basel/Projects/Compiler/cmake-build-debug && /snap/clion/261/bin/cmake/linux/x64/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build test: phony CMakeFiles/test.util
+
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/louay/compilers-P2/cmake-build-debug && /snap/clion/261/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/basel/Projects/Compiler/cmake-build-debug && /snap/clion/261/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -89,7 +134,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/louay/compilers-P2/cmake-build-debug && /snap/clion/261/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/louay/compilers-P2 -B/home/louay/compilers-P2/cmake-build-debug
+  COMMAND = cd /home/basel/Projects/Compiler/cmake-build-debug && /snap/clion/261/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/basel/Projects/Compiler -B/home/basel/Projects/Compiler/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -98,7 +143,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# /home/louay/compilers-P2/CMakeLists.txt
+# /home/basel/Projects/Compiler/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -110,96 +155,82 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build cmake_object_order_depends_target_lexical_analyzer: phony || lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NFA.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/NFA.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NFA.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/NFA.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NFA.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NfaToDfaConverter.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/NfaToDfaConverter.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NfaToDfaConverter.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/NfaToDfaConverter.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NfaToDfaConverter.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/State.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/State.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/State.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/State.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/State.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/PriorityTable.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/PriorityTable.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/PriorityTable.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/PriorityTable.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/PriorityTable.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/ThomsonConstructor.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/ThomsonConstructor.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/ThomsonConstructor.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/ThomsonConstructor.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/ThomsonConstructor.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/RegexParser.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/RegexParser.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/RegexParser.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/RegexParser.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/RegexParser.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/Utility.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/Utility.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/Utility.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/Utility.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/Utility.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFA.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/DFA.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFA.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/DFA.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFA.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/LexicalParser.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/LexicalParser.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/LexicalParser.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/LexicalParser.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/LexicalParser.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFAMinimization.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/DFAMinimization.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFAMinimization.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/DFAMinimization.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFAMinimization.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
 
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/TransitionTableWriter.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/lexical_analyzer/TransitionTableWriter.cpp || cmake_object_order_depends_target_lexical_analyzer
+build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/TransitionTableWriter.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/basel/Projects/Compiler/lexical_analyzer/TransitionTableWriter.cpp || cmake_object_order_depends_target_lexical_analyzer
   DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/TransitionTableWriter.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/lexical_analyzer
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
-
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/__/syntax_analyzer/FirstSet.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/syntax_analyzer/FirstSet.cpp || cmake_object_order_depends_target_lexical_analyzer
-  DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/__/syntax_analyzer/FirstSet.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
-  OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
-  OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/__/syntax_analyzer
-
-build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/__/syntax_analyzer/ParsingTable.cpp.o: CXX_COMPILER__lexical_analyzer_unscanned_Debug /home/louay/compilers-P2/syntax_analyzer/ParsingTable.cpp || cmake_object_order_depends_target_lexical_analyzer
-  DEP_FILE = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/__/syntax_analyzer/ParsingTable.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/lexical_analyzer
-  OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
-  OBJECT_FILE_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir/__/syntax_analyzer
 
 
 # =============================================================================
@@ -209,7 +240,7 @@ build lexical_analyzer/CMakeFiles/lexical_analyzer.dir/__/syntax_analyzer/Parsin
 #############################################
 # Link the static library lexical_analyzer/liblexical_analyzer.a
 
-build lexical_analyzer/liblexical_analyzer.a: CXX_STATIC_LIBRARY_LINKER__lexical_analyzer_Debug lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NFA.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NfaToDfaConverter.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/State.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/PriorityTable.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/ThomsonConstructor.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/RegexParser.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/Utility.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFA.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/LexicalParser.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFAMinimization.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/TransitionTableWriter.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/__/syntax_analyzer/FirstSet.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/__/syntax_analyzer/ParsingTable.cpp.o
+build lexical_analyzer/liblexical_analyzer.a: CXX_STATIC_LIBRARY_LINKER__lexical_analyzer_Debug lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NFA.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/NfaToDfaConverter.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/State.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/PriorityTable.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/ThomsonConstructor.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/RegexParser.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/Utility.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFA.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/LexicalParser.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/DFAMinimization.cpp.o lexical_analyzer/CMakeFiles/lexical_analyzer.dir/TransitionTableWriter.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = lexical_analyzer/CMakeFiles/lexical_analyzer.dir
   POST_BUILD = :
@@ -219,10 +250,22 @@ build lexical_analyzer/liblexical_analyzer.a: CXX_STATIC_LIBRARY_LINKER__lexical
 
 
 #############################################
+# Utility command for test
+
+build lexical_analyzer/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/basel/Projects/Compiler/cmake-build-debug/lexical_analyzer && /snap/clion/261/bin/cmake/linux/x64/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build lexical_analyzer/test: phony lexical_analyzer/CMakeFiles/test.util
+
+
+#############################################
 # Utility command for edit_cache
 
 build lexical_analyzer/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/louay/compilers-P2/cmake-build-debug/lexical_analyzer && /snap/clion/261/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/basel/Projects/Compiler/cmake-build-debug/lexical_analyzer && /snap/clion/261/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -233,7 +276,7 @@ build lexical_analyzer/edit_cache: phony lexical_analyzer/CMakeFiles/edit_cache.
 # Utility command for rebuild_cache
 
 build lexical_analyzer/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/louay/compilers-P2/cmake-build-debug/lexical_analyzer && /snap/clion/261/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/louay/compilers-P2 -B/home/louay/compilers-P2/cmake-build-debug
+  COMMAND = cd /home/basel/Projects/Compiler/cmake-build-debug/lexical_analyzer && /snap/clion/261/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/basel/Projects/Compiler -B/home/basel/Projects/Compiler/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -242,7 +285,7 @@ build lexical_analyzer/rebuild_cache: phony lexical_analyzer/CMakeFiles/rebuild_
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# /home/louay/compilers-P2/CMakeLists.txt
+# /home/basel/Projects/Compiler/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -254,38 +297,66 @@ build lexical_analyzer/rebuild_cache: phony lexical_analyzer/CMakeFiles/rebuild_
 
 build cmake_object_order_depends_target_syntax_analyzer: phony || syntax_analyzer/CMakeFiles/syntax_analyzer.dir
 
-build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/tmp.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/louay/compilers-P2/syntax_analyzer/tmp.cpp || cmake_object_order_depends_target_syntax_analyzer
-  DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/tmp.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/syntax_analyzer
-  OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
-  OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
-
-build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FirstSet.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/louay/compilers-P2/syntax_analyzer/FirstSet.cpp || cmake_object_order_depends_target_syntax_analyzer
+build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FirstSet.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/basel/Projects/Compiler/syntax_analyzer/FirstSet.cpp || cmake_object_order_depends_target_syntax_analyzer
   DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FirstSet.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/syntax_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/syntax_analyzer
   OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
   OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
 
-build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/louay/compilers-P2/syntax_analyzer/CFGReader.cpp || cmake_object_order_depends_target_syntax_analyzer
+build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/ParsingTable.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/basel/Projects/Compiler/syntax_analyzer/ParsingTable.cpp || cmake_object_order_depends_target_syntax_analyzer
+  DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/ParsingTable.cpp.o.d
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/syntax_analyzer
+  OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+  OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+
+build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FollowSet.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/basel/Projects/Compiler/syntax_analyzer/FollowSet.cpp || cmake_object_order_depends_target_syntax_analyzer
+  DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FollowSet.cpp.o.d
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/syntax_analyzer
+  OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+  OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+
+build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/basel/Projects/Compiler/syntax_analyzer/CFGReader.cpp || cmake_object_order_depends_target_syntax_analyzer
   DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/syntax_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/syntax_analyzer
   OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
   OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
 
-build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftRecursionEliminator.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/louay/compilers-P2/syntax_analyzer/LeftRecursionEliminator.cpp || cmake_object_order_depends_target_syntax_analyzer
+build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftRecursionEliminator.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/basel/Projects/Compiler/syntax_analyzer/LeftRecursionEliminator.cpp || cmake_object_order_depends_target_syntax_analyzer
   DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftRecursionEliminator.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/syntax_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/syntax_analyzer
   OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
   OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
 
-build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/NTSorter.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/louay/compilers-P2/syntax_analyzer/NTSorter.cpp || cmake_object_order_depends_target_syntax_analyzer
+build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/NTSorter.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/basel/Projects/Compiler/syntax_analyzer/NTSorter.cpp || cmake_object_order_depends_target_syntax_analyzer
   DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/NTSorter.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/louay/compilers-P2/syntax_analyzer
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/syntax_analyzer
+  OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+  OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+
+build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftFactorer.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/basel/Projects/Compiler/syntax_analyzer/LeftFactorer.cpp || cmake_object_order_depends_target_syntax_analyzer
+  DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftFactorer.cpp.o.d
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/syntax_analyzer
+  OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+  OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+
+build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/basel/Projects/Compiler/syntax_analyzer/SyntaxParser.cpp || cmake_object_order_depends_target_syntax_analyzer
+  DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o.d
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/syntax_analyzer
+  OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+  OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
+
+build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/OUtil.cpp.o: CXX_COMPILER__syntax_analyzer_unscanned_Debug /home/basel/Projects/Compiler/syntax_analyzer/OUtil.cpp || cmake_object_order_depends_target_syntax_analyzer
+  DEP_FILE = syntax_analyzer/CMakeFiles/syntax_analyzer.dir/OUtil.cpp.o.d
+  FLAGS = -g -std=c++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/basel/Projects/Compiler/syntax_analyzer
   OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
   OBJECT_FILE_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
 
@@ -297,7 +368,7 @@ build syntax_analyzer/CMakeFiles/syntax_analyzer.dir/NTSorter.cpp.o: CXX_COMPILE
 #############################################
 # Link the static library syntax_analyzer/libsyntax_analyzer.a
 
-build syntax_analyzer/libsyntax_analyzer.a: CXX_STATIC_LIBRARY_LINKER__syntax_analyzer_Debug syntax_analyzer/CMakeFiles/syntax_analyzer.dir/tmp.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FirstSet.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftRecursionEliminator.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/NTSorter.cpp.o
+build syntax_analyzer/libsyntax_analyzer.a: CXX_STATIC_LIBRARY_LINKER__syntax_analyzer_Debug syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FirstSet.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/ParsingTable.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/FollowSet.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftRecursionEliminator.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/NTSorter.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/LeftFactorer.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o syntax_analyzer/CMakeFiles/syntax_analyzer.dir/OUtil.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = syntax_analyzer/CMakeFiles/syntax_analyzer.dir
   POST_BUILD = :
@@ -307,10 +378,22 @@ build syntax_analyzer/libsyntax_analyzer.a: CXX_STATIC_LIBRARY_LINKER__syntax_an
 
 
 #############################################
+# Utility command for test
+
+build syntax_analyzer/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/basel/Projects/Compiler/cmake-build-debug/syntax_analyzer && /snap/clion/261/bin/cmake/linux/x64/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build syntax_analyzer/test: phony syntax_analyzer/CMakeFiles/test.util
+
+
+#############################################
 # Utility command for edit_cache
 
 build syntax_analyzer/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/louay/compilers-P2/cmake-build-debug/syntax_analyzer && /snap/clion/261/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/basel/Projects/Compiler/cmake-build-debug/syntax_analyzer && /snap/clion/261/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -321,7 +404,7 @@ build syntax_analyzer/edit_cache: phony syntax_analyzer/CMakeFiles/edit_cache.ut
 # Utility command for rebuild_cache
 
 build syntax_analyzer/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/louay/compilers-P2/cmake-build-debug/syntax_analyzer && /snap/clion/261/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/louay/compilers-P2 -B/home/louay/compilers-P2/cmake-build-debug
+  COMMAND = cd /home/basel/Projects/Compiler/cmake-build-debug/syntax_analyzer && /snap/clion/261/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/basel/Projects/Compiler -B/home/basel/Projects/Compiler/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -345,21 +428,21 @@ build syntax_analyzer: phony syntax_analyzer/libsyntax_analyzer.a
 # =============================================================================
 
 #############################################
-# Folder: /home/louay/compilers-P2/cmake-build-debug
+# Folder: /home/basel/Projects/Compiler/cmake-build-debug
 
-build all: phony compiler lexical_analyzer/all syntax_analyzer/all
+build all: phony compiler lf_test lexical_analyzer/all syntax_analyzer/all
 
 # =============================================================================
 
 #############################################
-# Folder: /home/louay/compilers-P2/cmake-build-debug/lexical_analyzer
+# Folder: /home/basel/Projects/Compiler/cmake-build-debug/lexical_analyzer
 
 build lexical_analyzer/all: phony lexical_analyzer/liblexical_analyzer.a
 
 # =============================================================================
 
 #############################################
-# Folder: /home/louay/compilers-P2/cmake-build-debug/syntax_analyzer
+# Folder: /home/basel/Projects/Compiler/cmake-build-debug/syntax_analyzer
 
 build syntax_analyzer/all: phony syntax_analyzer/libsyntax_analyzer.a
 
@@ -370,14 +453,14 @@ build syntax_analyzer/all: phony syntax_analyzer/libsyntax_analyzer.a
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/louay/compilers-P2/CMakeLists.txt /home/louay/compilers-P2/lexical_analyzer/CMakeLists.txt /home/louay/compilers-P2/syntax_analyzer/CMakeLists.txt /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/basel/Projects/Compiler/CMakeLists.txt /home/basel/Projects/Compiler/lexical_analyzer/CMakeLists.txt /home/basel/Projects/Compiler/syntax_analyzer/CMakeLists.txt /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/louay/compilers-P2/CMakeLists.txt /home/louay/compilers-P2/lexical_analyzer/CMakeLists.txt /home/louay/compilers-P2/syntax_analyzer/CMakeLists.txt /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake: phony
+build /home/basel/Projects/Compiler/CMakeLists.txt /home/basel/Projects/Compiler/lexical_analyzer/CMakeLists.txt /home/basel/Projects/Compiler/syntax_analyzer/CMakeLists.txt /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake: phony
 
 
 #############################################

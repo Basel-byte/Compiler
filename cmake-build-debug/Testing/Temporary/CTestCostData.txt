@@ -1,0 +1,5 @@
+left_refactoring_test 4 0.000652309
+left_refactoring_test1 25 8.76294e-05
+left_refactoring_test2 14 0.000192044
+left_refactoring_test3 12 0.000163138
+---

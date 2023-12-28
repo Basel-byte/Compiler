@@ -1,0 +1,3 @@
+# A = a a C | a a B | a E
+# B = d f
+# E = r n

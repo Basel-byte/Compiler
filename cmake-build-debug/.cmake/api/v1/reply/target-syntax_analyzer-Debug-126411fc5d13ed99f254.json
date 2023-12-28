@@ -32,7 +32,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 14,
+				"line" : 19,
 				"parent" : 0
 			}
 		]
@@ -43,14 +43,14 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++14 -fdiagnostics-color=always"
+					"fragment" : "-g -std=c++14 -fdiagnostics-color=always"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/louay/compilers-P2/syntax_analyzer"
+					"path" : "/home/basel/Projects/Compiler/syntax_analyzer"
 				}
 			],
 			"language" : "CXX",
@@ -68,7 +68,11 @@
 				1,
 				2,
 				3,
-				4
+				4,
+				5,
+				6,
+				7,
+				8
 			]
 		}
 	],
@@ -90,7 +94,18 @@
 				1,
 				2,
 				3,
-				4
+				4,
+				5,
+				6,
+				7,
+				8
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				9
 			]
 		}
 	],
@@ -99,13 +114,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "syntax_analyzer/tmp.cpp",
+			"path" : "syntax_analyzer/FirstSet.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "syntax_analyzer/FirstSet.cpp",
+			"path" : "syntax_analyzer/ParsingTable.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "syntax_analyzer/FollowSet.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -125,6 +146,29 @@
 			"compileGroupIndex" : 0,
 			"path" : "syntax_analyzer/NTSorter.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "syntax_analyzer/LeftFactorer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "syntax_analyzer/SyntaxParser.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "syntax_analyzer/OUtil.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "syntax_analyzer/OUtil.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "STATIC_LIBRARY"

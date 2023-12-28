@@ -2,8 +2,8 @@
 // Created by mai on 12/22/23.
 //
 
-#ifndef LEXICALANALYZER_PARSINGTABLE_H
-#define LEXICALANALYZER_PARSINGTABLE_H
+#ifndef COMPILER_PARSINGTABLE_H
+#define COMPILER_PARSINGTABLE_H
 
 using namespace std;
 
@@ -14,9 +14,9 @@ using namespace std;
 
 class ParsingTable {
 public:
-    static map<string, map<string, vector<string>>> getParsingTable(map<string, vector<vector<string>>> rules, map<string, set<string> > firstSet,
+    static map<string, map<string, vector<string>>>
+    getParsingTable(map<string, vector<vector<string>>> rules, map<string, set<string>> firstSet,
                     map<string, set<string> > followSet);
 };
 
-
-#endif //LEXICALANALYZER_PARSINGTABLE_H
+#endif //COMPILER_PARSINGTABLE_H

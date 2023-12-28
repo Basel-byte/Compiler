@@ -32,7 +32,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 23,
+				"line" : 22,
 				"parent" : 0
 			}
 		]
@@ -43,14 +43,14 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++14 -fdiagnostics-color=always"
+					"fragment" : "-g -std=c++14 -fdiagnostics-color=always"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/louay/compilers-P2/lexical_analyzer"
+					"path" : "/home/basel/Projects/Compiler/lexical_analyzer"
 				}
 			],
 			"language" : "CXX",
@@ -74,9 +74,7 @@
 				7,
 				8,
 				9,
-				10,
-				11,
-				12
+				10
 			]
 		}
 	],
@@ -104,9 +102,7 @@
 				7,
 				8,
 				9,
-				10,
-				11,
-				12
+				10
 			]
 		}
 	],
@@ -176,18 +172,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "lexical_analyzer/TransitionTableWriter.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "syntax_analyzer/FirstSet.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "syntax_analyzer/ParsingTable.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

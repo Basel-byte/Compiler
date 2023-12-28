@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/louay/compilers-P2/cmake-build-debug"
+			"value" : "/home/basel/Projects/Compiler/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -171,7 +171,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ar-11"
+			"value" : "/usr/bin/gcc-ar-9"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_RANLIB",
@@ -187,7 +187,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ranlib-11"
+			"value" : "/usr/bin/gcc-ranlib-9"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -299,7 +299,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ar-11"
+			"value" : "/usr/bin/gcc-ar-9"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -315,7 +315,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ranlib-11"
+			"value" : "/usr/bin/gcc-ranlib-9"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -543,7 +543,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/louay/compilers-P2/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/basel/Projects/Compiler/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -603,7 +603,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/louay/compilers-P2"
+			"value" : "/home/basel/Projects/Compiler"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1151,7 +1151,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/louay/compilers-P2/cmake-build-debug"
+			"value" : "/home/basel/Projects/Compiler/cmake-build-debug"
 		},
 		{
 			"name" : "Compiler_IS_TOP_LEVEL",
@@ -1175,7 +1175,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/louay/compilers-P2"
+			"value" : "/home/basel/Projects/Compiler"
 		},
 		{
 			"name" : "LexicalAnalyzer_BINARY_DIR",
@@ -1187,7 +1187,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/louay/compilers-P2/cmake-build-debug/lexical_analyzer"
+			"value" : "/home/basel/Projects/Compiler/cmake-build-debug/lexical_analyzer"
 		},
 		{
 			"name" : "LexicalAnalyzer_IS_TOP_LEVEL",
@@ -1211,7 +1211,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/louay/compilers-P2/lexical_analyzer"
+			"value" : "/home/basel/Projects/Compiler/lexical_analyzer"
 		},
 		{
 			"name" : "SyntaxAnalyzer_BINARY_DIR",
@@ -1223,7 +1223,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/louay/compilers-P2/cmake-build-debug/syntax_analyzer"
+			"value" : "/home/basel/Projects/Compiler/cmake-build-debug/syntax_analyzer"
 		},
 		{
 			"name" : "SyntaxAnalyzer_IS_TOP_LEVEL",
@@ -1247,7 +1247,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/louay/compilers-P2/syntax_analyzer"
+			"value" : "/home/basel/Projects/Compiler/syntax_analyzer"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
@@ -1260,6 +1260,18 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "TRUE"
+		},
+		{
+			"name" : "lexical_analyzer",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "lexical_analyzer-NOTFOUND"
 		}
 	],
 	"kind" : "cache",

@@ -136,8 +136,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/louay/compilers-P2/cmake-build-debug",
-		"source" : "/home/louay/compilers-P2"
+		"build" : "/home/basel/Projects/Compiler/cmake-build-debug",
+		"source" : "/home/basel/Projects/Compiler"
 	},
 	"version" : 
 	{

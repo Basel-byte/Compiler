@@ -3,12 +3,16 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="Compiler" targetName="lexical_analyzer" />
+      <config projectName="Compiler" targetName="lf_test" />
       <config projectName="Compiler" targetName="syntax_analyzer" />
       <config projectName="Compiler" targetName="compiler" />
     </generated>
@@ -19,7 +23,33 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ec0c81f-860d-41ca-8efa-3ba9173c23b5" name="Changes" comment="" />
+    <list default="true" id="0ec0c81f-860d-41ca-8efa-3ba9173c23b5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/SampleTests/rules/CFG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-09d623c0456b5ba076b9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-12-27T23-54-37-0030.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-syntax_analyzer-Debug-7b298d88c427d7dc86da.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/compiler.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/compiler.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/compiler" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/compiler" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/CFGReader.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/Printer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/Printer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/CMakeFiles/syntax_analyzer.dir/SyntaxParser.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/libsyntax_analyzer.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/syntax_analyzer/libsyntax_analyzer.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lexical_analyzer/LexicalParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lexical_analyzer/LexicalParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_analyzer/CFGReader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/CFGReader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_analyzer/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_analyzer/Printer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/OUtil.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_analyzer/Printer.h" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/OUtil.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_analyzer/SampleTests/programs/example.txt" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/SampleTests/programs/example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_analyzer/SampleTests/rules/pdfRules.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_analyzer/SyntaxParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/SyntaxParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_analyzer/SyntaxParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer/SyntaxParser.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,55 +59,216 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2022" />
     <option name="minorVersion" value="1.3" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2a5i7Iyyrik9E2rzqUfcwjXxDV5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "D:/Computer and Systems Engineering/7th Semster/Compilers/Project/Compiler/syntax_analyzer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "CMakeSettings"
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake Application.compiler.executor&quot;: &quot;Run&quot;,
+    &quot;CTest Application.All CTest.executor&quot;: &quot;Run&quot;,
+    &quot;CTest Application.left_refactoring_test1.executor&quot;: &quot;Run&quot;,
+    &quot;CTest Application.left_refactoring_test2.executor&quot;: &quot;Run&quot;,
+    &quot;CTest Application.left_refactoring_test3.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;ctest.advertisement.all.test.configuration.is.created&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/basel/Projects/Compiler&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/syntax_analyzer/SampleTests/rules/simple_examples" />
+      <recent name="$PROJECT_DIR$/tests" />
       <recent name="D:\Computer and Systems Engineering\7th Semster\Compilers\Project\Compiler\syntax_analyzer" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/syntax_analyzer/SampleTests/rules" />
+      <recent name="$PROJECT_DIR$/syntax_analyzer/SampleTests/programs" />
+      <recent name="$PROJECT_DIR$/syntax_analyzer" />
+      <recent name="$PROJECT_DIR$/" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.compiler">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="compiler" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="&quot;D:\Computer and Systems Engineering\7th Semster\Compilers\Project\Compiler\lexical_analyzer\SampleTests\rules\rules1&quot; &quot;D:\Computer and Systems Engineering\7th Semster\Compilers\Project\Compiler\lexical_analyzer\SampleTests\testPrograms\program1.txt&quot;" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Compiler" TARGET_NAME="compiler" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Compiler" RUN_TARGET_NAME="compiler">
+    <configuration name="compiler" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../lexical_analyzer/SampleTests/rules/rules1 ../syntax_analyzer/SampleTests/rules/CFG ../syntax_analyzer/SampleTests/programs/example2" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Compiler" TARGET_NAME="compiler" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Compiler" RUN_TARGET_NAME="compiler">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="lexical_analyzer" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Compiler" TARGET_NAME="lexical_analyzer" CONFIG_NAME="Debug">
+    <configuration name="lexical_analyzer" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Compiler" TARGET_NAME="lexical_analyzer" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="syntax_analyzer" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Compiler" TARGET_NAME="syntax_analyzer" CONFIG_NAME="Debug">
+    <configuration name="lf_test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Compiler" TARGET_NAME="lf_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Compiler" RUN_TARGET_NAME="lf_test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="syntax_analyzer" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Compiler" TARGET_NAME="syntax_analyzer" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All CTest" type="CTestRunConfiguration" factoryName="CTestRun" PROGRAM_PARAMS="--extra-verbose" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$CMakeCurrentLocalGenerationDir$" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_PATH="$CTestCurrentExecutableName$" EXPLICIT_BUILD_TARGET_NAME="all" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="left_refactoring_test" type="CTestRunConfiguration" factoryName="CTestRun" temporary="true" PROGRAM_PARAMS="--extra-verbose" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$CMakeCurrentLocalGenerationDir$" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_PATH="$CTestCurrentExecutableName$" EXPLICIT_BUILD_TARGET_NAME="all" TEST_METHOD="left_refactoring_test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="left_refactoring_test1" type="CTestRunConfiguration" factoryName="CTestRun" temporary="true" PROGRAM_PARAMS="--extra-verbose" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$CMakeCurrentLocalGenerationDir$" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_PATH="$CTestCurrentExecutableName$" EXPLICIT_BUILD_TARGET_NAME="all" TEST_METHOD="left_refactoring_test1" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="left_refactoring_test2" type="CTestRunConfiguration" factoryName="CTestRun" temporary="true" PROGRAM_PARAMS="--extra-verbose" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$CMakeCurrentLocalGenerationDir$" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_PATH="$CTestCurrentExecutableName$" EXPLICIT_BUILD_TARGET_NAME="all" TEST_METHOD="left_refactoring_test2" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="left_refactoring_test3" type="CTestRunConfiguration" factoryName="CTestRun" temporary="true" PROGRAM_PARAMS="--extra-verbose" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$CMakeCurrentLocalGenerationDir$" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_PATH="$CTestCurrentExecutableName$" EXPLICIT_BUILD_TARGET_NAME="all" TEST_METHOD="left_refactoring_test3" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Compiler" TARGET_NAME="test.cpp" CONFIG_NAME="test.cpp">
+      <option name="sourceFile" value="test.cpp" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="C/C++ File.test.cpp" />
       <item itemvalue="CMake Application.compiler" />
       <item itemvalue="CMake Application.lexical_analyzer" />
+      <item itemvalue="CMake Application.lf_test" />
       <item itemvalue="CMake Application.syntax_analyzer" />
+      <item itemvalue="CTest Application.All CTest" />
+      <item itemvalue="CTest Application.left_refactoring_test1" />
+      <item itemvalue="CTest Application.left_refactoring_test2" />
+      <item itemvalue="CTest Application.left_refactoring_test3" />
+      <item itemvalue="CTest Application.left_refactoring_test" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="CTest Application.left_refactoring_test1" />
+        <item itemvalue="CTest Application.left_refactoring_test3" />
+        <item itemvalue="CTest Application.left_refactoring_test2" />
+        <item itemvalue="CTest Application.left_refactoring_test" />
+        <item itemvalue="C/C++ File.test.cpp" />
+      </list>
+    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0ec0c81f-860d-41ca-8efa-3ba9173c23b5" name="Changes" comment="" />
+      <created>1703616191154</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1703616191154</updated>
+      <workItem from="1703616193476" duration="46357000" />
+      <workItem from="1703709657181" duration="18526000" />
+      <workItem from="1703729834095" duration="63000" />
+      <workItem from="1703729907623" duration="2166000" />
+      <workItem from="1703740710988" duration="4035000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/test.cpp</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/syntax_analyzer/LeftFactorer.cpp</url>
+          <line>7</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/syntax_analyzer/LeftFactorer.cpp</url>
+          <line>56</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/syntax_analyzer/LeftFactorer.cpp</url>
+          <line>78</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/syntax_analyzer/LeftFactorer.cpp</url>
+          <line>69</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/tests/lf_test.cpp</url>
+          <line>7</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/syntax_analyzer/LeftFactorer.cpp</url>
+          <line>22</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/syntax_analyzer/LeftFactorer.cpp</url>
+          <line>25</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/syntax_analyzer/SyntaxParser.cpp</url>
+          <line>47</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -70,7 +70,7 @@ void TransitionTableWriter::writeTableInTabularForm(set<DFA *> &dfa, string dirp
     writeAcceptingStates(acceptingStates, dirpath, rulesFileName);
 }
 
-void TransitionTableWriter::writeAcceptingStates(set<DFA*> &acceptingStates, string dirpath, string rulesFileName) {
+void TransitionTableWriter::writeAcceptingStates(set<DFA*> &acceptingStates, const string& dirpath, const string& rulesFileName) {
     vector<DFA*> sortedStates(acceptingStates.begin(), acceptingStates.end());
     sort(sortedStates.begin(), sortedStates.end(), DFAMinimization::compareDFAId);
     ofstream tablefile(dirpath + "/" + rulesFileName + "_accepting_states.txt");

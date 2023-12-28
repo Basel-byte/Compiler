@@ -18,7 +18,7 @@ class CFGReader {
         static string adjustWhiteSpaces(const string& toAdjust);
 
     public:
-        CFGReader(string& CFGFilePath);
+        CFGReader(const string& CFGFilePath);
         map<string, vector<vector<string>>> parseRules();
         string getStartSymbol();
 };

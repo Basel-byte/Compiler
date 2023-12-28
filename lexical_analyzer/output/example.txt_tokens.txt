@@ -1,0 +1,20 @@
+int
+id
+;
+id
+assign
+num
+;
+if
+(
+id
+relop
+num
+)
+{
+id
+assign
+num
+;
+}
+Input File EOF has been reached!!

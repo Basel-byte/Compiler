@@ -5,10 +5,10 @@
 #include "CFGReader.h"
 using namespace std;
 
-CFGReader :: CFGReader(string& CFGFilePath) {
+CFGReader :: CFGReader(const string& CFGFilePath) {
     CFGFile.open(CFGFilePath);
     if (!CFGFile.is_open()){
-        cout << "CFG File Not Found!!";
+        cout << CFGFilePath << " CFG File Not Found!!";
         exit(1);
     }
 

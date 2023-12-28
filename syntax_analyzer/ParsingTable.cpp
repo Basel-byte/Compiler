@@ -46,8 +46,9 @@ set<string> getTermFirst(map<string, set<string>> firstSet, vector<string> term)
 }
 
 
-map<string, map<string, vector < string>>> ParsingTable::getParsingTable(map<string, vector<vector<string>>> rules,
-map<string, set<string>> firstSet, map<string, set <string>> followSet){
+map<string, map<string, vector < string>>>
+ParsingTable::getParsingTable(map<string, vector<vector<string>>> rules,  map<string, set<string>> firstSet,
+                              map<string, set <string>> followSet){
 
     map<string, map<string, vector < string>>> parsingTable;
 
